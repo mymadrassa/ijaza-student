@@ -48,51 +48,64 @@
     .hero {
       text-align: center;
       padding: 100px 20px 80px;
-      background: linear-gradient(180deg, #0a0a0a 0%, #111 100%);
+      background: radial-gradient(ellipse at center, #1a1400 0%, #0a0a0a 70%);
     }
     .hero h1 {
       font-size: 3rem;
-      color: #c9a84c;
-      margin-bottom: 16px;
+      font-weight: 800;
+      color: #f0f0f0;
+      line-height: 1.2;
+      margin-bottom: 20px;
     }
+    .hero h1 span { color: #c9a84c; }
     .hero p {
-      font-size: 1.2rem;
-      color: #ccc;
-      max-width: 600px;
+      font-size: 1.15rem;
+      color: #aaa;
+      max-width: 620px;
       margin: 0 auto 36px;
+      line-height: 1.7;
     }
-    .hero-buttons {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .hero-btn {
+    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
       background: #c9a84c;
       color: #0a0a0a;
       border: none;
-      padding: 14px 36px;
+      padding: 14px 34px;
       border-radius: 30px;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 700;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: background 0.3s, transform 0.2s;
     }
-    .hero-btn:hover { background: #e0c060; }
-    .hero-btn-outline {
+    .btn-primary:hover { background: #e0c060; transform: translateY(-2px); }
+    .btn-secondary {
       background: transparent;
       color: #c9a84c;
       border: 2px solid #c9a84c;
-      padding: 14px 36px;
+      padding: 14px 34px;
       border-radius: 30px;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 700;
       cursor: pointer;
-      transition: all 0.3s;
       text-decoration: none;
-      display: inline-block;
+      transition: background 0.3s, transform 0.2s;
     }
-    .hero-btn-outline:hover { background: #c9a84c; color: #0a0a0a; }
+    .btn-secondary:hover { background: #c9a84c22; transform: translateY(-2px); }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      padding: 32px 40px;
+      border-top: 1px solid #c9a84c22;
+      border-bottom: 1px solid #c9a84c22;
+      background: #0d0d0d;
+    }
+    .trust-item { text-align: center; }
+    .trust-item .number { font-size: 1.8rem; font-weight: 800; color: #c9a84c; }
+    .trust-item .label { font-size: 0.8rem; color: #888; margin-top: 4px; }
 
     /* ── SECTIONS ── */
     section {
@@ -103,12 +116,14 @@
     .section-title {
       text-align: center;
       font-size: 2rem;
-      color: #c9a84c;
+      font-weight: 800;
+      color: #f0f0f0;
       margin-bottom: 12px;
     }
+    .section-title span { color: #c9a84c; }
     .section-sub {
       text-align: center;
-      color: #aaa;
+      color: #888;
       margin-bottom: 48px;
       font-size: 1rem;
     }
@@ -125,77 +140,82 @@
       border-radius: 16px;
       padding: 32px 24px;
       text-align: center;
-      transition: transform 0.3s, border-color 0.3s;
+      transition: border-color 0.3s, transform 0.3s;
     }
-    .feature-card:hover { transform: translateY(-6px); border-color: #c9a84c; }
-    .feature-icon { font-size: 2.5rem; margin-bottom: 16px; }
-    .feature-card h3 { color: #c9a84c; margin-bottom: 10px; }
-    .feature-card p { color: #aaa; font-size: 0.9rem; line-height: 1.6; }
+    .feature-card:hover { border-color: #c9a84c; transform: translateY(-4px); }
+    .feature-icon { font-size: 2.4rem; margin-bottom: 16px; }
+    .feature-card h3 { color: #c9a84c; font-size: 1.05rem; margin-bottom: 10px; }
+    .feature-card p { color: #999; font-size: 0.9rem; line-height: 1.6; }
 
-    /* ── PRESENTATION VIDEO ── */
-    <div style="max-width:800px; margin: 0 auto 60px auto;">
-  <h3 style="text-align:center; color:#c9a84c; font-size:1.4rem; margin-bottom:24px;">🎬 Watch How It Works</h3>
-  <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:12px;">
-    <iframe 
-      src="https://www.youtube.com/embed/zTUpUrvwMEc" 
-      style="position:absolute; top:0; left:0; width:100%; height:100%;"
-      frameborder="0" 
-      allowfullscreen>
-    </iframe>
-  </div>
-</div>
+    /* ── PRESENTATION VIDEO SECTION ── */
+    .video-section {
+      padding: 80px 40px;
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .main-video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 14px;
+      margin-top: 32px;
+      background: #000;
+    }
+    .main-video-wrapper iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border-radius: 14px;
+    }
 
     /* ── PLANS ── */
     .plans-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: auto auto;
-      gap: 28px;
+      gap: 24px;
     }
     .plan-card {
       background: #111;
       border: 1px solid #c9a84c33;
-      border-radius: 16px;
-      padding: 36px 24px;
+      border-radius: 18px;
+      padding: 32px 24px;
       text-align: center;
       transition: transform 0.3s, border-color 0.3s;
       position: relative;
     }
     .plan-card:hover { transform: translateY(-6px); border-color: #c9a84c; }
-    .plan-card.popular { border-color: #c9a84c; }
-    .plan-card.center-bottom {
-      grid-column: 2;
-    }
+    .plan-card.popular { border-color: #c9a84c; background: #13110a; }
     .popular-badge {
-      position: absolute;
-      top: -14px;
-      left: 50%;
-      transform: translateX(-50%);
       background: #c9a84c;
       color: #0a0a0a;
       font-size: 0.75rem;
       font-weight: 700;
-      padding: 4px 16px;
+      padding: 4px 14px;
       border-radius: 20px;
-      white-space: nowrap;
+      display: inline-block;
+      margin-bottom: 14px;
     }
-    .plan-card h3 { color: #c9a84c; font-size: 1.2rem; margin-bottom: 10px; }
-    .plan-price { font-size: 2rem; font-weight: 700; color: #f0f0f0; margin: 12px 0; }
-    .plan-price span { font-size: 1rem; color: #aaa; }
-    .plan-detail { color: #aaa; font-size: 0.9rem; margin-bottom: 8px; }
-    .plan-note { color: #c9a84c88; font-size: 0.8rem; margin-bottom: 20px; font-style: italic; }
+    .plan-card h3 { color: #c9a84c; font-size: 1.2rem; margin-bottom: 14px; }
+    .plan-price { font-size: 2.4rem; font-weight: 800; color: #f0f0f0; margin-bottom: 6px; }
+    .plan-price span { font-size: 1rem; color: #888; }
+    .plan-detail { color: #aaa; font-size: 0.9rem; margin-bottom: 6px; }
+    .plan-note { color: #c9a84c; font-size: 0.8rem; margin-bottom: 20px; font-style: italic; }
     .plan-btn {
-      background: transparent;
-      border: 2px solid #c9a84c;
-      color: #c9a84c;
-      padding: 10px 28px;
+      background: #c9a84c;
+      color: #0a0a0a;
+      border: none;
+      padding: 12px 28px;
       border-radius: 25px;
       font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s;
       font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 10px;
     }
-    .plan-btn:hover { background: #c9a84c; color: #0a0a0a; }
+    .plan-btn:hover { background: #e0c060; }
+    .center-bottom { grid-column: 2; }
 
     /* ── NOT SURE BANNER ── */
     .not-sure-banner {
@@ -259,101 +279,47 @@
     .testimonial-author { color: #c9a84c; font-weight: 700; font-size: 0.9rem; }
 
     /* ── VIDEO TESTIMONIALS ── */
-    <h3 style="text-align:center; color:#c9a84c; margin-top:60px; font-size:1.4rem;">🎥 Hear From Our Students</h3>
-<p style="text-align:center; color:#aaa; margin-top:8px; margin-bottom:32px;">Real stories from real families</p>
+    .video-testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .video-testimonial-card {
+      background: #111;
+      border: 1px solid #c9a84c33;
+      border-radius: 14px;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .video-testimonial-card:hover { transform: translateY(-4px); border-color: #c9a84c; }
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 177%;
+      height: 0;
+      overflow: hidden;
+      background: #000;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+    .video-testimonial-info {
+      padding: 14px 16px;
+    }
+    .video-testimonial-info .testimonial-author {
+      color: #c9a84c;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+    .video-testimonial-info p {
+      color: #888;
+      font-size: 0.82rem;
+    }
 
-<div class="video-testimonials-grid">
-    <!-- TESTI 1 -->
-  <div class="video-testimonial-card">
-    <div class="video-wrapper">
-      <iframe 
-        src="https://www.youtube.com/embed/9VyMSVRhywE" 
-        frameborder="0" 
-        allowfullscreen>
-      </iframe>
-    </div>
-    <div class="video-testimonial-info">
-      <div class="testimonial-author">Yahya B.</div>
-      <p>London — Revert</p>
-    </div>
-  </div>
-
-  <!-- TESTI 2 -->
-  <div class="video-testimonial-card">
-    <div class="video-wrapper">
-      <iframe 
-        src="https://www.youtube.com/embed/tMAkjUssTuU" 
-        frameborder="0" 
-        allowfullscreen>
-      </iframe>
-    </div>
-    <div class="video-testimonial-info">
-      <div class="testimonial-author">Kalim G.</div>
-      <p>France — Teenager</p>
-    </div>
-  </div>
-
-  <!-- TESTI 3 -->
-  <div class="video-testimonial-card">
-    <div class="video-wrapper">
-      <iframe 
-        src="https://www.youtube.com/embed/7iwir9LhI9Y" 
-        frameborder="0" 
-        allowfullscreen>
-      </iframe>
-    </div>
-    <div class="video-testimonial-info">
-      <div class="testimonial-author">Wali K.</div>
-      <p>Canada — Pharmacist</p>
-    </div>
-  </div>
-
-  <!-- TESTI 4 -->
-  <div class="video-testimonial-card">
-    <div class="video-wrapper">
-      <iframe 
-        src="https://www.youtube.com/embed/av5_HIDsJC4" 
-        frameborder="0" 
-        allowfullscreen>
-      </iframe>
-    </div>
-    <div class="video-testimonial-info">
-      <div class="testimonial-author">Hasnain K.</div>
-      <p>UAE — Entrepreneur</p>
-    </div>
-  </div>
-
-  <!-- TESTI 5 -->
-  <div class="video-testimonial-card">
-    <div class="video-wrapper">
-      <iframe 
-        src="https://www.youtube.com/embed/f8hrLlbwUfw" 
-        frameborder="0" 
-        allowfullscreen>
-      </iframe>
-    </div>
-    <div class="video-testimonial-info">
-      <div class="testimonial-author">Redwan A.</div>
-      <p>Netherlands — University Student</p>
-    </div>
-  </div>
-
-  <!-- TESTI 6 -->
-  <div class="video-testimonial-card">
-    <div class="video-wrapper">
-      <iframe 
-        src="https://www.youtube.com/embed/ZYYb6Q41rVU" 
-        frameborder="0" 
-        allowfullscreen>
-      </iframe>
-    </div>
-    <div class="video-testimonial-info">
-      <div class="testimonial-author">Elisa M.</div>
-      <p>France — School Teacher</p>
-    </div>
-  </div>
-
-</div>
     /* ── FAQ ── */
     .faq-item {
       background: #111;
@@ -403,10 +369,7 @@
       z-index: 9000;
       transition: transform 0.3s, box-shadow 0.3s;
     }
-    .whatsapp-float:hover {
-      transform: scale(1.12);
-      box-shadow: 0 6px 28px rgba(37,211,102,0.7);
-    }
+    .whatsapp-float:hover { transform: scale(1.12); box-shadow: 0 6px 28px rgba(37,211,102,0.7); }
     .whatsapp-tooltip {
       position: fixed;
       bottom: 36px;
@@ -425,7 +388,7 @@
     }
     .whatsapp-float:hover + .whatsapp-tooltip { opacity: 1; }
 
-    /* ── MODAL OVERLAY ── */
+    /* ── MODAL ── */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -489,17 +452,13 @@
       font-weight: 600;
       margin-bottom: 24px;
     }
-
-    /* ── FORM STYLES ── */
-    .form-group { margin-bottom: 18px; }
+    .form-group { margin-bottom: 20px; }
     .form-group label {
       display: block;
       color: #c9a84c;
       font-size: 0.85rem;
       font-weight: 600;
-      margin-bottom: 6px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      margin-bottom: 8px;
     }
     .form-group input,
     .form-group select,
@@ -511,28 +470,29 @@
       padding: 12px 16px;
       color: #f0f0f0;
       font-size: 0.95rem;
+      font-family: inherit;
       transition: border-color 0.3s;
-      font-family: 'Segoe UI', sans-serif;
     }
     .form-group input:focus,
     .form-group select:focus,
-    .form-group textarea:focus { outline: none; border-color: #c9a84c; }
-    .form-group select option { background: #1a1a1a; }
-    .form-group textarea { resize: vertical; min-height: 90px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #c9a84c;
+    }
+    .form-group textarea { height: 100px; resize: vertical; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .submit-btn {
       width: 100%;
       background: #c9a84c;
       color: #0a0a0a;
       border: none;
       padding: 14px;
-      border-radius: 30px;
-      font-size: 1.05rem;
+      border-radius: 25px;
+      font-size: 1rem;
       font-weight: 700;
       cursor: pointer;
       transition: background 0.3s;
       margin-top: 8px;
-      letter-spacing: 0.5px;
     }
     .submit-btn:hover { background: #e0c060; }
 
@@ -558,9 +518,7 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      .plans-grid {
-        grid-template-columns: 1fr;
-      }
+      .plans-grid { grid-template-columns: 1fr; }
       .plan-card.center-bottom { grid-column: 1; }
     }
     @media (max-width: 600px) {
@@ -571,6 +529,7 @@
       .form-row { grid-template-columns: 1fr; }
       section { padding: 60px 20px; }
       .whatsapp-float { bottom: 18px; right: 18px; width: 54px; height: 54px; font-size: 1.5rem; }
+      .video-testimonials-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -580,13 +539,13 @@
      NAVBAR
 ══════════════════════════════════════════ -->
 <nav>
-  <div class="nav-logo"> MyMadrassa</div>
+  <div class="nav-logo">🕌 MyMadrassa</div>
   <div class="nav-links">
-    <a href="#features">Why Us</a>
-    <a href="#plans">Plans</a>
+    <a href="#features">Features</a>
+    <a href="#plans">Pricing</a>
     <a href="#testimonials">Reviews</a>
     <a href="#faq">FAQ</a>
-    <a href="#" class="nav-enrol" onclick="openModal(''); return false;">Enrol Now</a>
+    <a href="#" class="nav-enrol" onclick="openModal('')">Enrol Now</a>
   </div>
 </nav>
 
@@ -594,28 +553,33 @@
      HERO
 ══════════════════════════════════════════ -->
 <div class="hero">
-  <h1>Learn Quran Online<br/>from Anywhere</h1>
-  <p>Expert Quran tutors. Flexible scheduling. Affordable plans designed for every family.</p>
+  <h1>Learn to Read the <span>Quran</span><br/>From Anywhere in the World</h1>
+  <p>Live 1-to-1 online sessions with qualified tutors. Tailored to your level, your pace, your schedule. Beginners to advanced — all ages welcome.</p>
   <div class="hero-buttons">
-    <button class="hero-btn" onclick="openModal('')">Enrol Now — Start Today</button>
-    <a href="https://calendly.com/contact-avk/free-call" target="_blank" class="hero-btn-outline">📞 Still Not Sure? Book a Free Call</a>
+    <button class="btn-primary" onclick="openModal('')">✨ Start Your Journey</button>
+    <a href="#plans" class="btn-secondary">View Pricing</a>
   </div>
 </div>
 
 <!-- ══════════════════════════════════════════
-     PRESENTATION VIDEO
+     TRUST BAR
 ══════════════════════════════════════════ -->
-<div class="video-section">
-  <h2 class="section-title">See How It Works</h2>
-  <p class="section-sub">Watch a short introduction to MyMadrassa</p>
-  <div class="video-wrapper">
-    <!-- REPLACE THE src BELOW WITH YOUR YOUTUBE EMBED LINK -->
-    <!-- Example: src="https://www.youtube.com/embed/YOUR_VIDEO_ID" -->
-    <div class="video-placeholder">
-      <div class="play-icon">▶️</div>
-      <p>Presentation video coming soon</p>
-      <p style="font-size:0.8rem; color:#666; margin-top:8px;">Send your YouTube link and I will add it here</p>
-    </div>
+<div class="trust-bar">
+  <div class="trust-item">
+    <div class="number">500+</div>
+    <div class="label">Students Enrolled</div>
+  </div>
+  <div class="trust-item">
+    <div class="number">15+</div>
+    <div class="label">Countries Reached</div>
+  </div>
+  <div class="trust-item">
+    <div class="number">4.9★</div>
+    <div class="label">Average Rating</div>
+  </div>
+  <div class="trust-item">
+    <div class="number">100%</div>
+    <div class="label">Online & Flexible</div>
   </div>
 </div>
 
@@ -623,41 +587,65 @@
      FEATURES
 ══════════════════════════════════════════ -->
 <section id="features">
-  <h2 class="section-title">Why Choose MyMadrassa?</h2>
+  <h2 class="section-title">Why Choose <span>MyMadrassa?</span></h2>
   <p class="section-sub">Everything you need to learn Quran the right way</p>
   <div class="features-grid">
     <div class="feature-card">
       <div class="feature-icon">👨‍🏫</div>
       <h3>Qualified Tutors</h3>
-      <p>All our teachers hold Ijazah certification and years of teaching experience.</p>
+      <p>Certified Quran teachers with ijazah and years of teaching experience.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">📅</div>
       <h3>Flexible Scheduling</h3>
-      <p>Book sessions around your life. Morning, evening or weekends — you choose.</p>
+      <p>Book sessions around your life. Mornings, evenings, weekends — you choose.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🌍</div>
       <h3>Learn From Anywhere</h3>
-      <p>100% online. All you need is a device and internet connection.</p>
+      <p>All you need is a device and internet. Join from the UK, US, Europe or beyond.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">👨‍👩‍👧</div>
+      <div class="feature-icon">👶</div>
       <h3>All Ages Welcome</h3>
-      <p>Classes for children and adults. Complete beginners to advanced students.</p>
+      <p>From young children to adults and reverts. We tailor every lesson to you.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📖</div>
+      <h3>Full Curriculum</h3>
+      <p>Noorani Qaida, Tajweed, Quran reading, and Hifz programmes available.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💬</div>
+      <h3>Progress Tracking</h3>
+      <p>Regular feedback and updates so you always know how you are progressing.</p>
     </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════════
+     PRESENTATION VIDEO
+══════════════════════════════════════════ -->
+<div class="video-section">
+  <h2 class="section-title">🎬 See How It Works</h2>
+  <p class="section-sub">Watch a short introduction to MyMadrassa</p>
+  <div class="main-video-wrapper">
+    <iframe
+      src="https://www.youtube.com/embed/zTUpUrvwMEc"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
      PLANS
 ══════════════════════════════════════════ -->
 <section id="plans">
-  <h2 class="section-title">Choose Your Plan</h2>
-  <p class="section-sub">Transparent pricing — no hidden fees</p>
+  <h2 class="section-title">Simple, <span>Transparent Pricing</span></h2>
+  <p class="section-sub">Choose the plan that fits your goals and schedule</p>
   <div class="plans-grid">
 
-    <!-- ROW 1: 3 cards across the top -->
     <div class="plan-card">
       <h3>Affordable</h3>
       <div class="plan-price">£32<span>/month</span></div>
@@ -680,12 +668,11 @@
       <button class="plan-btn" onclick="openModal('Standard — 40min × 1/week — £43/month')">Choose Plan</button>
     </div>
 
-    <!-- ROW 2: Family Bundle centered in middle column -->
     <div class="plan-card center-bottom">
       <h3>Family Bundle</h3>
       <div class="plan-price">£29<span>/month</span></div>
       <div class="plan-detail">40 min × 1 session/week</div>
-      <div class="plan-note">price per student </div>
+      <div class="plan-note">price per student</div>
       <button class="plan-btn" onclick="openModal('Family Bundle — 40min × 1/week — £29/month per student')">Choose Plan</button>
     </div>
 
@@ -733,53 +720,72 @@
   <!-- VIDEO TESTIMONIALS -->
   <h3 style="text-align:center; color:#c9a84c; margin-top:60px; font-size:1.4rem;">🎥 Hear From Our Students</h3>
   <p style="text-align:center; color:#aaa; margin-top:8px; margin-bottom:32px;">Real stories from real families</p>
+
   <div class="video-testimonials-grid">
 
-    <!-- VIDEO TESTIMONIAL 1 -->
+    <!-- TESTI 1 -->
     <div class="video-testimonial-card">
       <div class="video-wrapper">
-        <!-- REPLACE src WITH YOUR YOUTUBE EMBED LINK -->
-        <div class="video-placeholder">
-          <div class="play-icon">▶️</div>
-          <p style="font-size:0.85rem;">Video testimonial 1</p>
-          <p style="font-size:0.75rem; color:#555; margin-top:6px;">Send YouTube link to add</p>
-        </div>
+        <iframe src="https://www.youtube.com/embed/9VyMSVRhywE" allowfullscreen></iframe>
       </div>
       <div class="video-testimonial-info">
-        <div class="testimonial-author">Student Name</div>
-        <p>Location — Plan used</p>
+        <div class="testimonial-author">Yahya B.</div>
+        <p>London — Revert</p>
       </div>
     </div>
 
-    <!-- VIDEO TESTIMONIAL 2 -->
+    <!-- TESTI 2 -->
     <div class="video-testimonial-card">
       <div class="video-wrapper">
-        <!-- REPLACE src WITH YOUR YOUTUBE EMBED LINK -->
-        <div class="video-placeholder">
-          <div class="play-icon">▶️</div>
-          <p style="font-size:0.85rem;">Video testimonial 2</p>
-          <p style="font-size:0.75rem; color:#555; margin-top:6px;">Send YouTube link to add</p>
-        </div>
+        <iframe src="https://www.youtube.com/embed/tMAkjUssTuU" allowfullscreen></iframe>
       </div>
       <div class="video-testimonial-info">
-        <div class="testimonial-author">Student Name</div>
-        <p>Location — Plan used</p>
+        <div class="testimonial-author">Kalim G.</div>
+        <p>France — Teenager</p>
       </div>
     </div>
 
-    <!-- VIDEO TESTIMONIAL 3 -->
+    <!-- TESTI 3 -->
     <div class="video-testimonial-card">
       <div class="video-wrapper">
-        <!-- REPLACE src WITH YOUR YOUTUBE EMBED LINK -->
-        <div class="video-placeholder">
-          <div class="play-icon">▶️</div>
-          <p style="font-size:0.85rem;">Video testimonial 3</p>
-          <p style="font-size:0.75rem; color:#555; margin-top:6px;">Send YouTube link to add</p>
-        </div>
+        <iframe src="https://www.youtube.com/embed/7iwir9LhI9Y" allowfullscreen></iframe>
       </div>
       <div class="video-testimonial-info">
-        <div class="testimonial-author">Student Name</div>
-        <p>Location — Plan used</p>
+        <div class="testimonial-author">Wali K.</div>
+        <p>Canada — Pharmacist</p>
+      </div>
+    </div>
+
+    <!-- TESTI 4 -->
+    <div class="video-testimonial-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/av5_HIDsJC4" allowfullscreen></iframe>
+      </div>
+      <div class="video-testimonial-info">
+        <div class="testimonial-author">Hasnain K.</div>
+        <p>UAE — Entrepreneur</p>
+      </div>
+    </div>
+
+    <!-- TESTI 5 -->
+    <div class="video-testimonial-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/f8hrLlbwUfw" allowfullscreen></iframe>
+      </div>
+      <div class="video-testimonial-info">
+        <div class="testimonial-author">Redwan A.</div>
+        <p>Netherlands — University Student</p>
+      </div>
+    </div>
+
+    <!-- TESTI 6 -->
+    <div class="video-testimonial-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/ZYYb6Q41rVU" allowfullscreen></iframe>
+      </div>
+      <div class="video-testimonial-info">
+        <div class="testimonial-author">Elisa M.</div>
+        <p>France — School Teacher</p>
       </div>
     </div>
 
@@ -802,59 +808,47 @@
 
   <div class="faq-item">
     <div class="faq-question" onclick="toggleFaq(this)">
-      What platform are lessons held on? <span class="faq-arrow">▼</span>
+      How do the online sessions work? <span class="faq-arrow">▼</span>
     </div>
-    <div class="faq-answer">Lessons are held via Zoom or Google Meet. Both are free to download and easy to use on any device — phone, tablet or computer.</div>
+    <div class="faq-answer">Sessions are held live via Zoom or Google Meet. You will receive a link before each class. All you need is a device with a camera and microphone.</div>
   </div>
 
   <div class="faq-item">
     <div class="faq-question" onclick="toggleFaq(this)">
-      Can I change my plan later? <span class="faq-arrow">▼</span>
+      Can I choose my session times? <span class="faq-arrow">▼</span>
     </div>
-    <div class="faq-answer">Yes absolutely. You can upgrade or downgrade your plan at any time. Just contact us and we will arrange it from your next billing cycle.</div>
+    <div class="faq-answer">Yes! When you enrol, you let us know your preferred days and times and we will match you with a tutor who fits your schedule.</div>
   </div>
 
   <div class="faq-item">
     <div class="faq-question" onclick="toggleFaq(this)">
-      Is there a free trial? <span class="faq-arrow">▼</span>
+      Is there a trial or free session? <span class="faq-arrow">▼</span>
     </div>
-    <div class="faq-answer">Yes — we offer a free introductory session so you can meet your tutor and experience the lesson before committing to a plan.</div>
+    <div class="faq-answer">You can book a free 30-minute consultation call to meet us and ask any questions before committing to a plan.</div>
   </div>
 
   <div class="faq-item">
     <div class="faq-question" onclick="toggleFaq(this)">
-      What if I need to cancel a session? <span class="faq-arrow">▼</span>
+      What age groups do you teach? <span class="faq-arrow">▼</span>
     </div>
-    <div class="faq-answer">No problem. We ask for at least 24 hours notice to reschedule. We understand life gets busy and we are always flexible.</div>
+    <div class="faq-answer">We teach all ages — from young children (age 4+) to adults and reverts. Each lesson is fully personalised to the student.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+      How do I pay? <span class="faq-arrow">▼</span>
+    </div>
+    <div class="faq-answer">After your enrolment request is confirmed, we will send you a payment link. We accept bank transfer, card, and other methods.</div>
   </div>
 
 </section>
 
 <!-- ══════════════════════════════════════════
-     FOOTER
-══════════════════════════════════════════ -->
-<footer>
-  <p>© 2025 <span>MyMadrassa</span> — All rights reserved</p>
-  <p style="margin-top:8px;">Built with 🤍 to make Quran learning accessible for everyone</p>
-</footer>
-
-<!-- ══════════════════════════════════════════
-     WHATSAPP FLOATING BUTTON
-══════════════════════════════════════════ -->
-<a class="whatsapp-float"
-   href="https://wa.me/447784950327?text=Assalamu%20Alaykum!%20I%20would%20like%20to%20know%20more%20about%20MyMadrassa."
-   target="_blank"
-   aria-label="Chat on WhatsApp">
-  💬
-</a>
-<div class="whatsapp-tooltip">Chat with us on WhatsApp</div>
-
-<!-- ══════════════════════════════════════════
-     ENROLMENT MODAL
+     ENROL MODAL
 ══════════════════════════════════════════ -->
 <div class="modal-overlay" id="enrolModal">
   <div class="modal-box">
-    <button class="modal-close" onclick="closeModal()">×</button>
+    <button class="modal-close" onclick="closeModal()">✕</button>
 
     <div id="formContent">
       <div class="modal-title">📚 Enrol Now</div>
@@ -863,33 +857,27 @@
       <div class="selected-plan-badge" id="selectedPlanBadge" style="display:none;"></div>
 
       <form onsubmit="handleSubmit(event)">
-        <input type="hidden" name="Selected Plan" id="hiddenPlan" value="Not specified" />
+        <input type="hidden" name="Plan" id="hiddenPlan" value="Not specified" />
 
         <div class="form-row">
           <div class="form-group">
-            <label>Full Name *</label>
-            <input type="text" name="Full Name" placeholder="Ahmed Ali" required />
+            <label>First Name *</label>
+            <input type="text" name="First Name" required placeholder="Your first name" />
           </div>
           <div class="form-group">
-            <label>Email Address *</label>
-            <input type="email" name="Email" placeholder="you@email.com" required />
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label>Phone Number *</label>
-            <input type="tel" name="Phone" placeholder="+44 7700 000000" required />
-          </div>
-          <div class="form-group">
-            <label>Date of Birth</label>
-            <input type="date" name="Date of Birth" />
+            <label>Last Name *</label>
+            <input type="text" name="Last Name" required placeholder="Your last name" />
           </div>
         </div>
 
         <div class="form-group">
-          <label>Country / Location *</label>
-          <input type="text" name="Location" placeholder="e.g. London, UK" required />
+          <label>Email Address *</label>
+          <input type="email" name="Email" required placeholder="your@email.com" />
+        </div>
+
+        <div class="form-group">
+          <label>WhatsApp Number *</label>
+          <input type="tel" name="WhatsApp" required placeholder="+44 7700 000000" />
         </div>
 
         <div class="form-group">
@@ -937,6 +925,19 @@
 
   </div>
 </div>
+
+<!-- ══════════════════════════════════════════
+     WHATSAPP FLOATING BUTTON
+══════════════════════════════════════════ -->
+<a href="https://wa.me/447784950327" target="_blank" class="whatsapp-float">💬</a>
+<div class="whatsapp-tooltip">Chat with us on WhatsApp</div>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer>
+  <p>© 2025 <span>MyMadrassa</span> — All rights reserved. Built with ❤️ for the Ummah.</p>
+</footer>
 
 <!-- ══════════════════════════════════════════
      JAVASCRIPT
