@@ -1,1327 +1,698 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyMadrassa — Ijazah Programme</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --gold: #C9A84C;
-            --gold-light: #E8C97A;
-            --gold-dark: #A07830;
-            --black: #0A0A0A;
-            --dark: #111111;
-            --dark2: #1A1A1A;
-            --dark3: #222222;
-            --white: #FFFFFF;
-            --white-soft: #F5F0E8;
-            --grey: #888888;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--black);
-            color: var(--white);
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 300;
-            overflow-x: hidden;
-        }
-
-        /* ─── HERO ─── */
-        .hero {
-            min-height: 100vh;
-            background: radial-gradient(ellipse at center top, #1a1500 0%, #0A0A0A 60%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 60px 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
-        }
-
-        .hero-logo {
-            width: 180px;
-            margin-bottom: 30px;
-            filter: drop-shadow(0 0 30px rgba(201, 168, 76, 0.3));
-            animation: fadeDown 1s ease forwards;
-        }
-
-        .hero-divider {
-            width: 120px;
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--gold), transparent);
-            margin: 20px auto;
-        }
-
-        .hero h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            font-weight: 600;
-            color: var(--white);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            animation: fadeUp 1s ease 0.3s both;
-        }
-
-        .hero h1 span {
-            color: var(--gold);
-        }
-
-        .hero p {
-            font-size: clamp(0.85rem, 2vw, 1rem);
-            color: var(--grey);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-top: 10px;
-            animation: fadeUp 1s ease 0.5s both;
-        }
-
-        .hero-desc {
-            max-width: 600px;
-            margin: 30px auto 0;
-            font-size: 0.95rem;
-            color: rgba(255,255,255,0.6);
-            line-height: 1.9;
-            animation: fadeUp 1s ease 0.7s both;
-        }
-
-        .hero-cta {
-            margin-top: 40px;
-            display: inline-block;
-            padding: 16px 50px;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 500;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            text-decoration: none;
-            transition: all 0.4s ease;
-            animation: fadeUp 1s ease 0.9s both;
-        }
-
-        .hero-cta:hover {
-            background: var(--gold);
-            color: var(--black);
-        }
-
-        /* ─── SECTIONS ─── */
-        section {
-            padding: 100px 20px;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .section-label {
-            font-size: 0.7rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 10px;
-        }
-
-        .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 4vw, 3.2rem);
-            font-weight: 600;
-            color: var(--white);
-            margin-bottom: 15px;
-        }
-
-        .section-title span {
-            color: var(--gold);
-        }
-
-        .gold-line {
-            width: 60px;
-            height: 1px;
-            background: var(--gold);
-            margin: 20px 0 40px;
-        }
-
-        .center {
-            text-align: center;
-        }
-
-        .gold-line.center {
-            margin: 20px auto 40px;
-        }
-
-        /* ─── WHAT IS IJAZAH ─── */
-        .ijazah-section {
-            background: var(--dark);
-        }
-
-        .ijazah-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .ijazah-text p {
-            color: rgba(255,255,255,0.65);
-            line-height: 2;
-            font-size: 0.93rem;
-            margin-bottom: 20px;
-        }
-
-        .ijazah-text p strong {
-            color: var(--gold);
-            font-weight: 500;
-        }
-
-        .ijazah-card {
-            background: var(--dark2);
-            border: 1px solid rgba(201, 168, 76, 0.2);
-            padding: 40px;
-        }
-
-        .ijazah-card h4 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            color: var(--gold);
-            margin-bottom: 25px;
-            letter-spacing: 1px;
-        }
-
-        .session-block {
-            margin-bottom: 25px;
-        }
-
-        .session-block h5 {
-            font-size: 0.75rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 12px;
-        }
-
-        .session-bar {
-            display: flex;
-            border: 1px solid rgba(201,168,76,0.15);
-            overflow: hidden;
-        }
-
-        .bar-recitation {
-            background: rgba(201, 168, 76, 0.15);
-            padding: 14px 16px;
-            font-size: 0.78rem;
-            color: var(--white-soft);
-            line-height: 1.5;
-            flex: 2;
-            border-right: 1px solid rgba(201,168,76,0.2);
-        }
-
-        .bar-study {
-            background: rgba(201, 168, 76, 0.05);
-            padding: 14px 16px;
-            font-size: 0.78rem;
-            color: rgba(255,255,255,0.5);
-            line-height: 1.5;
-            flex: 1;
-        }
-
-        .bar-label {
-            font-size: 0.65rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--gold);
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .ijazah-note {
-            margin-top: 20px;
-            padding: 16px;
-            border-left: 2px solid var(--gold);
-            background: rgba(201,168,76,0.05);
-            font-size: 0.82rem;
-            color: rgba(255,255,255,0.6);
-            line-height: 1.7;
-        }
-
-        /* ─── PRICING ─── */
-        .pricing-section {
-            background: var(--black);
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1px;
-            background: rgba(201,168,76,0.15);
-            border: 1px solid rgba(201,168,76,0.15);
-            margin-top: 20px;
-        }
-
-        .pricing-card {
-            background: var(--dark);
-            padding: 40px 24px;
-            text-align: center;
-            transition: all 0.4s ease;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .pricing-card:hover {
-            background: var(--dark2);
-            transform: translateY(-4px);
-            z-index: 2;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-        }
-
-        .pricing-card.featured {
-            background: linear-gradient(160deg, #1a1500, var(--dark2));
-            border: 1px solid rgba(201,168,76,0.4);
-        }
-
-        .pricing-card.featured::before {
-            content: 'MOST POPULAR';
-            position: absolute;
-            top: -1px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--gold);
-            color: var(--black);
-            font-size: 0.6rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            padding: 4px 16px;
-        }
-
-        .plan-name {
-            font-size: 0.65rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
-
-        .plan-price {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3.2rem;
-            font-weight: 600;
-            color: var(--white);
-            line-height: 1;
-        }
-
-        .plan-price span {
-            font-size: 1.2rem;
-            color: var(--gold);
-        }
-
-        .plan-period {
-            font-size: 0.7rem;
-            color: var(--grey);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: 6px;
-        }
-
-        .plan-divider {
-            width: 40px;
-            height: 1px;
-            background: rgba(201,168,76,0.3);
-            margin: 24px auto;
-        }
-
-        .plan-feature {
-            font-size: 0.78rem;
-            color: rgba(255,255,255,0.55);
-            margin-bottom: 10px;
-            line-height: 1.5;
-        }
-
-        .plan-feature strong {
-            color: var(--white-soft);
-            font-weight: 500;
-        }
-
-        .plan-badge {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 8px 20px;
-            border: 1px solid rgba(201,168,76,0.3);
-            font-size: 0.65rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--gold);
-        }
-
-        .plan-duration {
-            margin-top: 14px;
-            font-size: 0.75rem;
-            color: rgba(255,255,255,0.4);
-        }
-
-        /* ─── JOURNEY ─── */
-        .journey-section {
-            background: var(--dark);
-        }
-
-        .journey-phases {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-
-        .phase-card {
-            border: 1px solid rgba(201,168,76,0.2);
-            padding: 40px;
-            background: var(--dark2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .phase-card::after {
-            content: attr(data-phase);
-            position: absolute;
-            bottom: -20px;
-            right: -10px;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 8rem;
-            font-weight: 700;
-            color: rgba(201,168,76,0.04);
-            line-height: 1;
-            pointer-events: none;
-        }
-
-        .phase-tag {
-            font-size: 0.65rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 16px;
-        }
-
-        .phase-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            color: var(--white);
-            margin-bottom: 20px;
-        }
-
-        .phase-stat {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            font-size: 0.82rem;
-        }
-
-        .phase-stat:last-child {
-            border-bottom: none;
-        }
-
-        .phase-stat .label {
-            color: var(--grey);
-        }
-
-        .phase-stat .value {
-            color: var(--white-soft);
-            font-weight: 500;
-        }
-
-        /* ─── PLAN TABLES ─── */
-        .plan-tables-section {
-            background: var(--black);
-        }
-
-        .plan-tabs {
-            display: flex;
-            gap: 2px;
-            margin-bottom: 40px;
-            background: var(--dark2);
-            padding: 4px;
-            border: 1px solid rgba(201,168,76,0.1);
-        }
-
-        .plan-tab {
-            flex: 1;
-            padding: 14px;
-            text-align: center;
-            font-size: 0.72rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--grey);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-            background: transparent;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .plan-tab.active {
-            background: var(--gold);
-            color: var(--black);
-            font-weight: 600;
-        }
-
-        .plan-tab:hover:not(.active) {
-            color: var(--gold);
-        }
-
-        .plan-table-content {
-            display: none;
-        }
-
-        .plan-table-content.active {
-            display: block;
-        }
-
-        .schedule-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.82rem;
-        }
-
-        .schedule-table thead tr {
-            background: rgba(201,168,76,0.1);
-            border-bottom: 1px solid rgba(201,168,76,0.3);
-        }
-
-        .schedule-table th {
-            padding: 14px 20px;
-            text-align: left;
-            font-size: 0.65rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--gold);
-            font-weight: 500;
-        }
-
-        .schedule-table td {
-            padding: 14px 20px;
-            color: rgba(255,255,255,0.65);
-            border-bottom: 1px solid rgba(255,255,255,0.04);
-        }
-
-        .schedule-table tr:hover td {
-            background: rgba(201,168,76,0.03);
-            color: var(--white-soft);
-        }
-
-        .schedule-table .phase-marker {
-            color: var(--gold);
-            font-weight: 500;
-        }
-
-        .schedule-table .complete {
-            color: #7DC97D;
-            font-weight: 500;
-        }
-
-        .progress-cell {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .progress-bar-wrap {
-            flex: 1;
-            height: 3px;
-            background: rgba(255,255,255,0.06);
-        }
-
-        .progress-bar-fill {
-            height: 3px;
-            background: linear-gradient(to right, var(--gold-dark), var(--gold));
-        }
-
-        .plan-info-bar {
-            display: flex;
-            gap: 30px;
-            margin-bottom: 30px;
-            padding: 24px 30px;
-            background: var(--dark2);
-            border: 1px solid rgba(201,168,76,0.15);
-        }
-
-        .plan-info-item {
-            text-align: center;
-            flex: 1;
-        }
-
-        .plan-info-item .info-val {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            color: var(--gold);
-        }
-
-        .plan-info-item .info-label {
-            font-size: 0.65rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--grey);
-            margin-top: 4px;
-        }
-
-        /* ─── COMPARISON ─── */
-        .comparison-section {
-            background: var(--dark);
-        }
-
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        .comparison-table th {
-            padding: 20px;
-            font-size: 0.65rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--gold);
-            font-weight: 500;
-            text-align: center;
-            border-bottom: 1px solid rgba(201,168,76,0.2);
-        }
-
-        .comparison-table th:first-child {
-            text-align: left;
-        }
-
-        .comparison-table td {
-            padding: 18px 20px;
-            font-size: 0.82rem;
-            color: rgba(255,255,255,0.65);
-            border-bottom: 1px solid rgba(255,255,255,0.04);
-            text-align: center;
-        }
-
-        .comparison-table td:first-child {
-            text-align: left;
-            color: var(--grey);
-            font-size: 0.75rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .comparison-table .highlight-col {
-            background: rgba(201,168,76,0.04);
-        }
-
-        .comparison-table .price-row td {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            color: var(--white);
-        }
-
-        .check {
-            color: var(--gold);
-            font-size: 1rem;
-        }
-
-        /* ─── REGISTER FORM ─── */
-        .register-section {
-            background: var(--black);
-            border-top: 1px solid rgba(201,168,76,0.15);
-        }
-
-        .form-wrapper {
-            max-width: 720px;
-            margin: 0 auto;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .form-group.full {
-            grid-column: 1 / -1;
-        }
-
-        .form-group label {
-            font-size: 0.65rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--gold);
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            background: var(--dark2);
-            border: 1px solid rgba(201,168,76,0.2);
-            color: var(--white);
-            padding: 14px 18px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 300;
-            outline: none;
-            transition: border-color 0.3s;
-            appearance: none;
-            -webkit-appearance: none;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            border-color: var(--gold);
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: rgba(255,255,255,0.2);
-        }
-
-        .form-group select option {
-            background: var(--dark2);
-            color: var(--white);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .plan-selector {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            grid-column: 1 / -1;
-        }
-
-        .plan-option {
-            position: relative;
-        }
-
-        .plan-option input[type="radio"] {
-            position: absolute;
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .plan-option label {
-            display: block;
-            padding: 16px 10px;
-            border: 1px solid rgba(201,168,76,0.2);
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            letter-spacing: 0;
-            text-transform: none;
-            font-size: 0.75rem;
-            color: rgba(255,255,255,0.6);
-            background: var(--dark2);
-        }
-
-        .plan-option label .opt-price {
-            display: block;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            color: var(--gold);
-            margin-bottom: 4px;
-        }
-
-        .plan-option label .opt-name {
-            display: block;
-            font-size: 0.65rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--grey);
-            margin-bottom: 6px;
-        }
-
-        .plan-option input[type="radio"]:checked + label {
-            border-color: var(--gold);
-            background: rgba(201,168,76,0.1);
-            color: var(--white);
-        }
-
-        .submit-btn {
-            width: 100%;
-            margin-top: 30px;
-            padding: 18px;
-            background: var(--gold);
-            border: none;
-            color: var(--black);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            background: var(--gold-light);
-        }
-
-        .form-note {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.75rem;
-            color: rgba(255,255,255,0.3);
-            line-height: 1.8;
-        }
-
-        /* ─── SUCCESS MESSAGE ─── */
-        .success-msg {
-            display: none;
-            text-align: center;
-            padding: 60px 40px;
-            border: 1px solid rgba(201,168,76,0.3);
-            background: rgba(201,168,76,0.05);
-        }
-
-        .success-msg h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            color: var(--gold);
-            margin-bottom: 16px;
-        }
-
-        .success-msg p {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.9rem;
-            line-height: 1.8;
-        }
-
-        /* ─── FOOTER ─── */
-        footer {
-            background: var(--dark);
-            border-top: 1px solid rgba(201,168,76,0.1);
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        footer img {
-            width: 100px;
-            margin-bottom: 20px;
-            opacity: 0.8;
-        }
-
-        footer p {
-            font-size: 0.72rem;
-            color: rgba(255,255,255,0.25);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        footer .footer-gold {
-            color: var(--gold);
-            opacity: 0.6;
-        }
-
-        /* ─── ANIMATIONS ─── */
-        @keyframes fadeDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ─── RESPONSIVE ─── */
-        @media (max-width: 900px) {
-            .pricing-grid { grid-template-columns: 1fr 1fr; }
-            .ijazah-grid { grid-template-columns: 1fr; gap: 30px; }
-            .journey-phases { grid-template-columns: 1fr; }
-            .plan-info-bar { flex-wrap: wrap; gap: 16px; }
-        }
-
-        @media (max-width: 640px) {
-            .pricing-grid { grid-template-columns: 1fr; }
-            .form-grid { grid-template-columns: 1fr; }
-            .plan-selector { grid-template-columns: 1fr 1fr; }
-            .plan-tabs { flex-direction: column; }
-            .comparison-table { font-size: 0.72rem; }
-            .comparison-table th, .comparison-table td { padding: 12px 10px; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MyMadrassa — Learn Quran Online</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0a0a0a;
+      color: #f0f0f0;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px;
+      background: #0a0a0a;
+      border-bottom: 1px solid #c9a84c;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .nav-logo { color: #c9a84c; font-size: 1.5rem; font-weight: 700; }
+    .nav-links a {
+      color: #f0f0f0;
+      text-decoration: none;
+      margin-left: 28px;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: #c9a84c; }
+    .nav-enrol {
+      background: #c9a84c;
+      color: #0a0a0a !important;
+      padding: 8px 20px;
+      border-radius: 25px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .nav-enrol:hover { background: #e0c060 !important; }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 100px 20px 80px;
+      background: linear-gradient(180deg, #0a0a0a 0%, #111 100%);
+    }
+    .hero h1 {
+      font-size: 3rem;
+      color: #c9a84c;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #ccc;
+      max-width: 600px;
+      margin: 0 auto 36px;
+    }
+    .hero-btn {
+      background: #c9a84c;
+      color: #0a0a0a;
+      border: none;
+      padding: 14px 36px;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .hero-btn:hover { background: #e0c060; }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 80px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      color: #c9a84c;
+      margin-bottom: 12px;
+    }
+    .section-sub {
+      text-align: center;
+      color: #aaa;
+      margin-bottom: 48px;
+      font-size: 1rem;
+    }
+
+    /* ── FEATURES ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 28px;
+    }
+    .feature-card {
+      background: #111;
+      border: 1px solid #c9a84c33;
+      border-radius: 16px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .feature-card:hover { transform: translateY(-6px); border-color: #c9a84c; }
+    .feature-icon { font-size: 2.5rem; margin-bottom: 16px; }
+    .feature-card h3 { color: #c9a84c; margin-bottom: 10px; }
+    .feature-card p { color: #aaa; font-size: 0.9rem; line-height: 1.6; }
+
+    /* ── PLANS ── */
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+    }
+    .plan-card {
+      background: #111;
+      border: 1px solid #c9a84c33;
+      border-radius: 16px;
+      padding: 36px 24px;
+      text-align: center;
+      transition: transform 0.3s, border-color 0.3s;
+      position: relative;
+    }
+    .plan-card:hover { transform: translateY(-6px); border-color: #c9a84c; }
+    .plan-card.popular { border-color: #c9a84c; }
+    .popular-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #c9a84c;
+      color: #0a0a0a;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 16px;
+      border-radius: 20px;
+    }
+    .plan-card h3 { color: #c9a84c; font-size: 1.2rem; margin-bottom: 10px; }
+    .plan-price { font-size: 2rem; font-weight: 700; color: #f0f0f0; margin: 12px 0; }
+    .plan-price span { font-size: 1rem; color: #aaa; }
+    .plan-detail { color: #aaa; font-size: 0.9rem; margin-bottom: 24px; }
+    .plan-btn {
+      background: transparent;
+      border: 2px solid #c9a84c;
+      color: #c9a84c;
+      padding: 10px 28px;
+      border-radius: 25px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.95rem;
+    }
+    .plan-btn:hover { background: #c9a84c; color: #0a0a0a; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+    .testimonial-card {
+      background: #111;
+      border: 1px solid #c9a84c33;
+      border-radius: 16px;
+      padding: 28px;
+    }
+    .stars { color: #c9a84c; font-size: 1.1rem; margin-bottom: 12px; }
+    .testimonial-card p { color: #ccc; font-style: italic; line-height: 1.7; margin-bottom: 16px; }
+    .testimonial-author { color: #c9a84c; font-weight: 700; font-size: 0.9rem; }
+
+    /* ── FAQ ── */
+    .faq-item {
+      background: #111;
+      border: 1px solid #c9a84c33;
+      border-radius: 12px;
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 20px 24px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #f0f0f0;
+      font-weight: 600;
+    }
+    .faq-question:hover { color: #c9a84c; }
+    .faq-arrow { color: #c9a84c; font-size: 1.2rem; transition: transform 0.3s; }
+    .faq-answer {
+      padding: 0 24px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+      color: #aaa;
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-answer { max-height: 200px; padding: 0 24px 20px; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+
+    /* ── MODAL OVERLAY ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .modal-overlay.active { display: flex; }
+
+    .modal-box {
+      background: #111;
+      border: 2px solid #c9a84c;
+      border-radius: 20px;
+      padding: 40px;
+      width: 100%;
+      max-width: 580px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      animation: slideUp 0.4s ease;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 20px;
+      background: none;
+      border: none;
+      color: #c9a84c;
+      font-size: 1.8rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .modal-close:hover { color: #fff; }
+
+    .modal-title {
+      color: #c9a84c;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    .modal-subtitle {
+      color: #aaa;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-bottom: 28px;
+    }
+    .selected-plan-badge {
+      background: #c9a84c22;
+      border: 1px solid #c9a84c;
+      color: #c9a84c;
+      text-align: center;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    /* ── FORM STYLES ── */
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      color: #c9a84c;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: #1a1a1a;
+      border: 1px solid #c9a84c44;
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: #f0f0f0;
+      font-size: 0.95rem;
+      transition: border-color 0.3s;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #c9a84c;
+    }
+    .form-group select option { background: #1a1a1a; }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: #c9a84c;
+      color: #0a0a0a;
+      border: none;
+      padding: 14px;
+      border-radius: 30px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 8px;
+      letter-spacing: 0.5px;
+    }
+    .submit-btn:hover { background: #e0c060; }
+
+    /* ── SUCCESS MESSAGE ── */
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .success-msg .tick { font-size: 4rem; margin-bottom: 16px; }
+    .success-msg h3 { color: #c9a84c; font-size: 1.5rem; margin-bottom: 12px; }
+    .success-msg p { color: #aaa; line-height: 1.7; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid #c9a84c33;
+      color: #555;
+      font-size: 0.85rem;
+    }
+    footer span { color: #c9a84c; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2rem; }
+      nav { padding: 14px 20px; }
+      .nav-links a { margin-left: 14px; font-size: 0.85rem; }
+      .modal-box { padding: 28px 20px; }
+      .form-row { grid-template-columns: 1fr; }
+      section { padding: 60px 20px; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════ HERO -->
-<section class="hero">
-    <img src="logo.png"
-         onerror="this.style.display='none'; document.getElementById('hero-text-logo').style.display='block';"
-         class="hero-logo" alt="MyMadrassa Logo">
-    <div id="hero-text-logo" style="display:block; margin-bottom:30px;">
-        <div style="font-family:'Cormorant Garamond',serif; font-size:3rem; color:var(--gold); letter-spacing:2px;">مدرستي</div>
-        <div style="font-size:1.1rem; letter-spacing:8px; color:var(--white); font-weight:300; margin-top:6px;">MYMADRASSA</div>
-        <div style="font-size:0.6rem; letter-spacing:5px; color:var(--grey); margin-top:4px;">ONLINE PLATFORM</div>
+<!-- ══════════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════════ -->
+<nav>
+  <div class="nav-logo">🕌 MyMadrassa</div>
+  <div class="nav-links">
+    <a href="#features">Why Us</a>
+    <a href="#plans">Plans</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#faq">FAQ</a>
+    <a href="#" class="nav-enrol" onclick="openModal(''); return false;">Enrol Now</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<div class="hero">
+  <h1>Learn Quran Online<br/>from Anywhere</h1>
+  <p>Expert Quran tutors. Flexible scheduling. Affordable plans designed for every family.</p>
+  <button class="hero-btn" onclick="openModal('')">Enrol Now — Start Today</button>
+</div>
+
+<!-- ══════════════════════════════════════════
+     FEATURES
+══════════════════════════════════════════ -->
+<section id="features">
+  <h2 class="section-title">Why Choose MyMadrassa?</h2>
+  <p class="section-sub">Everything you need to learn Quran the right way</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">👨‍🏫</div>
+      <h3>Qualified Tutors</h3>
+      <p>All our teachers hold Ijazah certification and years of teaching experience.</p>
     </div>
-    <div class="hero-divider"></div>
-    <h1>Ijazah <span>Programme</span></h1>
-    <p>Certified Qur'anic Transmission · Online · Professional</p>
-    <p class="hero-desc">
-        Receive your Ijazah — a certified chain of Qur'anic transmission — through our structured, 
-        one-to-one online programme with qualified teachers. 
-        A sacred journey, made accessible.
-    </p>
-    <a href="#register" class="hero-cta">Enrol Now</a>
+    <div class="feature-card">
+      <div class="feature-icon">📅</div>
+      <h3>Flexible Scheduling</h3>
+      <p>Book sessions around your life. Morning, evening or weekends — you choose.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌍</div>
+      <h3>Learn From Anywhere</h3>
+      <p>100% online. All you need is a device and internet connection.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">👨‍👩‍👧</div>
+      <h3>All Ages Welcome</h3>
+      <p>Classes for children and adults. Complete beginners to advanced students.</p>
+    </div>
+  </div>
 </section>
 
-<!-- ═══════════════════════════════════════════ WHAT IS IJAZAH -->
-<section class="ijazah-section">
-    <div class="container">
-        <div class="section-label">About the Programme</div>
-        <h2 class="section-title">What is an <span>Ijazah</span>?</h2>
-        <div class="gold-line"></div>
+<!-- ══════════════════════════════════════════
+     PLANS
+══════════════════════════════════════════ -->
+<section id="plans">
+  <h2 class="section-title">Choose Your Plan</h2>
+  <p class="section-sub">Transparent pricing — no hidden fees</p>
+  <div class="plans-grid">
 
-        <div class="ijazah-grid">
-            <div class="ijazah-text">
-                <p>
-                    The <strong>Ijazah (إجازة)</strong> is a formal certification of Qur'anic recitation, 
-                    granted through an unbroken chain of transmission — the <strong>Isnad</strong> — 
-                    connecting the student directly back to the Prophet Muhammad ﷺ.
-                </p>
-                <p>
-                    It is the highest scholarly honour a student of the Qur'an can achieve. 
-                    Our programme combines traditional <strong>one-to-one recitation (Talaqqi)</strong> 
-                    with the study of <strong>Al-Jazariyyah</strong>, the foundational poem of Tajweed 
-                    sciences authored by Imam Ibn al-Jazari.
-                </p>
-                <p>
-                    Each session, you recite directly to your teacher. 
-                    Errors are corrected in real time. Your chain of transmission is authenticated 
-                    and your Ijazah is granted upon completion of the full Qur'an.
-                </p>
-            </div>
-
-            <div class="ijazah-card">
-                <h4>Session Structure</h4>
-
-                <div class="session-block">
-                    <h5>40-Minute Session</h5>
-                    <div class="session-bar">
-                        <div class="bar-recitation">
-                            <span class="bar-label">25–30 min</span>
-                            Qur'an Recitation<br>≈ 1 Hizb covered
-                        </div>
-                        <div class="bar-study">
-                            <span class="bar-label">10–15 min</span>
-                            Al-Jazariyyah<br>Study
-                        </div>
-                    </div>
-                </div>
-
-                <div class="session-block">
-                    <h5>60-Minute Session</h5>
-                    <div class="session-bar">
-                        <div class="bar-recitation">
-                            <span class="bar-label">40–45 min</span>
-                            Qur'an Recitation<br>Deeper correction
-                        </div>
-                        <div class="bar-study">
-                            <span class="bar-label">15–20 min</span>
-                            Al-Jazariyyah<br>Extended study
-                        </div>
-                    </div>
-                </div>
-
-                <div class="ijazah-note">
-                    ✦ Once Al-Jazariyyah is fully completed, the entire session is dedicated 
-                    to recitation — accelerating your path to Ijazah.
-                </div>
-            </div>
-        </div>
+    <div class="plan-card">
+      <h3>Standard</h3>
+      <div class="plan-price">£52<span>/month</span></div>
+      <div class="plan-detail">40 min × 1 session/week</div>
+      <button class="plan-btn" onclick="openModal('Standard — 40min × 1/week — £52/month')">Choose Plan</button>
     </div>
+
+    <div class="plan-card popular">
+      <div class="popular-badge">⭐ Most Popular</div>
+      <h3>Intensive</h3>
+      <div class="plan-price">£104<span>/month</span></div>
+      <div class="plan-detail">40 min × 2 sessions/week</div>
+      <button class="plan-btn" onclick="openModal('Intensive — 40min × 2/week — £104/month')">Choose Plan</button>
+    </div>
+
+    <div class="plan-card">
+      <h3>Premium</h3>
+      <div class="plan-price">£78<span>/month</span></div>
+      <div class="plan-detail">60 min × 1 session/week</div>
+      <button class="plan-btn" onclick="openModal('Premium — 60min × 1/week — £78/month')">Choose Plan</button>
+    </div>
+
+    <div class="plan-card">
+      <h3>Premium Intensive</h3>
+      <div class="plan-price">£156<span>/month</span></div>
+      <div class="plan-detail">60 min × 2 sessions/week</div>
+      <button class="plan-btn" onclick="openModal('Premium Intensive — 60min × 2/week — £156/month')">Choose Plan</button>
+    </div>
+
+  </div>
 </section>
 
-<!-- ═══════════════════════════════════════════ PRICING -->
-<section class="pricing-section">
-    <div class="container">
-        <div class="section-label center">Investment</div>
-        <h2 class="section-title center">Choose Your <span>Plan</span></h2>
-        <p class="center" style="color:var(--grey); font-size:0.82rem; letter-spacing:1px; margin-bottom:10px;">All plans are billed monthly · No long-term commitment · Cancel anytime</p>
-        <div class="gold-line center"></div>
-
-        <div class="pricing-grid">
-
-            <div class="pricing-card" onclick="selectPlan('standard')">
-                <div class="plan-name">Standard</div>
-                <div class="plan-price"><span>£</span>52</div>
-                <div class="plan-period">Per Month</div>
-                <div class="plan-divider"></div>
-                <div class="plan-feature"><strong>40 min</strong> per session</div>
-                <div class="plan-feature"><strong>1 session</strong> per week</div>
-                <div class="plan-feature">~4 sessions/month</div>
-                <div class="plan-feature">Recitation + Al-Jazariyyah</div>
-                <div class="plan-badge">Steady Pace</div>
-                <div class="plan-duration">~12 months to Ijazah</div>
-            </div>
-
-            <div class="pricing-card featured" onclick="selectPlan('intensive')">
-                <div class="plan-name">Intensive</div>
-                <div class="plan-price"><span>£</span>104</div>
-                <div class="plan-period">Per Month</div>
-                <div class="plan-divider"></div>
-                <div class="plan-feature"><strong>40 min</strong> per session</div>
-                <div class="plan-feature"><strong>2 sessions</strong> per week</div>
-                <div class="plan-feature">~8 sessions/month</div>
-                <div class="plan-feature">Recitation + Al-Jazariyyah</div>
-                <div class="plan-badge">Twice as Fast</div>
-                <div class="plan-duration">~6 months to Ijazah</div>
-            </div>
-
-            <div class="pricing-card" onclick="selectPlan('premium')">
-                <div class="plan-name">Premium</div>
-                <div class="plan-price"><span>£</span>78</div>
-                <div class="plan-period">Per Month</div>
-                <div class="plan-divider"></div>
-                <div class="plan-feature"><strong>60 min</strong> per session</div>
-                <div class="plan-feature"><strong>1 session</strong> per week</div>
-                <div class="plan-feature">~4 sessions/month</div>
-                <div class="plan-feature">Deep revision & correction</div>
-                <div class="plan-badge">Deep Learning</div>
-                <div class="plan-duration">~12 months to Ijazah</div>
-            </div>
-
-            <div class="pricing-card" onclick="selectPlan('premium-intensive')">
-                <div class="plan-name">Premium Intensive</div>
-                <div class="plan-price"><span>£</span>156</div>
-                <div class="plan-period">Per Month</div>
-                <div class="plan-divider"></div>
-                <div class="plan-feature"><strong>60 min</strong> per session</div>
-                <div class="plan-feature"><strong>2 sessions</strong> per week</div>
-                <div class="plan-feature">~8 sessions/month</div>
-                <div class="plan-feature">Maximum immersion</div>
-                <div class="plan-badge">Fast-Track</div>
-                <div class="plan-duration">~6 months to Ijazah</div>
-            </div>
-
-        </div>
+<!-- ══════════════════════════════════════════
+     TESTIMONIALS
+══════════════════════════════════════════ -->
+<section id="testimonials">
+  <h2 class="section-title">What Our Students Say</h2>
+  <p class="section-sub">Real reviews from real families</p>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>"My son has improved so much in just 3 months. The tutor is patient and very knowledgeable. Highly recommend MyMadrassa."</p>
+      <div class="testimonial-author">— Fatima A., London</div>
     </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>"As an adult learner I was nervous but the teacher made me feel so comfortable. I can now read Arabic after just 6 weeks!"</p>
+      <div class="testimonial-author">— Yusuf M., Birmingham</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>"Flexible timings that work around my busy schedule. Professional, affordable and genuinely effective. 10/10."</p>
+      <div class="testimonial-author">— Aisha K., Manchester</div>
+    </div>
+  </div>
 </section>
 
-<!-- ═══════════════════════════════════════════ JOURNEY -->
-<section class="journey-section">
-    <div class="container">
-        <div class="section-label">The Path</div>
-        <h2 class="section-title">Your Ijazah <span>Journey</span></h2>
-        <div class="gold-line"></div>
+<!-- ══════════════════════════════════════════
+     FAQ
+══════════════════════════════════════════ -->
+<section id="faq">
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <p class="section-sub">Everything you need to know before enrolling</p>
 
-        <div class="journey-phases">
-            <div class="phase-card" data-phase="1">
-                <div class="phase-tag">Phase One · Weeks 1–20</div>
-                <h3>Foundation & Tajweed</h3>
-                <div class="phase-stat">
-                    <span class="label">Weekly Pace</span>
-                    <span class="value">10 pages per week</span>
-                </div>
-                <div class="phase-stat">
-                    <span class="label">Duration</span>
-                    <span class="value">20 weeks</span>
-                </div>
-                <div class="phase-stat">
-                    <span class="label">Pages Completed</span>
-                    <span class="value">200 / 604</span>
-                </div>
-                <div class="phase-stat">
-                    <span class="label">Al-Jazariyyah</span>
-                    <span class="value">Study in progress</span>
-                </div>
-                <div class="phase-stat">
-                    <span class="label">Focus</span>
-                    <span class="value">Precision & Tajweed rules</span>
-                </div>
-            </div>
-
-            <div class="phase-card" data-phase="2">
-                <div class="phase-tag">Phase Two · Week 21 onwards</div>
-                <h3>Acceleration & Completion</h3>
-                <div class="phase-stat">
-                    <span class="label">Weekly Pace</span>
-                    <span class="value">15 pages per week</span>
-                </div>
-                <div class="phase-stat">
-                    <span class="label">Duration</span>
-                    <span class="value">~27 weeks</span>
-                </div>
-                <div class="phase-stat">
-                    <span class="label">Pages Completed</span>
-                    <span class="value">404 remaining → 604 total</span>
-                </div>
-                <div class="phase-stat">
-                    <span class="label">Al-Jazariyyah</span>
-                    <span class="value">Completed ✦</span>
-                </div>
-                <div class="phase-stat">
-                    <span class="label">Focus</span>
-                    <span class="value">Full recitation & completion</span>
-                </div>
-            </div>
-        </div>
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+      Do I need any experience to start? <span class="faq-arrow">▼</span>
     </div>
+    <div class="faq-answer">No experience is needed at all. We welcome complete beginners of all ages. Your tutor will assess your level in the first session and build a plan just for you.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+      What platform are lessons held on? <span class="faq-arrow">▼</span>
+    </div>
+    <div class="faq-answer">Lessons are held via Zoom or Google Meet. Both are free to download and easy to use on any device — phone, tablet or computer.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+      Can I change my plan later? <span class="faq-arrow">▼</span>
+    </div>
+    <div class="faq-answer">Yes absolutely. You can upgrade or downgrade your plan at any time. Just contact us and we will arrange it from your next billing cycle.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+      Is there a free trial? <span class="faq-arrow">▼</span>
+    </div>
+    <div class="faq-answer">Yes — we offer a free introductory session so you can meet your tutor and experience the lesson before committing to a plan.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+      What if I need to cancel a session? <span class="faq-arrow">▼</span>
+    </div>
+    <div class="faq-answer">No problem. We ask for at least 24 hours notice to reschedule. We understand life gets busy and we are always flexible.</div>
+  </div>
+
 </section>
 
-<!-- ═══════════════════════════════════════════ PLAN TABLES -->
-<section class="plan-tables-section">
-    <div class="container">
-        <div class="section-label">Detailed Schedule</div>
-        <h2 class="section-title">Month-by-Month <span>Roadmap</span></h2>
-        <div class="gold-line"></div>
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer>
+  <p>© 2025 <span>MyMadrassa</span> — All rights reserved</p>
+  <p style="margin-top:8px;">Built with 🤍 to make Quran learning accessible for everyone</p>
+</footer>
 
-        <div class="plan-tabs">
-            <button class="plan-tab active" onclick="showPlanTable('a')">Standard · £52/mo</button>
-            <button class="plan-tab" onclick="showPlanTable('b')">Intensive · £104/mo</button>
-            <button class="plan-tab" onclick="showPlanTable('c')">Premium · £78/mo</button>
-            <button class="plan-tab" onclick="showPlanTable('d')">Prem. Intensive · £156/mo</button>
+<!-- ══════════════════════════════════════════
+     ENROLMENT MODAL
+══════════════════════════════════════════ -->
+<div class="modal-overlay" id="enrolModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">×</button>
+
+    <!-- FORM CONTENT -->
+    <div id="formContent">
+      <div class="modal-title">📚 Enrol Now</div>
+      <div class="modal-subtitle">Fill in your details and we will be in touch within 24 hours</div>
+
+      <div class="selected-plan-badge" id="selectedPlanBadge" style="display:none;"></div>
+
+      <form
+        action="https://formspree.io/f/mojpykdj"
+        method="POST"
+        onsubmit="handleSubmit(event)"
+      >
+        <!-- Hidden field — passes selected plan -->
+        <input type="hidden" name="Selected Plan" id="hiddenPlan" value="Not specified" />
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" name="Full Name" placeholder="Ahmed Ali" required />
+          </div>
+          <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email" name="Email" placeholder="you@email.com" required />
+          </div>
         </div>
 
-        <!-- PLAN A -->
-        <div id="table-a" class="plan-table-content active">
-            <div class="plan-info-bar">
-                <div class="plan-info-item">
-                    <div class="info-val">40 min</div>
-                    <div class="info-label">Per Session</div>
-                </div>
-                <div class="plan-info-item">
-                    <div class="info-val">1×</div>
-                    <div class="info-label">Per Week</div>
-                </div>
-                <div class="plan-info-item">
-                    <div class="info-val">£52</div>
-                    <div class="info-label">Per Month</div>
-                </div>
-                <div class="plan-info-item">
-                    <div class="info-val">~12 mo</div>
-                    <div class="info-label">To Ijazah</div>
-                </div>
-            </div>
-            <table class="schedule-table">
-                <thead>
-                    <tr>
-                        <th>Period</th>
-                        <th>Weeks</th>
-                        <th>Pages/Week</th>
-                        <th>Pages This Month</th>
-                        <th>Total Progress</th>
-                        <th>Progress</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td class="phase-marker">Phase 1 — Month 1</td><td>1–4</td><td>10</td><td>40</td><td>40 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:6.6%"></div></div>6.6%</div></td></tr>
-                    <tr><td>Month 2</td><td>5–8</td><td>10</td><td>40</td><td>80 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:13.2%"></div></div>13.2%</div></td></tr>
-                    <tr><td>Month 3</td><td>9–12</td><td>10</td><td>40</td><td>120 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:19.8%"></div></div>19.8%</div></td></tr>
-                    <tr><td>Month 4</td><td>13–16</td><td>10</td><td>40</td><td>160 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:26.4%"></div></div>26.4%</div></td></tr>
-                    <tr><td class="complete">✦ Phase 1 Complete — Month 5</td><td>17–20</td><td>10</td><td>40</td><td>200 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:33%"></div></div>33%</div></td></tr>
-                    <tr><td class="phase-marker">Phase 2 — Month 6</td><td>21–24</td><td>15</td><td>60</td><td>260 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:43%"></div></div>43%</div></td></tr>
-                    <tr><td>Month 7</td><td>25–28</td><td>15</td><td>60</td><td>320 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:53%"></div></div>53%</div></td></tr>
-                    <tr><td>Month 8</td><td>29–32</td><td>15</td><td>60</td><td>380 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:63%"></div></div>63%</div></td></tr>
-                    <tr><td>Month 9</td><td>33–36</td><td>15</td><td>60</td><td>440 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:73%"></div></div>73%</div></td></tr>
-                    <tr><td>Month 10</td><td>37–40</td><td>15</td><td>60</td><td>500 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:83%"></div></div>83%</div></td></tr>
-                    <tr><td>Month 11</td><td>41–44</td><td>15</td><td>60</td><td>560 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:93%"></div></div>93%</div></td></tr>
-                    <tr><td class="complete">🏆 IJAZAH — Month 12</td><td>45–47</td><td>15</td><td>44</td><td>604 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:100%"></div></div>100%</div></td></tr>
-                </tbody>
-            </table>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" name="Phone" placeholder="+44 7700 000000" required />
+          </div>
+          <div class="form-group">
+            <label>Date of Birth</label>
+            <input type="date" name="Date of Birth" />
+          </div>
         </div>
 
-        <!-- PLAN B -->
-        <div id="table-b" class="plan-table-content">
-            <div class="plan-info-bar">
-                <div class="plan-info-item">
-                    <div class="info-val">40 min</div>
-                    <div class="info-label">Per Session</div>
-                </div>
-                <div class="plan-info-item">
-                    <div class="info-val">2×</div>
-                    <div class="info-label">Per Week</div>
-                </div>
-                <div class="plan-info-item">
-                    <div class="info-val">£104</div>
-                    <div class="info-label">Per Month</div>
-                </div>
-                <div class="plan-info-item">
-                    <div class="info-val">~6 mo</div>
-                    <div class="info-label">To Ijazah</div>
-                </div>
-            </div>
-            <table class="schedule-table">
-                <thead>
-                    <tr>
-                        <th>Period</th>
-                        <th>Weeks</th>
-                        <th>Pages/Week</th>
-                        <th>Pages This Month</th>
-                        <th>Total Progress</th>
-                        <th>Progress</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td class="phase-marker">Phase 1 — Month 1</td><td>1–4</td><td>20</td><td>80</td><td>80 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:13%"></div></div>13%</div></td></tr>
-                    <tr><td>Month 2</td><td>5–8</td><td>20</td><td>80</td><td>160 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:26%"></div></div>26%</div></td></tr>
-                    <tr><td class="complete">✦ Phase 1 Complete — Month 3</td><td>9–10</td><td>20</td><td>40</td><td>200 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:33%"></div></div>33%</div></td></tr>
-                    <tr><td class="phase-marker">Phase 2 — Month 3 cont.</td><td>11–12</td><td>30</td><td>60</td><td>260 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:43%"></div></div>43%</div></td></tr>
-                    <tr><td>Month 4</td><td>13–16</td><td>30</td><td>120</td><td>380 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:63%"></div></div>63%</div></td></tr>
-                    <tr><td>Month 5</td><td>17–20</td><td>30</td><td>120</td><td>500 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:83%"></div></div>83%</div></td></tr>
-                    <tr><td class="complete">🏆 IJAZAH — Month 6</td><td>21–24</td><td>30</td><td>104</td><td>604 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:100%"></div></div>100%</div></td></tr>
-                </tbody>
-            </table>
+        <div class="form-group">
+          <label>Country / Location *</label>
+          <input type="text" name="Location" placeholder="e.g. London, UK" required />
         </div>
 
-        <!-- PLAN C -->
-        <div id="table-c" class="plan-table-content">
-            <div class="plan-info-bar">
-                <div class="plan-info-item">
-                    <div class="info-val">60 min</div>
-                    <div class="info-label">Per Session</div>
-                </div>
-                <div class="plan-info-item">
-                    <div class="info-val">1×</div>
-                    <div class="info-label">Per Week</div>
-                </div>
-                <div class="plan-info-item">
-                    <div class="info-val">£78</div>
-                    <div class="info-label">Per Month</div>
-                </div>
-                <div class="plan-info-item">
-                    <div class="info-val">~12 mo</div>
-                    <div class="info-label">To Ijazah</div>
-                </div>
-            </div>
-            <table class="schedule-table">
-                <thead>
-                    <tr>
-                        <th>Period</th>
-                        <th>Weeks</th>
-                        <th>Pages/Week</th>
-                        <th>Pages This Month</th>
-                        <th>Total Progress</th>
-                        <th>Progress</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td class="phase-marker">Phase 1 — Month 1</td><td>1–4</td><td>10</td><td>40</td><td>40 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:6.6%"></div></div>6.6%</div></td></tr>
-                    <tr><td>Month 2</td><td>5–8</td><td>10</td><td>40</td><td>80 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:13.2%"></div></div>13.2%</div></td></tr>
-                    <tr><td>Month 3</td><td>9–12</td><td>10</td><td>40</td><td>120 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:19.8%"></div></div>19.8%</div></td></tr>
-                    <tr><td>Month 4</td><td>13–16</td><td>10</td><td>40</td><td>160 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:26.4%"></div></div>26.4%</div></td></tr>
-                    <tr><td class="complete">✦ Phase 1 Complete — Month 5</td><td>17–20</td><td>10</td><td>40</td><td>200 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:33%"></div></div>33%</div></td></tr>
-                    <tr><td class="phase-marker">Phase 2 — Month 6</td><td>21–24</td><td>15</td><td>60</td><td>260 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:43%"></div></div>43%</div></td></tr>
-                    <tr><td>Month 7</td><td>25–28</td><td>15</td><td>60</td><td>320 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:53%"></div></div>53%</div></td></tr>
-                    <tr><td>Month 8</td><td>29–32</td><td>15</td><td>60</td><td>380 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:63%"></div></div>63%</div></td></tr>
-                    <tr><td>Month 9</td><td>33–36</td><td>15</td><td>60</td><td>440 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:73%"></div></div>73%</div></td></tr>
-                    <tr><td>Month 10</td><td>37–40</td><td>15</td><td>60</td><td>500 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:83%"></div></div>83%</div></td></tr>
-                    <tr><td>Month 11</td><td>41–44</td><td>15</td><td>60</td><td>560 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:93%"></div></div>93%</div></td></tr>
-                    <tr><td class="complete">🏆 IJAZAH — Month 12</td><td>45–47</td><td>15</td><td>44</td><td>604 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:100%"></div></div>100%</div></td></tr>
-                </tbody>
-            </table>
+        <div class="form-group">
+          <label>Choose Your Plan *</label>
+          <select name="Plan" id="planSelect" required>
+            <option value="">— Select a plan —</option>
+            <option value="Standard — 40min × 1/week — £52/month">Standard — 40min × 1/week — £52/month</option>
+            <option value="Intensive — 40min × 2/week — £104/month">Intensive — 40min × 2/week — £104/month</option>
+            <option value="Premium — 60min × 1/week — £78/month">Premium — 60min × 1/week — £78/month</option>
+            <option value="Premium Intensive — 60min × 2/week — £156/month">Premium Intensive — 60min × 2/week — £156/month</option>
+          </select>
         </div>
 
-        <!-- PLAN D -->
-        <div id="table-d" class="plan-table-content">
-            <div class="plan-info-bar">
-                <div class="plan-info-item">
-                    <div class="info-val">60 min</div>
-                    <div class="info-label">Per Session</div>
-                </div>
-                <div class="plan-info-item">
-                    <div class="info-val">2×</div>
-                    <div class="info-label">Per Week</div>
-                </div>
-                <div class="plan-info-item">
-                    <div class="info-val">£156</div>
-                    <div class="info-label">Per Month</div>
-                </div>
-                <div class="plan-info-item">
-                    <div class="info-val">~6 mo</div>
-                    <div class="info-label">To Ijazah</div>
-                </div>
-            </div>
-            <table class="schedule-table">
-                <thead>
-                    <tr>
-                        <th>Period</th>
-                        <th>Weeks</th>
-                        <th>Pages/Week</th>
-                        <th>Pages This Month</th>
-                        <th>Total Progress</th>
-                        <th>Progress</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td class="phase-marker">Phase 1 — Month 1</td><td>1–4</td><td>20</td><td>80</td><td>80 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:13%"></div></div>13%</div></td></tr>
-                    <tr><td>Month 2</td><td>5–8</td><td>20</td><td>80</td><td>160 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:26%"></div></div>26%</div></td></tr>
-                    <tr><td class="complete">✦ Phase 1 Complete — Month 3</td><td>9–10</td><td>20</td><td>40</td><td>200 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:33%"></div></div>33%</div></td></tr>
-                    <tr><td class="phase-marker">Phase 2 — Month 3 cont.</td><td>11–12</td><td>30</td><td>60</td><td>260 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:43%"></div></div>43%</div></td></tr>
-                    <tr><td>Month 4</td><td>13–16</td><td>30</td><td>120</td><td>380 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:63%"></div></div>63%</div></td></tr>
-                    <tr><td>Month 5</td><td>17–20</td><td>30</td><td>120</td><td>500 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:83%"></div></div>83%</div></td></tr>
-                    <tr><td class="complete">🏆 IJAZAH — Month 6</td><td>21–24</td><td>30</td><td>104</td><td>604 / 604</td><td><div class="progress-cell"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:100%"></div></div>100%</div></td></tr>
-                </tbody>
-            </table>
+        <div class="form-group">
+          <label>Current Quran Level *</label>
+          <select name="Current Level" required>
+            <option value="">— Select your level —</option>
+            <option value="Complete Beginner — No Arabic knowledge">Complete Beginner — No Arabic knowledge</option>
+            <option value="Some Experience — Know some letters">Some Experience — Know some letters</option>
+            <option value="Can Read Arabic — Need improvement">Can Read Arabic — Need improvement</option>
+            <option value="Reading Well — Want to memorise">Reading Well — Want to memorise (Hifz)</option>
+          </select>
         </div>
 
+        <div class="form-group">
+          <label>Preferred Day &amp; Time</label>
+          <input type="text" name="Preferred Time" placeholder="e.g. Saturday morning or weekday evenings" />
+        </div>
+
+        <div class="form-group">
+          <label>Additional Notes</label>
+          <textarea name="Notes" placeholder="Anything else you'd like us to know..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">✉️ Send Enrolment Request</button>
+      </form>
     </div>
-</section>
 
-<!-- ═══════════════════════════════════════════ COMPARISON -->
-<section class="comparison-section">
-    <div class="container">
-        <div class="section-label center">All Plans</div>
-        <h2 class="section-title center">Side-by-Side <span>Comparison</span></h2>
-        <div class="gold-line center"></div>
+    <!-- SUCCESS MESSAGE -->
+    <div class="success-msg" id="successMsg">
+      <div class="tick">✅</div>
+      <h3>Enrolment Request Received!</h3>
+      <p>JazakAllah Khair! We have received your details and will be in touch within <strong>24 hours</strong> to confirm your first session.<br/><br/>If you have any questions in the meantime, feel free to reach out to us.</p>
+    </div>
 
-        <table class="comparison-table">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Standard</th>
-                    <th>Intensive</th>
-                    <th>Premium</th>
-                    <th>Premium Intensive</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="price-row">
-                    <td>Monthly Fee</td>
-                    <td>£52</td>
-                    <td>£104</td>
-                    <td>£78</td>
-                    <td>£156</td>
-                </tr>
-                <tr>
-                    <td>Session Duration</td>
-                    <td>40 min</td>
-                    <td>40 min</td>
-                    <td>60 min</td>
-                    <td>60 min</td>
-                </tr>
-                <tr>
-                    <td>Sessions per Week</td>
-                    <td>1×</td>
-                    <td>2×</td>
-                    <td>1×
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════ -->
+<script>
+  // ── Open modal — optionally pre-select a plan
+  function openModal(plan) {
+    document.getElementById('enrolModal').classList.add('active');
+    document.getElementById('formContent').style.display = 'block';
+    document.getElementById('successMsg').style.display = 'none';
+    document.body.style.overflow = 'hidden';
+
+    if (plan) {
+      document.getElementById('hiddenPlan').value = plan;
+      document.getElementById('planSelect').value = plan;
+      const badge = document.getElementById('selectedPlanBadge');
+      badge.textContent = '📋 Selected Plan: ' + plan;
+      badge.style.display = 'block';
+    } else {
+      document.getElementById('hiddenPlan').value = 'Not specified';
+      document.getElementById('planSelect').value = '';
+      document.getElementById('selectedPlanBadge').style.display = 'none';
+    }
+  }
+
+  // ── Close modal
+  function closeModal() {
+    document.getElementById('enrolModal').classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+
+  // ── Close modal when clicking outside
+  document.getElementById('enrolModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  // ── Handle form submission
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+
+    fetch('https://formspree.io/f/mojpykdj', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+      if (response.ok) {
+        document.getElementById('formContent').style.display = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+        form.reset();
+      } else {
+        alert('Something went wrong. Please try again or contact us directly.');
+      }
+    })
+    .catch(() => {
+      alert('Connection error. Please check your internet and try again.');
+    });
+  }
+
+  // ── FAQ toggle
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    item.classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
