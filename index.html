@@ -44,54 +44,6 @@
     }
     .nav-enrol:hover { background: #e0c060 !important; }
 
-    /* ── HERO ── */
-    .hero {
-      text-align: center;
-      padding: 100px 20px 80px;
-      background: radial-gradient(ellipse at center, #1a1400 0%, #0a0a0a 70%);
-    }
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: 800;
-      color: #f0f0f0;
-      line-height: 1.2;
-      margin-bottom: 20px;
-    }
-    .hero h1 span { color: #c9a84c; }
-    .hero p {
-      font-size: 1.15rem;
-      color: #aaa;
-      max-width: 620px;
-      margin: 0 auto 36px;
-      line-height: 1.7;
-    }
-    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .btn-primary {
-      background: #c9a84c;
-      color: #0a0a0a;
-      border: none;
-      padding: 14px 34px;
-      border-radius: 30px;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
-    }
-    .btn-primary:hover { background: #e0c060; transform: translateY(-2px); }
-    .btn-secondary {
-      background: transparent;
-      color: #c9a84c;
-      border: 2px solid #c9a84c;
-      padding: 14px 34px;
-      border-radius: 30px;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.3s, transform 0.2s;
-    }
-    .btn-secondary:hover { background: #c9a84c22; transform: translateY(-2px); }
-
     /* ── TRUST BAR ── */
     .trust-bar {
       display: flex;
@@ -131,91 +83,254 @@
     /* ── FEATURES ── */
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 28px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
     }
     .feature-card {
       background: #111;
-      border: 1px solid #c9a84c33;
+      border: 1px solid #c9a84c22;
       border-radius: 16px;
       padding: 32px 24px;
-      text-align: center;
       transition: border-color 0.3s, transform 0.3s;
     }
     .feature-card:hover { border-color: #c9a84c; transform: translateY(-4px); }
-    .feature-icon { font-size: 2.4rem; margin-bottom: 16px; }
-    .feature-card h3 { color: #c9a84c; font-size: 1.05rem; margin-bottom: 10px; }
-    .feature-card p { color: #999; font-size: 0.9rem; line-height: 1.6; }
+    .feature-icon { font-size: 2rem; margin-bottom: 16px; }
+    .feature-card h3 { color: #c9a84c; margin-bottom: 10px; font-size: 1.1rem; }
+    .feature-card p { color: #aaa; line-height: 1.6; font-size: 0.95rem; }
 
-    /* ── PRESENTATION VIDEO SECTION ── */
-    .video-section {
+    /* ── PROGRAMMES SECTION ── */
+    .programmes-section {
       padding: 80px 40px;
-      max-width: 860px;
+      max-width: 1100px;
       margin: 0 auto;
+    }
+
+    .subject-category {
+      border: 1px solid #c9a84c44;
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .category-toggle {
+      width: 100%;
+      background: #111;
+      color: #c9a84c;
+      border: none;
+      padding: 22px 30px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      font-family: 'Segoe UI', sans-serif;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s;
+    }
+    .category-toggle:hover { background: #1a1a1a; }
+    .category-toggle .arrow {
+      font-size: 1rem;
+      transition: transform 0.3s;
+    }
+    .category-toggle.open .arrow { transform: rotate(180deg); }
+
+    .category-content {
+      display: none;
+      padding: 24px;
+      background: #0d0d0d;
+    }
+    .category-content.open { display: block; }
+
+    .course-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .course-card {
+      background: #111;
+      border: 1px solid #c9a84c33;
+      border-radius: 12px;
+      padding: 22px 18px;
+      width: 190px;
+      cursor: pointer;
+      transition: all 0.3s;
       text-align: center;
     }
-    .main-video-wrapper {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      border-radius: 14px;
-      margin-top: 32px;
-      background: #000;
+    .course-card:hover {
+      border-color: #c9a84c;
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(201,168,76,0.2);
     }
-    .main-video-wrapper iframe {
-      position: absolute;
+    .course-card h3 {
+      color: #c9a84c;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .course-card p {
+      color: #888;
+      font-size: 0.78rem;
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+    .view-btn {
+      background: transparent;
+      border: 1px solid #c9a84c;
+      color: #c9a84c;
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.78rem;
+      transition: all 0.3s;
+      font-family: inherit;
+    }
+    .view-btn:hover { background: #c9a84c; color: #000; }
+
+    /* ── COURSE MODAL ── */
+    .course-modal-overlay {
+      display: none;
+      position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      border-radius: 14px;
+      background: rgba(0,0,0,0.85);
+      z-index: 9998;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .course-modal-overlay.active { display: flex; }
+
+    .course-modal-box {
+      background: #111;
+      border: 2px solid #c9a84c;
+      border-radius: 20px;
+      padding: 40px;
+      width: 100%;
+      max-width: 500px;
+      position: relative;
+      animation: slideUp 0.3s ease;
+    }
+    .course-modal-box h2 {
+      color: #c9a84c;
+      font-size: 1.5rem;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    .course-modal-box .course-subtitle {
+      color: #888;
+      text-align: center;
+      font-size: 0.85rem;
+      margin-bottom: 28px;
+    }
+    .course-modal-close {
+      position: absolute;
+      top: 16px; right: 20px;
+      background: none;
+      border: none;
+      color: #c9a84c;
+      font-size: 1.8rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .course-modal-close:hover { color: #fff; }
+
+    .course-details {
+      background: #0d0d0d;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+    }
+    .course-detail-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid #c9a84c11;
+    }
+    .course-detail-row:last-child { border-bottom: none; }
+    .detail-icon { font-size: 1.1rem; min-width: 24px; }
+    .detail-label {
+      color: #c9a84c;
+      font-size: 0.85rem;
+      font-weight: 600;
+      min-width: 110px;
+    }
+    .detail-value {
+      color: #ddd;
+      font-size: 0.9rem;
     }
 
-    /* ── PLANS ── */
+    .course-enrol-btn {
+      display: block;
+      width: 100%;
+      background: #c9a84c;
+      color: #0a0a0a;
+      border: none;
+      padding: 14px;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.3s;
+      font-family: inherit;
+    }
+    .course-enrol-btn:hover { background: #e0c060; }
+
+    /* ── PRICING ── */
     .plans-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
+      flex-wrap: wrap;
       gap: 24px;
+      justify-content: center;
+      margin-bottom: 20px;
     }
     .plan-card {
       background: #111;
       border: 1px solid #c9a84c33;
-      border-radius: 18px;
-      padding: 32px 24px;
+      border-radius: 20px;
+      padding: 36px 28px;
+      width: 230px;
       text-align: center;
-      transition: transform 0.3s, border-color 0.3s;
+      transition: all 0.3s;
       position: relative;
     }
-    .plan-card:hover { transform: translateY(-6px); border-color: #c9a84c; }
-    .plan-card.popular { border-color: #c9a84c; background: #13110a; }
+    .plan-card:hover { border-color: #c9a84c; transform: translateY(-6px); box-shadow: 0 10px 30px rgba(201,168,76,0.15); }
+    .plan-card.popular { border-color: #c9a84c; }
     .popular-badge {
+      position: absolute;
+      top: -14px; left: 50%;
+      transform: translateX(-50%);
       background: #c9a84c;
-      color: #0a0a0a;
+      color: #000;
       font-size: 0.75rem;
       font-weight: 700;
       padding: 4px 14px;
       border-radius: 20px;
-      display: inline-block;
-      margin-bottom: 14px;
+      white-space: nowrap;
     }
-    .plan-card h3 { color: #c9a84c; font-size: 1.2rem; margin-bottom: 14px; }
-    .plan-price { font-size: 2.4rem; font-weight: 800; color: #f0f0f0; margin-bottom: 6px; }
+    .plan-card h3 { color: #c9a84c; font-size: 1.1rem; margin-bottom: 16px; }
+    .plan-price { font-size: 2.2rem; font-weight: 800; color: #f0f0f0; margin-bottom: 4px; }
     .plan-price span { font-size: 1rem; color: #888; }
-    .plan-detail { color: #aaa; font-size: 0.9rem; margin-bottom: 6px; }
-    .plan-note { color: #c9a84c; font-size: 0.8rem; margin-bottom: 20px; font-style: italic; }
+    .plan-detail { color: #aaa; font-size: 0.85rem; margin-bottom: 6px; }
+    .plan-note { color: #666; font-size: 0.78rem; margin-bottom: 24px; }
     .plan-btn {
       background: #c9a84c;
       color: #0a0a0a;
       border: none;
-      padding: 12px 28px;
+      padding: 10px 24px;
       border-radius: 25px;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       cursor: pointer;
       transition: background 0.3s;
-      margin-top: 10px;
+      font-family: inherit;
     }
     .plan-btn:hover { background: #e0c060; }
-    .center-bottom { grid-column: 2; }
+    .center-bottom { align-self: center; }
 
     /* ── NOT SURE BANNER ── */
     .not-sure-banner {
@@ -265,60 +380,34 @@
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 28px;
+      gap: 24px;
       margin-bottom: 48px;
     }
     .testimonial-card {
       background: #111;
-      border: 1px solid #c9a84c33;
+      border: 1px solid #c9a84c22;
       border-radius: 16px;
-      padding: 28px;
+      padding: 28px 24px;
     }
-    .stars { color: #c9a84c; font-size: 1.1rem; margin-bottom: 12px; }
-    .testimonial-card p { color: #ccc; font-style: italic; line-height: 1.7; margin-bottom: 16px; }
-    .testimonial-author { color: #c9a84c; font-weight: 700; font-size: 0.9rem; }
-
-    /* ── VIDEO TESTIMONIALS ── */
+    .stars { color: #c9a84c; font-size: 1.1rem; margin-bottom: 14px; }
+    .testimonial-card p { color: #ccc; line-height: 1.7; font-size: 0.9rem; margin-bottom: 16px; }
+    .testimonial-author { color: #c9a84c; font-weight: 600; font-size: 0.85rem; }
     .video-testimonials-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 24px;
-      margin-top: 32px;
     }
     .video-testimonial-card {
       background: #111;
-      border: 1px solid #c9a84c33;
-      border-radius: 14px;
+      border: 1px solid #c9a84c22;
+      border-radius: 16px;
       overflow: hidden;
-      transition: transform 0.3s, border-color 0.3s;
     }
-    .video-testimonial-card:hover { transform: translateY(-4px); border-color: #c9a84c; }
-    .video-wrapper {
-      position: relative;
-      padding-bottom: 177%;
-      height: 0;
-      overflow: hidden;
-      background: #000;
-    }
-    .video-wrapper iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      border: none;
-    }
-    .video-testimonial-info {
-      padding: 14px 16px;
-    }
-    .video-testimonial-info .testimonial-author {
-      color: #c9a84c;
-      font-weight: 700;
-      font-size: 0.95rem;
-      margin-bottom: 4px;
-    }
-    .video-testimonial-info p {
-      color: #888;
-      font-size: 0.82rem;
-    }
+    .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; }
+    .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+    .video-testimonial-info { padding: 16px 20px; }
+    .video-testimonial-info .testimonial-author { color: #c9a84c; font-weight: 700; }
+    .video-testimonial-info p { color: #888; font-size: 0.85rem; margin-top: 4px; }
 
     /* ── FAQ ── */
     .faq-item {
@@ -350,16 +439,14 @@
     .faq-item.open .faq-answer { max-height: 200px; padding: 0 24px 20px; }
     .faq-item.open .faq-arrow { transform: rotate(180deg); }
 
-    /* ── WHATSAPP FLOATING BUTTON ── */
+    /* ── WHATSAPP FLOATING ── */
     .whatsapp-float {
       position: fixed;
-      bottom: 28px;
-      right: 28px;
+      bottom: 28px; right: 28px;
       background: #25D366;
       color: #fff;
       border-radius: 50%;
-      width: 62px;
-      height: 62px;
+      width: 62px; height: 62px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -372,8 +459,7 @@
     .whatsapp-float:hover { transform: scale(1.12); box-shadow: 0 6px 28px rgba(37,211,102,0.7); }
     .whatsapp-tooltip {
       position: fixed;
-      bottom: 36px;
-      right: 100px;
+      bottom: 36px; right: 100px;
       background: #111;
       border: 1px solid #25D366;
       color: #f0f0f0;
@@ -388,7 +474,7 @@
     }
     .whatsapp-float:hover + .whatsapp-tooltip { opacity: 1; }
 
-    /* ── MODAL ── */
+    /* ── ENROL MODAL ── */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -475,10 +561,7 @@
     }
     .form-group input:focus,
     .form-group select:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: #c9a84c;
-    }
+    .form-group textarea:focus { outline: none; border-color: #c9a84c; }
     .form-group textarea { height: 100px; resize: vertical; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .submit-btn {
@@ -493,43 +576,35 @@
       cursor: pointer;
       transition: background 0.3s;
       margin-top: 8px;
+      font-family: inherit;
     }
     .submit-btn:hover { background: #e0c060; }
-
-    /* ── SUCCESS MESSAGE ── */
-    .success-msg {
-      display: none;
-      text-align: center;
-      padding: 40px 20px;
-    }
-    .success-msg .tick { font-size: 4rem; margin-bottom: 16px; }
-    .success-msg h3 { color: #c9a84c; font-size: 1.5rem; margin-bottom: 12px; }
+    .success-msg { display: none; text-align: center; }
+    .success-msg .tick { font-size: 3rem; margin-bottom: 16px; }
+    .success-msg h3 { color: #c9a84c; font-size: 1.4rem; margin-bottom: 12px; }
     .success-msg p { color: #aaa; line-height: 1.7; }
 
     /* ── FOOTER ── */
     footer {
       text-align: center;
-      padding: 40px 20px;
-      border-top: 1px solid #c9a84c33;
+      padding: 32px 20px;
       color: #555;
       font-size: 0.85rem;
+      border-top: 1px solid #c9a84c22;
     }
     footer span { color: #c9a84c; }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      .plans-grid { grid-template-columns: 1fr; }
-      .plan-card.center-bottom { grid-column: 1; }
-    }
     @media (max-width: 600px) {
-      .hero h1 { font-size: 2rem; }
       nav { padding: 14px 20px; }
       .nav-links a { margin-left: 14px; font-size: 0.85rem; }
-      .modal-box { padding: 28px 20px; }
-      .form-row { grid-template-columns: 1fr; }
       section { padding: 60px 20px; }
-      .whatsapp-float { bottom: 18px; right: 18px; width: 54px; height: 54px; font-size: 1.5rem; }
-      .video-testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .programmes-section { padding: 60px 20px; }
+      .not-sure-banner { margin: 0 20px 60px; padding: 30px 20px; }
+      .plan-card { width: 100%; max-width: 320px; }
+      .course-card { width: 100%; max-width: 280px; }
+      .form-row { grid-template-columns: 1fr; }
+      .course-modal-box { padding: 30px 20px; }
     }
   </style>
 </head>
@@ -539,10 +614,11 @@
      NAVBAR
 ══════════════════════════════════════════ -->
 <nav>
-  <div class="nav-logo"> MyMadrassa</div>
+  <div class="nav-logo">🕌 MyMadrassa</div>
   <div class="nav-links">
-    <a href="#features">Features</a>
-    <a href="#plans">Pricing</a>
+    <a href="#features">About</a>
+    <a href="#programmes">Programmes</a>
+    <a href="#pricing">Pricing</a>
     <a href="#testimonials">Reviews</a>
     <a href="#faq">FAQ</a>
     <a href="#" class="nav-enrol" onclick="openModal('')">Enrol Now</a>
@@ -552,14 +628,18 @@
 <!-- ══════════════════════════════════════════
      HERO
 ══════════════════════════════════════════ -->
-<div class="hero">
-  <h1>Learn to Read the <span>Quran</span><br/>From Anywhere in the World</h1>
-  <p>Live 1-to-1 online sessions with qualified tutors. Tailored to your level, your pace, your schedule. Beginners to advanced — all ages welcome.</p>
-  <div class="hero-buttons">
-    <button class="btn-primary" onclick="openModal('')">✨ Start Your Journey</button>
-    <a href="#plans" class="btn-secondary">View Pricing</a>
+<section id="hero" style="text-align:center; padding: 100px 40px 80px;">
+  <h1 style="font-size:3rem; font-weight:800; line-height:1.2; margin-bottom:20px;">
+    Learn Quran & Arabic<br/><span style="color:#c9a84c;">From Anywhere in the World</span>
+  </h1>
+  <p style="color:#aaa; font-size:1.1rem; max-width:600px; margin:0 auto 36px; line-height:1.7;">
+    Live 1-to-1 online sessions with qualified teachers. Flexible scheduling, all ages welcome, from complete beginners to advanced students.
+  </p>
+  <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+    <button class="plan-btn" style="padding:14px 36px; font-size:1.05rem;" onclick="openModal('')">🎓 Enrol Now</button>
+    <a href="https://calendly.com/contact-avk/free-call" target="_blank" class="calendly-btn">📅 Book a Free Call</a>
   </div>
-</div>
+</section>
 
 <!-- ══════════════════════════════════════════
      TRUST BAR
@@ -591,7 +671,7 @@
   <p class="section-sub">Everything you need to learn Quran the right way</p>
   <div class="features-grid">
     <div class="feature-card">
-      <div class="feature-icon">👨‍🏫</div>
+      <div class="feature-icon">👨🏫</div>
       <h3>Qualified Tutors</h3>
       <p>Certified Quran teachers with ijazah and years of teaching experience.</p>
     </div>
@@ -624,33 +704,169 @@
 </section>
 
 <!-- ══════════════════════════════════════════
-     PLANS
+     PROGRAMMES SECTION
 ══════════════════════════════════════════ -->
-<section id="plans">
+<section id="programmes" class="programmes-section">
+  <h2 class="section-title">Our <span>Programmes</span></h2>
+  <p class="section-sub">Click a subject to explore available courses</p>
+
+  <!-- ARABIC -->
+  <div class="subject-category">
+    <button class="category-toggle" id="toggle-arabic" onclick="toggleCategory('arabic')">
+      <span>📖 Arabic</span>
+      <span class="arrow">▼</span>
+    </button>
+    <div class="category-content" id="arabic">
+      <div class="course-cards">
+
+        <div class="course-card" onclick="openCourseModal('arabic1a')">
+          <h3>Al-Arabiya B. Yadayk 1A</h3>
+          <p>Beginner Arabic — Book 1A</p>
+          <button class="view-btn">View Details</button>
+        </div>
+
+        <div class="course-card" onclick="openCourseModal('arabic1b')">
+          <h3>Al-Arabiya B. Yadayk 1B</h3>
+          <p>Beginner Arabic — Book 1B</p>
+          <button class="view-btn">View Details</button>
+        </div>
+
+        <div class="course-card" onclick="openCourseModal('arabic2a')">
+          <h3>Al-Arabiya B. Yadayk 2A</h3>
+          <p>Intermediate Arabic — Book 2A</p>
+          <button class="view-btn">View Details</button>
+        </div>
+
+        <div class="course-card" onclick="openCourseModal('arabic2b')">
+          <h3>Al-Arabiya B. Yadayk 2B</h3>
+          <p>Intermediate Arabic — Book 2B</p>
+          <button class="view-btn">View Details</button>
+        </div>
+
+        <div class="course-card" onclick="openCourseModal('ajarummiyah')">
+          <h3>Al-Ajarummiyah</h3>
+          <p>Classical Arabic Grammar</p>
+          <button class="view-btn">View Details</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ISLAMIC STUDIES -->
+  <div class="subject-category">
+    <button class="category-toggle" id="toggle-islamic" onclick="toggleCategory('islamic')">
+      <span>🕌 Islamic Studies</span>
+      <span class="arrow">▼</span>
+    </button>
+    <div class="category-content" id="islamic">
+      <div class="course-cards">
+
+        <div class="course-card" onclick="openCourseModal('tajweed')">
+          <h3>Tajweed</h3>
+          <p>Rules of Quranic Recitation</p>
+          <button class="view-btn">View Details</button>
+        </div>
+
+        <div class="course-card" onclick="openCourseModal('qiraat')">
+          <h3>Qiraa't</h3>
+          <p>Multiple Readings of the Quran</p>
+          <button class="view-btn">View Details</button>
+        </div>
+
+        <div class="course-card" onclick="openCourseModal('aqidah')">
+          <h3>Creed (Aqidah)</h3>
+          <p>Islamic Beliefs & Theology</p>
+          <button class="view-btn">View Details</button>
+        </div>
+
+        <div class="course-card" onclick="openCourseModal('tazkiyah')">
+          <h3>Purification of the Soul</h3>
+          <p>Tazkiyah & Spiritual Development</p>
+          <button class="view-btn">View Details</button>
+        </div>
+
+        <div class="course-card" onclick="openCourseModal('uloomquran')">
+          <h3>Sciences of the Qur'an</h3>
+          <p>Uloom al-Quran</p>
+          <button class="view-btn">View Details</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     COURSE MODALS OVERLAY
+══════════════════════════════════════════ -->
+<div class="course-modal-overlay" id="courseModalOverlay" onclick="closeCourseModal(event)">
+  <div class="course-modal-box" id="courseModalBox">
+    <button class="course-modal-close" onclick="closeCourseModalBtn()">✕</button>
+    <h2 id="cmodal-title"></h2>
+    <div class="course-subtitle" id="cmodal-subtitle"></div>
+    <div class="course-details">
+      <div class="course-detail-row">
+        <span class="detail-icon">📅</span>
+        <span class="detail-label">Starting Date</span>
+        <span class="detail-value" id="cmodal-date">TBC</span>
+      </div>
+      <div class="course-detail-row">
+        <span class="detail-icon">🎓</span>
+        <span class="detail-label">Level Required</span>
+        <span class="detail-value" id="cmodal-level">TBC</span>
+      </div>
+      <div class="course-detail-row">
+        <span class="detail-icon">⏰</span>
+        <span class="detail-label">Time</span>
+        <span class="detail-value" id="cmodal-time">TBC</span>
+      </div>
+      <div class="course-detail-row">
+        <span class="detail-icon">💷</span>
+        <span class="detail-label">Price</span>
+        <span class="detail-value" id="cmodal-price">TBC</span>
+      </div>
+      <div class="course-detail-row">
+        <span class="detail-icon">👨‍🏫</span>
+        <span class="detail-label">Teacher</span>
+        <span class="detail-value" id="cmodal-teacher">TBC</span>
+      </div>
+    </div>
+    <button class="course-enrol-btn" onclick="closeCourseModalBtn(); openModal('')">🎓 Enrol Now</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PRICING
+══════════════════════════════════════════ -->
+<section id="pricing">
   <h2 class="section-title">Simple, <span>Transparent Pricing</span></h2>
-  <p class="section-sub">Choose the plan that fits your goals and schedule</p>
+  <p class="section-sub">No hidden fees. Cancel anytime.</p>
   <div class="plans-grid">
 
     <div class="plan-card">
       <h3>Affordable</h3>
       <div class="plan-price">£32<span>/month</span></div>
       <div class="plan-detail">30 min × 1 session/week</div>
+      <div class="plan-note">Perfect for beginners</div>
       <button class="plan-btn" onclick="openModal('Affordable — 30min × 1/week — £32/month')">Choose Plan</button>
     </div>
 
     <div class="plan-card popular">
       <div class="popular-badge">⭐ Most Popular</div>
-      <h3>Intensive</h3>
-      <div class="plan-price">£85<span>/month</span></div>
-      <div class="plan-detail">40 min × 2 sessions/week</div>
-      <button class="plan-btn" onclick="openModal('Intensive — 40min × 2/week — £85/month')">Choose Plan</button>
-    </div>
-
-    <div class="plan-card">
       <h3>Standard</h3>
       <div class="plan-price">£43<span>/month</span></div>
       <div class="plan-detail">40 min × 1 session/week</div>
+      <div class="plan-note">Our most chosen plan</div>
       <button class="plan-btn" onclick="openModal('Standard — 40min × 1/week — £43/month')">Choose Plan</button>
+    </div>
+
+    <div class="plan-card">
+      <h3>Intensive</h3>
+      <div class="plan-price">£85<span>/month</span></div>
+      <div class="plan-detail">40 min × 2 sessions/week</div>
+      <div class="plan-note">For serious progress</div>
+      <button class="plan-btn" onclick="openModal('Intensive — 40min × 2/week — £85/month')">Choose Plan</button>
     </div>
 
     <div class="plan-card center-bottom">
@@ -683,7 +899,6 @@
   <h2 class="section-title">What Our Students Say</h2>
   <p class="section-sub">Real reviews from real Students</p>
 
-  <!-- WRITTEN TESTIMONIALS -->
   <div class="testimonials-grid">
     <div class="testimonial-card">
       <div class="stars">★★★★★</div>
@@ -702,46 +917,18 @@
     </div>
   </div>
 
-  <!-- VIDEO TESTIMONIALS -->
-  <h3 style="text-align:center; color:#c9a84c; margin-top:60px; font-size:1.4rem;">🎥 Hear From Our Students</h3>
-  <p style="text-align:center; color:#aaa; margin-top:8px; margin-bottom:32px;">Real stories from real Students</p>
+  <div class="video-testimonials-grid" style="margin-top:40px;">
 
-  <div class="video-testimonials-grid">
-
-    <!-- TESTI 1 -->
     <div class="video-testimonial-card">
       <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/9VyMSVRhywE" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
       </div>
       <div class="video-testimonial-info">
-        <div class="testimonial-author">Yahya B.</div>
-        <p>London — Revert</p>
+        <div class="testimonial-author">Student 1</div>
+        <p>UK</p>
       </div>
     </div>
 
-    <!-- TESTI 2 -->
-    <div class="video-testimonial-card">
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/tMAkjUssTuU" allowfullscreen></iframe>
-      </div>
-      <div class="video-testimonial-info">
-        <div class="testimonial-author">Kalim G.</div>
-        <p>France — Teenager</p>
-      </div>
-    </div>
-
-    <!-- TESTI 3 -->
-    <div class="video-testimonial-card">
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/7iwir9LhI9Y" allowfullscreen></iframe>
-      </div>
-      <div class="video-testimonial-info">
-        <div class="testimonial-author">Wali K.</div>
-        <p>Canada — Pharmacist</p>
-      </div>
-    </div>
-
-    <!-- TESTI 4 -->
     <div class="video-testimonial-card">
       <div class="video-wrapper">
         <iframe src="https://www.youtube.com/embed/av5_HIDsJC4" allowfullscreen></iframe>
@@ -752,7 +939,6 @@
       </div>
     </div>
 
-    <!-- TESTI 5 -->
     <div class="video-testimonial-card">
       <div class="video-wrapper">
         <iframe src="https://www.youtube.com/embed/f8hrLlbwUfw" allowfullscreen></iframe>
@@ -763,7 +949,6 @@
       </div>
     </div>
 
-    <!-- TESTI 6 -->
     <div class="video-testimonial-card">
       <div class="video-wrapper">
         <iframe src="https://www.youtube.com/embed/ZYYb6Q41rVU" allowfullscreen></iframe>
@@ -928,6 +1113,136 @@
      JAVASCRIPT
 ══════════════════════════════════════════ -->
 <script>
+
+  /* ── COURSE DATA ── */
+  const courseData = {
+    arabic1a: {
+      title: 'Al-Arabiya B. Yadayk 1A',
+      subtitle: 'Beginner Arabic — Book 1A',
+      date: 'TBC',
+      level: 'Complete Beginner',
+      time: 'TBC',
+      price: 'TBC',
+      teacher: 'TBC'
+    },
+    arabic1b: {
+      title: 'Al-Arabiya B. Yadayk 1B',
+      subtitle: 'Beginner Arabic — Book 1B',
+      date: 'TBC',
+      level: 'Completed 1A',
+      time: 'TBC',
+      price: 'TBC',
+      teacher: 'TBC'
+    },
+    arabic2a: {
+      title: 'Al-Arabiya B. Yadayk 2A',
+      subtitle: 'Intermediate Arabic — Book 2A',
+      date: 'TBC',
+      level: 'Completed 1B',
+      time: 'TBC',
+      price: 'TBC',
+      teacher: 'TBC'
+    },
+    arabic2b: {
+      title: 'Al-Arabiya B. Yadayk 2B',
+      subtitle: 'Intermediate Arabic — Book 2B',
+      date: 'TBC',
+      level: 'Completed 2A',
+      time: 'TBC',
+      price: 'TBC',
+      teacher: 'TBC'
+    },
+    ajarummiyah: {
+      title: 'Al-Ajarummiyah',
+      subtitle: 'Classical Arabic Grammar',
+      date: 'TBC',
+      level: 'Completed 2B or equivalent',
+      time: 'TBC',
+      price: 'TBC',
+      teacher: 'TBC'
+    },
+    tajweed: {
+      title: 'Tajweed',
+      subtitle: 'Rules of Quranic Recitation',
+      date: 'TBC',
+      level: 'Able to read Arabic',
+      time: 'TBC',
+      price: 'TBC',
+      teacher: 'TBC'
+    },
+    qiraat: {
+      title: "Qiraa't",
+      subtitle: 'Multiple Readings of the Quran',
+      date: 'TBC',
+      level: 'Ijaza in Hafs or equivalent',
+      time: 'TBC',
+      price: 'TBC',
+      teacher: 'TBC'
+    },
+    aqidah: {
+      title: 'Creed (Aqidah)',
+      subtitle: 'Islamic Beliefs & Theology',
+      date: 'TBC',
+      level: 'Open to all',
+      time: 'TBC',
+      price: 'TBC',
+      teacher: 'TBC'
+    },
+    tazkiyah: {
+      title: 'Purification of the Soul',
+      subtitle: 'Tazkiyah & Spiritual Development',
+      date: 'TBC',
+      level: 'Open to all',
+      time: 'TBC',
+      price: 'TBC',
+      teacher: 'TBC'
+    },
+    uloomquran: {
+      title: "Sciences of the Qur'an",
+      subtitle: 'Uloom al-Quran',
+      date: 'TBC',
+      level: 'Intermediate+',
+      time: 'TBC',
+      price: 'TBC',
+      teacher: 'TBC'
+    }
+  };
+
+  /* ── TOGGLE CATEGORY ── */
+  function toggleCategory(id) {
+    const content = document.getElementById(id);
+    const toggle = document.getElementById('toggle-' + id);
+    content.classList.toggle('open');
+    toggle.classList.toggle('open');
+  }
+
+  /* ── COURSE MODAL ── */
+  function openCourseModal(id) {
+    const c = courseData[id];
+    if (!c) return;
+    document.getElementById('cmodal-title').textContent = c.title;
+    document.getElementById('cmodal-subtitle').textContent = c.subtitle;
+    document.getElementById('cmodal-date').textContent = c.date;
+    document.getElementById('cmodal-level').textContent = c.level;
+    document.getElementById('cmodal-time').textContent = c.time;
+    document.getElementById('cmodal-price').textContent = c.price;
+    document.getElementById('cmodal-teacher').textContent = c.teacher;
+    document.getElementById('courseModalOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCourseModal(e) {
+    if (e.target === document.getElementById('courseModalOverlay')) {
+      closeCourseModalBtn();
+    }
+  }
+
+  function closeCourseModalBtn() {
+    document.getElementById('courseModalOverlay').classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+
+  /* ── ENROL MODAL ── */
   function openModal(plan) {
     document.getElementById('enrolModal').classList.add('active');
     document.getElementById('formContent').style.display = 'block';
@@ -956,6 +1271,7 @@
     if (e.target === this) closeModal();
   });
 
+  /* ── FORM SUBMIT ── */
   function handleSubmit(e) {
     e.preventDefault();
     const form = e.target;
@@ -980,10 +1296,12 @@
     });
   }
 
+  /* ── FAQ ── */
   function toggleFaq(el) {
     const item = el.parentElement;
     item.classList.toggle('open');
   }
+
 </script>
 
 </body>
