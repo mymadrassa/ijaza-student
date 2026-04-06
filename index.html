@@ -133,40 +133,17 @@
     .feature-card p { color: #aaa; font-size: 0.9rem; line-height: 1.6; }
 
     /* ── PRESENTATION VIDEO ── */
-    .video-section {
-      padding: 80px 40px;
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .video-wrapper {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 2px solid #c9a84c44;
-      margin-top: 12px;
-    }
-    .video-wrapper iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      border: none;
-    }
-    .video-placeholder {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: #111;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: #c9a84c;
-      font-size: 1rem;
-    }
-    .video-placeholder .play-icon { font-size: 3rem; margin-bottom: 12px; }
+    <div style="max-width:800px; margin: 0 auto 60px auto;">
+  <h3 style="text-align:center; color:#c9a84c; font-size:1.4rem; margin-bottom:24px;">🎬 Watch How It Works</h3>
+  <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:12px;">
+    <iframe 
+      src="https://www.youtube.com/embed/zTUpUrvwMEc" 
+      style="position:absolute; top:0; left:0; width:100%; height:100%;"
+      frameborder="0" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
 
     /* ── PLANS ── */
     .plans-grid {
@@ -282,25 +259,101 @@
     .testimonial-author { color: #c9a84c; font-weight: 700; font-size: 0.9rem; }
 
     /* ── VIDEO TESTIMONIALS ── */
-    .video-testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 28px;
-      margin-top: 40px;
-    }
-    .video-testimonial-card {
-      background: #111;
-      border: 1px solid #c9a84c33;
-      border-radius: 16px;
-      overflow: hidden;
-      transition: border-color 0.3s;
-    }
-    .video-testimonial-card:hover { border-color: #c9a84c; }
-    .video-testimonial-card .video-wrapper { border-radius: 0; border: none; margin-top: 0; }
-    .video-testimonial-info { padding: 16px 20px; }
-    .video-testimonial-info .testimonial-author { color: #c9a84c; font-weight: 700; }
-    .video-testimonial-info p { color: #aaa; font-size: 0.85rem; margin-top: 4px; }
+    <h3 style="text-align:center; color:#c9a84c; margin-top:60px; font-size:1.4rem;">🎥 Hear From Our Students</h3>
+<p style="text-align:center; color:#aaa; margin-top:8px; margin-bottom:32px;">Real stories from real families</p>
 
+<div class="video-testimonials-grid">
+    <!-- TESTI 1 -->
+  <div class="video-testimonial-card">
+    <div class="video-wrapper">
+      <iframe 
+        src="https://www.youtube.com/embed/9VyMSVRhywE" 
+        frameborder="0" 
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="video-testimonial-info">
+      <div class="testimonial-author">Yahya B.</div>
+      <p>London — Revert</p>
+    </div>
+  </div>
+
+  <!-- TESTI 2 -->
+  <div class="video-testimonial-card">
+    <div class="video-wrapper">
+      <iframe 
+        src="https://www.youtube.com/embed/tMAkjUssTuU" 
+        frameborder="0" 
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="video-testimonial-info">
+      <div class="testimonial-author">Kalim G.</div>
+      <p>France — Teenager</p>
+    </div>
+  </div>
+
+  <!-- TESTI 3 -->
+  <div class="video-testimonial-card">
+    <div class="video-wrapper">
+      <iframe 
+        src="https://www.youtube.com/embed/7iwir9LhI9Y" 
+        frameborder="0" 
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="video-testimonial-info">
+      <div class="testimonial-author">Wali K.</div>
+      <p>Canada — Pharmacist</p>
+    </div>
+  </div>
+
+  <!-- TESTI 4 -->
+  <div class="video-testimonial-card">
+    <div class="video-wrapper">
+      <iframe 
+        src="https://www.youtube.com/embed/av5_HIDsJC4" 
+        frameborder="0" 
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="video-testimonial-info">
+      <div class="testimonial-author">Hasnain K.</div>
+      <p>UAE — Entrepreneur</p>
+    </div>
+  </div>
+
+  <!-- TESTI 5 -->
+  <div class="video-testimonial-card">
+    <div class="video-wrapper">
+      <iframe 
+        src="https://www.youtube.com/embed/f8hrLlbwUfw" 
+        frameborder="0" 
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="video-testimonial-info">
+      <div class="testimonial-author">Redwan A.</div>
+      <p>Netherlands — University Student</p>
+    </div>
+  </div>
+
+  <!-- TESTI 6 -->
+  <div class="video-testimonial-card">
+    <div class="video-wrapper">
+      <iframe 
+        src="https://www.youtube.com/embed/ZYYb6Q41rVU" 
+        frameborder="0" 
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="video-testimonial-info">
+      <div class="testimonial-author">Elisa M.</div>
+      <p>France — School Teacher</p>
+    </div>
+  </div>
+
+</div>
     /* ── FAQ ── */
     .faq-item {
       background: #111;
