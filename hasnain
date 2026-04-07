@@ -924,11 +924,11 @@
 
     <div class="video-testimonial-card">
       <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+        <iframe src="https://youtube.com/shorts/9VyMSVRhywE?feature=shared" allowfullscreen></iframe>
       </div>
       <div class="video-testimonial-info">
-        <div class="testimonial-author">Student 1</div>
-        <p>UK</p>
+        <div class="testimonial-author">Yahya B.</div>
+        <p>UK - Revert</p>
       </div>
     </div>
 
