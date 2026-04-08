@@ -800,23 +800,6 @@
   </div>
 </section>
 
-  <!-- IJAZAH -->
-<div class="subject-category">
-  <button class="category-toggle" id="toggle-ijazah" onclick="toggleCategory('ijazah')">
-    <span>🏅 Ijazah</span>
-    <span class="arrow">▼</span>
-  </button>
-  <div class="category-content" id="ijazah">
-    <div class="course-cards">
-      <div class="course-card" onclick="openCourseModal('hafsassim')">
-        <h3>Riwayah Hafs 'an Assim</h3>
-        <p>Ijazah in the most widely recited transmission of the Quran</p>
-        <button class="view-btn">View Details</button>
-      </div>
-    </div>
-  </div>
-</div>
-  
 <!-- ══════════════════════════════════════════
      COURSE MODALS OVERLAY
 ══════════════════════════════════════════ -->
@@ -852,7 +835,7 @@
         <span class="detail-value" id="cmodal-teacher">TBC</span>
       </div>
     </div>
-    <button class="course-enrol-btn" onclick="openProgModal(document.getElementById('cmodal-title').textContent); closeCourseModalBtn();">🎓 Enrol Now</button>
+    <button class="course-enrol-btn" onclick="closeCourseModalBtn(); openModal('')">🎓 Enrol Now</button>
   </div>
 </div>
 
@@ -1169,55 +1152,6 @@
 ══════════════════════════════════════════ -->
 <script>
 
-  /* ── PROGRAMME MODAL ── */
-function openProgModal(courseName) {
-  document.getElementById('progModal').classList.add('active');
-  document.getElementById('progFormContent').style.display = 'block';
-  document.getElementById('progSuccessMsg').style.display = 'none';
-  document.body.style.overflow = 'hidden';
-
-  if (courseName) {
-    document.getElementById('progHiddenCourse').value = courseName;
-    const badge = document.getElementById('progCourseBadge');
-    badge.textContent = '📋 Course: ' + courseName;
-    badge.style.display = 'block';
-  }
-}
-
-function closeProgModal() {
-  document.getElementById('progModal').classList.remove('active');
-  document.body.style.overflow = 'auto';
-}
-
-document.getElementById('progModal').addEventListener('click', function(e) {
-  if (e.target === this) closeProgModal();
-});
-
-/* ── FORM SUBMIT — PROGRAMMES ── */
-function handleProgSubmit(e) {
-  e.preventDefault();
-  const form = e.target;
-  const data = new FormData(form);
-
-  fetch('https://formspree.io/f/mojpykdj', {
-    method: 'POST',
-    body: data,
-    headers: { 'Accept': 'application/json' }
-  })
-  .then(response => {
-    if (response.ok) {
-      document.getElementById('progFormContent').style.display = 'none';
-      document.getElementById('progSuccessMsg').style.display = 'block';
-      form.reset();
-    } else {
-      alert('Something went wrong. Please try again or contact us directly.');
-    }
-  })
-  .catch(() => {
-    alert('Connection error. Please check your internet and try again.');
-  });
-}
-
   /* ── COURSE DATA ── */
   const courseData = {
     arabic1a: {
@@ -1309,15 +1243,6 @@ function handleProgSubmit(e) {
       time: 'EVERY SATURDAY 11AM - 12PM',
       price: '£20 PER MONTH',
       teacher: 'USTADH YASSIN'
-      hafsassim: {
-  title: "Riwayah Hafs 'an Assim",
-  subtitle: "Ijazah Programme — Quran Transmission",
-  date: "Enrol anytime",
-  level: "Advanced — Must have completed full Quran memorisation",
-  time: "By arrangement",
-  price: "Contact us for pricing",
-  teacher: "To be confirmed"
-},
     }
   };
 
@@ -1416,82 +1341,6 @@ function handleProgSubmit(e) {
   }
 
 </script>
-<!-- ══════════════════════════════════════════
-     PROGRAMME ENROL MODAL (No Plan)
-══════════════════════════════════════════ -->
-<div class="modal-overlay" id="progModal">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeProgModal()">✕</button>
-
-    <div id="progFormContent">
-      <div class="modal-title">📚 Enrol Now</div>
-      <div class="modal-subtitle">Fill in your details and we will be in touch within 24 hours</div>
-
-      <div class="selected-plan-badge" id="progCourseBadge" style="display:none;"></div>
-
-      <form onsubmit="handleProgSubmit(event)">
-        <input type="hidden" name="Course" id="progHiddenCourse" value="Not specified" />
-
-        <div class="form-row">
-          <div class="form-group">
-            <label>First Name *</label>
-            <input type="text" name="First Name" required placeholder="Your first name" />
-          </div>
-          <div class="form-group">
-            <label>Last Name *</label>
-            <input type="text" name="Last Name" required placeholder="Your last name" />
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Email Address *</label>
-          <input type="email" name="Email" required placeholder="your@email.com" />
-        </div>
-
-        <div class="form-group">
-          <label>WhatsApp Number *</label>
-          <input type="tel" name="WhatsApp" required placeholder="+44 7700 000000" />
-        </div>
-
-        <div class="form-group">
-          <label>Current Level *</label>
-          <select name="Current Level" required>
-            <option value="">— Select your level —</option>
-            <option value="Complete Beginner">Complete Beginner</option>
-            <option value="Some Experience">Some Experience</option>
-            <option value="Intermediate">Intermediate</option>
-            <option value="Advanced">Advanced</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>Preferred Session Time *</label>
-          <select name="Preferred Time" required>
-            <option value="">— Select a time —</option>
-            <option value="Morning (6am–12pm)">Morning (6am–12pm)</option>
-            <option value="Afternoon (12pm–5pm)">Afternoon (12pm–5pm)</option>
-            <option value="Evening (5pm–10pm)">Evening (5pm–10pm)</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>Additional Notes</label>
-          <textarea name="Notes" placeholder="Anything else you'd like us to know..." rows="3"></textarea>
-        </div>
-
-        <button type="submit" class="submit-btn">Submit Enrolment →</button>
-      </form>
-    </div>
-
-    <div id="progSuccessMsg" style="display:none; text-align:center; padding: 40px 20px;">
-      <div style="font-size:3rem;">✅</div>
-      <h3 style="margin:16px 0 8px;">Enrolment Received!</h3>
-      <p>JazakAllah Khayran — we will be in touch within 24 hours insha'Allah.</p>
-      <button onclick="closeProgModal()" class="submit-btn" style="margin-top:20px;">Close</button>
-    </div>
-
-  </div>
-</div>
 
 </body>
 </html>
