@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MyMadrassa — Learn Quran Online</title>
+  <title>
   <style>
     /* ABOUT US MODAL */
   .about-modal-overlay {
@@ -805,8 +805,7 @@
   <button class="hamburger" onclick="toggleMenu()" id="hamburgerBtn">☰</button>
 
   <div class="nav-links" id="navLinks">
-    <a href="#about">About</a>
-    <a href="#pricing">Pricing</a>
+<a href="#" onclick="openAboutModal(); return false;">About Us</a>    <a href="#pricing">Pricing</a>
     <a href="#programmes">Programmes</a>
     <a href="#testimonials">Reviews</a>
     <a href="#faq">FAQ</a>
@@ -1579,6 +1578,18 @@
 }
 
 </script>
+<script>
+  function openAboutModal() {
+    document.getElementById('aboutModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
 
+  function closeAboutModal(e) {
+    if (e.target === document.getElementById('aboutModal')) {
+      document.getElementById('aboutModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+</script>
 </body>
 </html>
