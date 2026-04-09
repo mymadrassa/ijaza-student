@@ -705,6 +705,25 @@
     }
   </style>
 </head>
+  <script>
+  function openAboutModal() {
+    document.getElementById('aboutModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeAboutModal(e) {
+    if (e.target === document.getElementById('aboutModal')) {
+      document.getElementById('aboutModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+
+  document.getElementById('aboutModal').addEventListener('transitionend', function() {
+    if (!this.classList.contains('active')) {
+      document.body.style.overflow = '';
+    }
+  });
+</script>
 <body>
 <!-- ABOUT US MODAL -->
 <div class="about-modal-overlay" id="aboutModal" onclick="closeAboutModal(event)">
@@ -757,6 +776,7 @@
     <a href="#pricing">Pricing</a>
     <a href="#testimonials">Reviews</a>
     <a href="#faq">FAQ</a>
+    <a href="#" onclick="openAboutModal(); return false;">About Us</a>
     <a href="#" class="nav-enrol" onclick="openModal('')">Enrol Now</a>
   </div>
 </nav>
