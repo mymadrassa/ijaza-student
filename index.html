@@ -109,7 +109,40 @@
       background: #0a0a0a;
       color: #f0f0f0;
     }
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: #c9a84c;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
 
+@media (max-width: 768px) {
+  .hamburger { display: block; }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    width: 100%;
+    background: #0a0a0a;
+    border-bottom: 1px solid #c9a84c;
+    padding: 16px 0;
+    z-index: 999;
+  }
+
+  .nav-links.open { display: flex; }
+
+  .nav-links a {
+    margin: 0;
+    padding: 12px 30px;
+    font-size: 1rem;
+    border-bottom: 1px solid #1a1a1a;
+  }
+}
     /* ── NAVBAR ── */
     nav {
       display: flex;
@@ -767,17 +800,17 @@
      NAVBAR
 ══════════════════════════════════════════ -->
 <nav>
- <div class="nav-logo">
-  <img src="logo.png" alt="Logo" style="height:35px; width:auto; vertical-align:middle; margin-right:8px;">MyMadrassa
-</div>
-  <div class="nav-links">
-    <a href="#features">About Us</a>
-    <a href="#programmes">Programmes</a>
+ <div class="nav-logo">🕌 MyMadrassa</div>
+
+  <button class="hamburger" onclick="toggleMenu()" id="hamburgerBtn">☰</button>
+
+  <div class="nav-links" id="navLinks">
+    <a href="#about">About</a>
     <a href="#pricing">Pricing</a>
+    <a href="#programmes">Programmes</a>
     <a href="#testimonials">Reviews</a>
     <a href="#faq">FAQ</a>
-    <a href="#" onclick="openAboutModal(); return false;">About Us</a>
-    <a href="#" class="nav-enrol" onclick="openModal('')">Enrol Now</a>
+    <a href="#enrol" class="nav-enrol">Enrol Now</a>
   </div>
 </nav>
 
@@ -1540,6 +1573,10 @@
     const item = el.parentElement;
     item.classList.toggle('open');
   }
+  function toggleMenu() {
+  const links = document.getElementById('navLinks');
+  links.classList.toggle('open');
+}
 
 </script>
 
