@@ -704,79 +704,6 @@
       .course-modal-box { padding: 30px 20px; }
     }
   </style>
-  /* HAMBURGER & DRAWER */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 8px;
-}
-
-.hamburger span {
-  display: block;
-  width: 25px;
-  height: 3px;
-  background: #1a3c5e;
-  border-radius: 3px;
-  transition: all 0.3s ease;
-}
-
-.drawer-overlay {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.5);
-  z-index: 8888;
-}
-
-.drawer-overlay.active { display: block; }
-
-.drawer {
-  position: fixed;
-  top: 0; right: -280px;
-  width: 260px;
-  height: 100%;
-  background: #fff;
-  z-index: 9999;
-  padding: 60px 30px 30px;
-  transition: right 0.3s ease;
-  box-shadow: -4px 0 20px rgba(0,0,0,0.15);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.drawer.active { right: 0; }
-
-.drawer a {
-  color: #1a3c5e;
-  font-size: 1.1rem;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 12px 0;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.drawer a:hover { color: #c8a84b; }
-
-.drawer-close {
-  position: absolute;
-  top: 16px; right: 20px;
-  background: none;
-  border: none;
-  font-size: 1.8rem;
-  cursor: pointer;
-  color: #555;
-}
-
-@media (max-width: 768px) {
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-}
 </head>
   <script>
   function openAboutModal() {
@@ -852,22 +779,6 @@
     <a href="#" onclick="openAboutModal(); return false;">About Us</a>
     <a href="#" class="nav-enrol" onclick="openModal('')">Enrol Now</a>
   </div>
-</nav>
-  <nav>
-  <div class="nav-logo">🕌 MyMadrassa</div>
-  <div class="nav-links">
-    <a href="#features">Features</a>
-    <a href="#plans">Pricing</a>
-    <a href="#testimonials">Reviews</a>
-    <a href="#faq">FAQ</a>
-    <a href="#" onclick="openAboutModal(); return false;">About Us</a>
-    <a href="#" class="nav-enrol" onclick="openModal('')">Enrol Now</a>
-  </div>
-  <button class="hamburger" onclick="openDrawer()">  <!-- ADD THIS -->
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
 </nav>
 
 <!-- ══════════════════════════════════════════
@@ -1631,31 +1542,6 @@
   }
 
 </script>
-<script>
-  function openDrawer() {
-    document.getElementById('drawer').classList.add('active');
-    document.getElementById('drawerOverlay').classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
 
-  function closeDrawer() {
-    document.getElementById('drawer').classList.remove('active');
-    document.getElementById('drawerOverlay').classList.remove('active');
-    document.body.style.overflow = '';
-  }
-</script>
-<!-- DRAWER OVERLAY -->
-<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
-
-<!-- DRAWER -->
-<div class="drawer" id="drawer">
-  <button class="drawer-close" onclick="closeDrawer()">✕</button>
-  <a href="#features" onclick="closeDrawer()">Features</a>
-  <a href="#plans" onclick="closeDrawer()">Pricing</a>
-  <a href="#testimonials" onclick="closeDrawer()">Reviews</a>
-  <a href="#faq" onclick="closeDrawer()">FAQ</a>
-  <a href="#" onclick="openAboutModal(); closeDrawer(); return false;">About Us</a>
-  <a href="#" onclick="openModal(''); closeDrawer();" class="nav-enrol">Enrol Now</a>
-</div>
 </body>
 </html>
