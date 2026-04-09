@@ -729,6 +729,60 @@
         </div>
 
       </div>
+
+      <!-- IJAZAH ENROLMENT FORM -->
+      <div class="enrolment-form-container" style="margin-top: 2rem;">
+        <h3 style="margin-bottom: 1rem;">📝 Apply for Ijazah Programme</h3>
+        <form action="https://formspree.io/f/mpqoeoby" method="POST">
+
+          <div class="form-group">
+            <label>First Name *</label>
+            <input type="text" name="first_name" required placeholder="Your first name">
+          </div>
+
+          <div class="form-group">
+            <label>Last Name *</label>
+            <input type="text" name="last_name" required placeholder="Your last name">
+          </div>
+
+          <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email" name="email" required placeholder="your@email.com">
+          </div>
+
+          <div class="form-group">
+            <label>WhatsApp Number *</label>
+            <input type="tel" name="whatsapp" required placeholder="+44 7700 000000">
+          </div>
+
+          <div class="form-group">
+            <label>Your Memorisation Status *</label>
+            <div style="display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.4rem;">
+              <label style="display: flex; align-items: center; gap: 0.6rem; font-weight: 400; cursor: pointer;">
+                <input type="radio" name="memorisation_status" value="I am a Hafidh" required>
+                I am a Hafidh
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.6rem; font-weight: 400; cursor: pointer;">
+                <input type="radio" name="memorisation_status" value="I am a Hafidh but need to solidify" required>
+                I am a Hafidh but need to solidify
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Preferred Day & Time <span style="font-weight: 400; font-size: 0.85rem;">(we try to accommodate based on the group)</span></label>
+            <input type="text" name="preferred_day_time" placeholder="e.g. Saturday morning or weekday evenings">
+          </div>
+
+          <div class="form-group">
+            <label>Additional Notes</label>
+            <textarea name="additional_notes" rows="4" placeholder="Anything else you'd like us to know..."></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Submit Application</button>
+        </form>
+      </div>
+
     </div>
   </div>
 
@@ -833,7 +887,7 @@
       <div class="course-detail-row">
         <span class="detail-icon">📅</span>
         <span class="detail-label">Starting Date</span>
-        <span class="detail-value" id="cmodal-date">Currently ON</span>
+        <span class="detail-value" id="cmodal-date">currently on</span>
       </div>
       <div class="course-detail-row">
         <span class="detail-icon">🎓</span>
