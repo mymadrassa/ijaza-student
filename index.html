@@ -839,7 +839,7 @@
 <!-- ABOUT US MODAL -->
 <div class="about-modal-overlay" id="aboutModal" onclick="closeAboutModal(event)">
   <div class="about-modal">
-    <button class="about-modal-close" onclick="document.getElementById('aboutModal').classList.remove('active')">✕</button>
+<button class="about-modal-close" onclick="document.getElementById('enrolModal').style.display='none'">✕</button>
 
     <div class="about-modal-header">
       <img src="shaykh-yassin.jpg" alt="Shaykh Yassin" class="about-modal-photo">
@@ -889,7 +889,7 @@
     <a href="#programmes">Programmes</a>
     <a href="#testimonials">Reviews</a>
     <a href="#faq">FAQ</a>
-    <a href="#" onclick="document.getElementById('enrolModal').style.display='flex'; return false;">Enrol Now</a>
+<a href="#" class="enrol-btn" onclick="document.getElementById('enrolModal').style.display='flex'; return false;">Enrol Now</a>
   </div>
 </nav>
 
