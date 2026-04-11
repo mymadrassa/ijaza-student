@@ -889,7 +889,7 @@
     <a href="#programmes">Programmes</a>
     <a href="#testimonials">Reviews</a>
     <a href="#faq">FAQ</a>
-    <a href="#enrol" class="nav-enrol">Enrol Now</a>
+    <a href="#" onclick="document.getElementById('enrolModal').style.display='flex'; return false;">Enrol Now</a>
   </div>
 </nav>
 
@@ -1426,6 +1426,13 @@
 
        <div class="form-group">
           <label>Preferred Day &amp; Time <small style="color:#c9a84c; font-weight:normal;">(we try to accommodate based on the group)</small></label>
+         <select name="plan" required>
+  <option value="" disabled selected>-- Select a Plan --</option>
+  <option value="affordable">Affordable — £32/month (30min × 1/week)</option>
+  <option value="standard">Standard — £43/month (40min × 1/week)</option>
+  <option value="intensive">Intensive — £85/month (40min × 2/week)</option>
+  <option value="family">Family Bundle — £29/month per student (40min × 1/week)</option>
+</select>
           <input type="text" name="Preferred Time" placeholder="e.g. Saturday morning or weekday evenings" />
         </div>
 
