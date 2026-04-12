@@ -690,8 +690,22 @@
   font-weight: 700;
   font-size: 0.95rem;
 }
-    </style>
-  
+
+/* ── MOBILE ── */
+@media (max-width: 680px) {
+  .testi-row,
+  .testi-row-reverse {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .testi-video {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+
     <!-- ══════════════════════════════════════════
      WHY NOW SECTION
 ══════════════════════════════════════════ -->
@@ -782,22 +796,6 @@
 </section>
 
 
-/* ── MOBILE ── */
-@media (max-width: 680px) {
-  .testi-row,
-  .testi-row-reverse {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .testi-video {
-    width: 100%;
-    max-width: 280px;
-    margin: 0 auto;
-  }
-}
-</style>
-  
     /* ── FAQ ── */
     .faq-item {
       background: #111;
