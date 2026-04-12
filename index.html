@@ -1665,12 +1665,10 @@
   </div>
 
 </div>
-
-</body>
-</html>
-
+    
+</section>
 <!-- ══════════════════════════════════════════
-     COURSE MODALS OVERLAY
+     COURSE MODAL OVERLAY
 ══════════════════════════════════════════ -->
 <div class="course-modal-overlay" id="courseModalOverlay" onclick="closeCourseModal(event)">
   <div class="course-modal-box" id="courseModalBox">
@@ -1723,7 +1721,7 @@
       <div class="plan-note">price per student</div>
       <button class="plan-btn" onclick="openModal('Group Bundle — 40min × 1/week — £32/month per student')">Choose Plan</button>
     </div>
-    
+
     <div class="plan-card popular">
       <div class="popular-badge">⭐ Most Popular</div>
       <h3>Standard</h3>
@@ -1844,15 +1842,18 @@
           <input type="tel" name="WhatsApp" required placeholder="+44 7700 000000" />
         </div>
 
-       <div class="form-group">
-          <label>Preferred Day &amp; Time <small style="color:#c9a84c; font-weight:normal;">(we try to accommodate based on the group)</small></label>
-         <select name="plan" required>
-  <option value="" disabled selected>-- Select a Plan --</option>
-  <option value="affordable">Affordable — £32/month (30min × 1/week)</option>
-  <option value="standard">Standard — £43/month (40min × 1/week)</option>
-  <option value="intensive">Intensive — £85/month (40min × 2/week)</option>
-  <option value="family">Family Bundle — £29/month per student (40min × 1/week)</option>
-</select>
+        <div class="form-group">
+          <label>Select Plan *</label>
+          <select name="plan" id="planSelect" required>
+            <option value="" disabled selected>-- Select a Plan --</option>
+            <option value="Group Bundle — 40min × 1/week — £32/month per student">Group Bundle — £32/month (40min × 1/week)</option>
+            <option value="Standard — 30min × 1/week — £43/month">Standard — £43/month (30min × 1/week)</option>
+            <option value="Intensive — 30min × 2/week — £85/month">Intensive — £85/month (30min × 2/week)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Preferred Day &amp; Time <small style="color:#c9a84c;font-weight:normal;">(we try to accommodate)</small></label>
           <input type="text" name="Preferred Time" placeholder="e.g. Saturday morning or weekday evenings" />
         </div>
 
@@ -1869,11 +1870,12 @@
       <div class="tick">✅</div>
       <h3>Enrolment Request Received!</h3>
       <p>JazakAllah Khair! We have received your details and will be in touch within <strong>24 hours</strong> to confirm your first session.<br/><br/>If you have any questions in the meantime, feel free to reach out to us on WhatsApp.</p>
-      <a href="https://wa.me/447784950327" target="_blank" class="whatsapp-btn-inline" style="margin-top:20px; display:inline-block;">💬 Message Us on WhatsApp</a>
+      <a href="https://wa.me/447784950327" target="_blank" class="whatsapp-btn-inline" style="margin-top:20px;display:inline-block;">💬 Message Us on WhatsApp</a>
     </div>
 
   </div>
 </div>
+
 <!-- ══════════════════════════════════════════
      WHATSAPP FLOATING BUTTON
 ══════════════════════════════════════════ -->
