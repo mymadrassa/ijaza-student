@@ -911,8 +911,7 @@
 <!-- ABOUT US MODAL -->
 <div class="about-modal-overlay" id="aboutModal" onclick="closeAboutModal(event)">
   <div class="about-modal">
-<button class="about-modal-close" onclick="document.getElementById('enrolModal').style.display='none'">✕</button>
-
+<button class="about-modal-close" onclick="document.getElementById('aboutModal').classList.remove('active'); document.body.style.overflow=''">✕</button>
     <div class="about-modal-header">
       <img src="shaykh-yassin.jpg" alt="Shaykh Yassin" class="about-modal-photo">
       <div class="about-modal-title">
@@ -1751,7 +1750,7 @@
   </style>
 
 <!-- ══════════════════════════════════════════
-     PRICING
+     
 ══════════════════════════════════════════ -->
 <section id="pricing">
   <h2 class="section-title">Simple, <span>Transparent Pricing</span></h2>
