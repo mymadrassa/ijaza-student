@@ -631,9 +631,81 @@
     }
     .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; }
     .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-    .video-testimonial-info { padding: 16px 20px; }
-    .video-testimonial-info .testimonial-author { color: #c9a84c; font-weight: 700; }
-    .video-testimonial-info p { color: #888; font-size: 0.85rem; margin-top: 4px; }
+    .video--info { padding: 16px 20px; }
+    .video--info .-author { color: #c9a84c; font-weight: 700; }
+    .video--info p { color: #888; font-size: 0.85rem; margin-top: 4px; }
+    
+    /* ── TESTIMONIAL ROWS ── */
+.testi-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+}
+
+.testi-row-reverse {
+  flex-direction: row-reverse;
+}
+
+.testi-video {
+  flex: 0 0 200px;
+  width: 200px;
+}
+
+.testi-video-name {
+  text-align: center;
+  color: #c9a84c;
+  font-weight: 700;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.testi-card {
+  flex: 1;
+  background: #111;
+  border: 1px solid #c9a84c33;
+  border-radius: 16px;
+  padding: 28px 32px;
+}
+
+.testi-card .stars {
+  color: #c9a84c;
+  font-size: 1.3rem;
+  margin-bottom: 14px;
+}
+
+.testi-card p {
+  color: #ccc;
+  font-size: 1rem;
+  line-height: 1.75;
+  font-style: italic;
+  margin-bottom: 16px;
+}
+
+.testi-card .testimonial-author {
+  color: #c9a84c;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* ── MOBILE ── */
+@media (max-width: 680px) {
+  .testi-row,
+  .testi-row-reverse {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .testi-video {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+
 
     /* ── FAQ ── */
     .faq-item {
@@ -886,7 +958,7 @@
   <div class="nav-links" id="navLinks">
 <a href="#" onclick="openAboutModal(); return false;">About Us</a>    <a href="#pricing">Pricing</a>
     <a href="#programmes">Programmes</a>
-    <a href="#testimonials">Reviews</a>
+    <a href="#s">Reviews</a>
     <a href="#faq">FAQ</a>
 <a href="#" class="enrol-btn" onclick="document.getElementById('enrolModal').classList.add('active'); return false;">Enrol Now</a>
   </div>
@@ -1563,110 +1635,80 @@
 
 </div>
 <!-- ══════════════════════════════════════════
-     TESTIMONIALS
+     S
 ══════════════════════════════════════════ -->
 <section id="testimonials">
-  <h2 class="section-title">What Our Current Students Say</h2>
-  <p class="section-sub">Real reviews from those who completed Our Program</p>
+  <h2 class="section-title">What Our Students Say</h2>
+  <p class="section-sub">Real reviews from real students</p>
 
-  <div class="testimonials-grid">
-    <div class="testimonial-card">
+  <!-- ── VIDEO + WRITTEN TESTIMONIAL ROWS ── -->
+
+  <!-- ROW 1 -->
+  <div class="testi-row">
+    <div class="testi-video">
+      <div style="position:relative;padding-bottom:177%;height:0;border-radius:14px;overflow:hidden;">
+        <iframe src="https://www.youtube.com/embed/9VyMSVRhywE"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allowfullscreen></iframe>
+      </div>
+      <div class="testi-video-name">Yahya B. — 🇬🇧 UK, Revert</div>
+    </div>
+    <div class="testi-card">
       <div class="stars">★★★★★</div>
       <p>"Allahuma Barik!!! My kids did not know how to read any of the Quran but mashallah by the will of Allah and with the support of Shaykh Yasin Abo Iyad they can now recite it much better than before. His teaching methods are outstanding, may Allah reward him and the Madrassa."</p>
       <div class="testimonial-author">— Asma M., Leicester</div>
     </div>
-    <div class="testimonial-card">
+  </div>
+
+  <!-- ROW 2 -->
+  <div class="testi-row testi-row-reverse">
+    <div class="testi-video">
+      <div style="position:relative;padding-bottom:177%;height:0;border-radius:14px;overflow:hidden;">
+        <iframe src="https://www.youtube.com/embed/av5_HIDsJC4"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allowfullscreen></iframe>
+      </div>
+      <div class="testi-video-name">Hasnain K. — 🇦🇪 UAE, Entrepreneur</div>
+    </div>
+    <div class="testi-card">
       <div class="stars">★★★★★</div>
       <p>"I enrolled my 5 year old in mid Jan. He was familiar with the arabic alphabet and some of the vowels. In less than 6 months, he has now almost completed the basics of reading arabic. All at my sons pace. Ustadh Yacin has been brilliant. An inspiration to my son in many ways!"</p>
       <div class="testimonial-author">— Farha O., Leicester</div>
     </div>
-    <div class="testimonial-card">
+  </div>
+
+  <!-- ROW 3 -->
+  <div class="testi-row">
+    <div class="testi-video">
+      <div style="position:relative;padding-bottom:177%;height:0;border-radius:14px;overflow:hidden;">
+        <iframe src="https://www.youtube.com/embed/tMAkjUssTuU"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allowfullscreen></iframe>
+      </div>
+      <div class="testi-video-name">Kalim G. — 🇲🇦 Morocco, Teenager</div>
+    </div>
+    <div class="testi-card">
       <div class="stars">★★★★★</div>
       <p>"I've been a student of this Institute for almost a year now and it's been one of the best decisions of my life. I went from not knowing the Arabic alphabet to effortlessly reading surahs with tajweed. I would recommend this to anyone looking to learn to read Quran."</p>
       <div class="testimonial-author">— Ammar M., Atlanta USA</div>
     </div>
   </div>
 
-  <div class="video-testimonials-grid" style="margin-top:40px;">
-
-    <!-- VIDEO TESTIMONIALS -->
-<!-- ROW 1 -->
-<div style="display:flex;flex-direction:row;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;">
-
-  <div style="flex:0 0 200px;border-radius:14px;overflow:hidden;border:1px solid #c9a84c55;background:#111;">
-    <div style="position:relative;padding-bottom:177%;height:0;">
-      <iframe src="https://www.youtube.com/embed/9VyMSVRhywE"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allowfullscreen></iframe>
+  <!-- ROW 4 -->
+  <div class="testi-row testi-row-reverse">
+    <div class="testi-video">
+      <div style="position:relative;padding-bottom:177%;height:0;border-radius:14px;overflow:hidden;">
+        <iframe src="https://www.youtube.com/embed/7iwir9LhI9Y"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allowfullscreen></iframe>
+      </div>
+      <div class="testi-video-name">Student — 🇬🇧 UK</div>
     </div>
-    <div style="padding:10px 14px;">
-      <div style="color:#c9a84c;font-weight:700;">Yahya B.</div>
-      <div style="color:#aaa;font-size:13px;">🇬🇧 UK — Revert</div>
-    </div>
-  </div>
-
-  <div style="flex:0 0 200px;border-radius:14px;overflow:hidden;border:1px solid #c9a84c55;background:#111;">
-    <div style="position:relative;padding-bottom:177%;height:0;">
-      <iframe src="https://www.youtube.com/embed/av5_HIDsJC4"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allowfullscreen></iframe>
-    </div>
-    <div style="padding:10px 14px;">
-      <div style="color:#c9a84c;font-weight:700;">Hasnain K.</div>
-      <div style="color:#aaa;font-size:13px;">🇦🇪 UAE — Entrepreneur</div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"From the very first session I felt welcomed and supported. The teacher is incredibly patient and knowledgeable. I never thought I'd be able to read the Quran as an adult but here I am — reciting Surah Al-Fatiha with confidence. This is a blessing."</p>
+      <div class="testimonial-author">— Student, UK</div>
     </div>
   </div>
 
-  <div style="flex:0 0 200px;border-radius:14px;overflow:hidden;border:1px solid #c9a84c55;background:#111;">
-    <div style="position:relative;padding-bottom:177%;height:0;">
-      <iframe src="https://www.youtube.com/embed/tMAkjUssTuU"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allowfullscreen></iframe>
-    </div>
-    <div style="padding:10px 14px;">
-      <div style="color:#c9a84c;font-weight:700;">Kalim G.</div>
-      <div style="color:#aaa;font-size:13px;">🇲🇦 Morocco — Teenager</div>
-    </div>
-  </div>
-
-</div>
-
-<!-- ROW 2 -->
-<div style="display:flex;flex-direction:row;gap:16px;justify-content:center;flex-wrap:wrap;">
-
-  <div style="flex:0 0 200px;border-radius:14px;overflow:hidden;border:1px solid #c9a84c55;background:#111;">
-    <div style="position:relative;padding-bottom:177%;height:0;">
-      <iframe src="https://www.youtube.com/embed/7iwir9LhI9Y"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allowfullscreen></iframe>
-    </div>
-    <div style="padding:10px 14px;">
-      <div style="color:#c9a84c;font-weight:700;">Wali K.</div>
-      <div style="color:#aaa;font-size:13px;">🇨🇦 Canada — Pharmacist</div>
-    </div>
-  </div>
-
-  <div style="flex:0 0 200px;border-radius:14px;overflow:hidden;border:1px solid #c9a84c55;background:#111;">
-    <div style="position:relative;padding-bottom:177%;height:0;">
-      <iframe src="https://www.youtube.com/embed/f8hrLlbwUfw"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allowfullscreen></iframe>
-    </div>
-    <div style="padding:10px 14px;">
-      <div style="color:#c9a84c;font-weight:700;">Redwan A.</div>
-      <div style="color:#aaa;font-size:13px;">🇳🇱 Netherlands — University Student</div>
-    </div>
-  </div>
-
-  <div style="flex:0 0 200px;border-radius:14px;overflow:hidden;border:1px solid #c9a84c55;background:#111;">
-    <div style="position:relative;padding-bottom:177%;height:0;">
-      <iframe src="https://www.youtube.com/embed/ZYYb6Q41rVU"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allowfullscreen></iframe>
-    </div>
-    <div style="padding:10px 14px;">
-      <div style="color:#c9a84c;font-weight:700;">Elisa M.</div>
-      <div style="color:#aaa;font-size:13px;">🇫🇷 France — School Teacher</div>
-    </div>
-  </div>
-
-</div>
-    
 </section>
+
 <!-- ══════════════════════════════════════════
      COURSE MODAL OVERLAY
 ══════════════════════════════════════════ -->
