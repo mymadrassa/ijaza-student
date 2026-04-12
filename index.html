@@ -1566,164 +1566,6 @@
 </body>
 </html>
 
-
-  <!-- IJAZAH -->
-  <div class="subject-category">
-    <button class="category-toggle" id="toggle-ijazah" onclick="toggleCategory('ijazah')">
-      <span>📜 Ijazah</span>
-      <span class="arrow">▼</span>
-    </button>
-    <div class="category-content" id="ijazah">
-      <div class="course-cards">
-
-        <div class="course-card" onclick="openCourseModal('hafs')">
-          <h3>Hafs 'an 'Assim</h3>
-          <p>From Ash-Shatibiyah</p>
-          <button class="view-btn">View Details</button>
-        </div>
-
-      </div>
-
-      <!-- IJAZAH ENROLMENT FORM -->
-      <div class="enrolment-form-container" style="margin-top: 2rem;">
-        <h3 class="section-title" style="margin-bottom: 1rem;">📝 Apply for Ijazah Programme</h3>
-        <form action="https://formspree.io/f/mpqoeoby" method="POST">
-
-          <div class="form-group">
-            <label>First Name *</label>
-            <input type="text" name="first_name" required placeholder="Your first name">
-          </div>
-
-          <div class="form-group">
-            <label>Last Name *</label>
-            <input type="text" name="last_name" required placeholder="Your last name">
-          </div>
-
-          <div class="form-group">
-            <label>Email Address *</label>
-            <input type="email" name="email" required placeholder="your@email.com">
-          </div>
-
-          <div class="form-group">
-            <label>WhatsApp Number *</label>
-            <input type="tel" name="whatsapp" required placeholder="+44 7700 000000">
-          </div>
-
-          <div class="form-group">
-            <label>Your Memorisation Status *</label>
-            <select name="memorisation_status" required>
-              <option value="">-- Select --</option>
-              <option value="I am a Hafidh">I am a Hafidh</option>
-              <option value="I am a Hafidh but need to solidify">I am a Hafidh but need to solidify</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>Preferred Day & Time <span style="font-weight: 400; font-size: 0.85rem;"></span></label>
-            <input type="text" name="preferred_day_time" placeholder="e.g. Saturday morning or weekday evenings">
-          </div>
-
-          <div class="form-group">
-            <label>Additional Notes</label>
-            <textarea name="additional_notes" rows="4" placeholder="Anything else you'd like us to know..."></textarea>
-          </div>
-
-          <button type="submit" class="submit-btn">Submit Application</button>
-        </form>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ARABIC -->
-  <div class="subject-category">
-    <button class="category-toggle" id="toggle-arabic" onclick="toggleCategory('arabic')">
-      <span>📖 Arabic</span>
-      <span class="arrow">▼</span>
-    </button>
-    <div class="category-content" id="arabic">
-      <div class="course-cards">
-
-        <div class="course-card" onclick="openCourseModal('arabic1a')">
-          <h3>Al-Arabiya B. Yadayk 1A</h3>
-          <p>Beginner Arabic — Book 1A</p>
-          <button class="view-btn">View Details</button>
-        </div>
-
-        <div class="course-card" onclick="openCourseModal('arabic1b')">
-          <h3>Al-Arabiya B. Yadayk 1B</h3>
-          <p>Beginner Arabic — Book 1B</p>
-          <button class="view-btn">View Details</button>
-        </div>
-
-        <div class="course-card" onclick="openCourseModal('arabic2a')">
-          <h3>Al-Arabiya B. Yadayk 2A</h3>
-          <p>Intermediate Arabic — Book 2A</p>
-          <button class="view-btn">View Details</button>
-        </div>
-
-        <div class="course-card" onclick="openCourseModal('arabic2b')">
-          <h3>Al-Arabiya B. Yadayk 2B</h3>
-          <p>Intermediate Arabic — Book 2B</p>
-          <button class="view-btn">View Details</button>
-        </div>
-
-        <div class="course-card" onclick="openCourseModal('ajarummiyah')">
-          <h3>Al-Ajarummiyah</h3>
-          <p>Classical Arabic Grammar</p>
-          <button class="view-btn">View Details</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- ISLAMIC STUDIES -->
-  <div class="subject-category">
-    <button class="category-toggle" id="toggle-islamic" onclick="toggleCategory('islamic')">
-      <span>🕌 Islamic Studies</span>
-      <span class="arrow">▼</span>
-    </button>
-    <div class="category-content" id="islamic">
-      <div class="course-cards">
-
-        <div class="course-card" onclick="openCourseModal('tajweed')">
-          <h3>Tajweed</h3>
-          <p>Rules of Quranic Recitation</p>
-          <button class="view-btn">View Details</button>
-        </div>
-
-        <div class="course-card" onclick="openCourseModal('qiraat')">
-          <h3>Qiraa't</h3>
-          <p>Different Qira'at of the Quran</p>
-          <button class="view-btn">View Details</button>
-        </div>
-
-        <div class="course-card" onclick="openCourseModal('aqidah')">
-          <h3>Creed (Aqidah)</h3>
-          <p>Islamic Beliefs & Theology</p>
-          <button class="view-btn">View Details</button>
-        </div>
-
-        <div class="course-card" onclick="openCourseModal('tazkiyah')">
-          <h3>Purification of the Soul</h3>
-          <p>Tazkiyah & Spiritual Development</p>
-          <button class="view-btn">View Details</button>
-        </div>
-
-        <div class="course-card" onclick="openCourseModal('uloomquran')">
-          <h3>Sciences of the Qur'an</h3>
-          <p>Uloom al-Quran</p>
-          <button class="view-btn">View Details</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-</section>
-
-
 <!-- ══════════════════════════════════════════
      COURSE MODALS OVERLAY
 ══════════════════════════════════════════ -->
@@ -2060,187 +1902,97 @@
 ══════════════════════════════════════════ -->
 <script>
 
-  /* ── COURSE DATA ── */
-  const courseData = {
-    arabic1a: {
-      title: 'Al-Arabiya B. Yadayk 1A',
-      subtitle: 'Beginner Arabic — Book 1A',
-      date: 'TBC',
-      level: 'Complete Beginner(only reads arabic)',
-      time: 'Currently On',
-      price: '£27 per month',
-      teacher: 'Ustadh Yassin'
-    },
-    arabic1b: {
-      title: 'Al-Arabiya B. Yadayk 1B',
-      subtitle: 'Beginner Arabic — Book 1B',
-      date: 'TBC',
-      level: 'Completed 1A',
-      time: 'TBC',
-      price: 'TBC',
-      teacher: 'TBC'
-    },
-    arabic2a: {
-      title: 'Al-Arabiya B. Yadayk 2A',
-      subtitle: 'Intermediate Arabic — Book 2A',
-      date: 'TBC',
-      level: 'Completed 1B',
-      time: 'TBC',
-      price: 'TBC',
-      teacher: 'TBC'
-    },
-    arabic2b: {
-      title: 'Al-Arabiya B. Yadayk 2B',
-      subtitle: 'Intermediate Arabic — Book 2B',
-      date: 'TBC',
-      level: 'Completed 2A',
-      time: 'TBC',
-      price: 'TBC',
-      teacher: 'TBC'
-    },
-    ajarummiyah: {
-      title: 'Al-Ajarummiyah',
-      subtitle: 'Classical Arabic Grammar',
-      date: 'TBC',
-      level: 'Completed 2B or equivalent',
-      time: 'TBC',
-      price: 'TBC',
-      teacher: 'TBC'
-    },
-    tajweed: {
-      title: 'Tajweed',
-      subtitle: 'Rules of Quranic Recitation',
-      date: 'TBC',
-      level: 'Able to read Arabic',
-      time: 'TBC',
-      price: 'TBC',
-      teacher: 'TBC'
-    },
-    qiraat: {
-      title: "Qiraa't",
-      subtitle: 'Must Be Hafidh',
-      date: 'TBC',
-      level: 'UNDERSTAND ARABIC',
-      time: 'TBC',
-      price: 'TBC',
-      teacher: 'TBC'
-    },
-    aqidah: {
-      title: 'Creed (Aqidah)',
-      subtitle: 'Islamic Beliefs & Theology',
-      date: 'Currently On',
-      level: 'Open to all',
-      time: 'TBC',
-      price: '£29 per month',
-      teacher: 'Ustadh Abdurahman H.'
-    },
-    tazkiyah: {
-      title: 'Purification of the Soul',
-      subtitle: 'Tazkiyah & Spiritual Development',
-      date: 'Currently On',
-      level: 'Open to all',
-      time: 'TBC',
-      price: '£20 per month',
-      teacher: 'Ustadh Yassin'
-    },
-    uloomquran: {
-      title: "Sciences of the Qur'an",
-      subtitle: 'Uloom al-Quran',
-      date: 'Starting Soon',
-      level: 'Open to all',
-      time: 'Every Saturday 11AM - 12PM',
-      price: '£20 per month',
-      teacher: 'Ustadh Yassin'
-    }
-  };
+ /* ── COURSE DATA ── */
+const courseData = {};
 
-  /* ── TOGGLE CATEGORY ── */
-  function toggleCategory(id) {
-    const content = document.getElementById(id);
-    const toggle = document.getElementById('toggle-' + id);
-    content.classList.toggle('open');
-    toggle.classList.toggle('open');
+/* ── TOGGLE CATEGORY ── */
+function toggleCategory(id) {
+  const content = document.getElementById(id);
+  const toggle = document.getElementById('toggle-' + id);
+  content.classList.toggle('open');
+  toggle.classList.toggle('open');
+}
+
+/* ── COURSE MODAL ── */
+function openCourseModal(id) {
+  const c = courseData[id];
+  if (!c) return;
+  document.getElementById('cmodal-title').textContent = c.title;
+  document.getElementById('cmodal-subtitle').textContent = c.subtitle;
+  document.getElementById('cmodal-date').textContent = c.date;
+  document.getElementById('cmodal-level').textContent = c.level;
+  document.getElementById('cmodal-time').textContent = c.time;
+  document.getElementById('cmodal-price').textContent = c.price;
+  document.getElementById('cmodal-teacher').textContent = c.teacher;
+  document.getElementById('courseModalOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCourseModal(e) {
+  if (e.target === document.getElementById('courseModalOverlay')) {
+    closeCourseModalBtn();
   }
+}
 
-  /* ── COURSE MODAL ── */
-  function openCourseModal(id) {
-    const c = courseData[id];
-    if (!c) return;
-    document.getElementById('cmodal-title').textContent = c.title;
-    document.getElementById('cmodal-subtitle').textContent = c.subtitle;
-    document.getElementById('cmodal-date').textContent = c.date;
-    document.getElementById('cmodal-level').textContent = c.level;
-    document.getElementById('cmodal-time').textContent = c.time;
-    document.getElementById('cmodal-price').textContent = c.price;
-    document.getElementById('cmodal-teacher').textContent = c.teacher;
-    document.getElementById('courseModalOverlay').classList.add('active');
-    document.body.style.overflow = 'hidden';
+function closeCourseModalBtn() {
+  document.getElementById('courseModalOverlay').classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+
+/* ── ENROL MODAL ── */
+function openModal(plan) {
+  document.getElementById('enrolModal').classList.add('active');
+  document.getElementById('formContent').style.display = 'block';
+  document.getElementById('successMsg').style.display = 'none';
+  document.body.style.overflow = 'hidden';
+
+  if (plan) {
+    document.getElementById('hiddenPlan').value = plan;
+    document.getElementById('planSelect').value = plan;
+    const badge = document.getElementById('selectedPlanBadge');
+    badge.textContent = '📋 Selected Plan: ' + plan;
+    badge.style.display = 'block';
+  } else {
+    document.getElementById('hiddenPlan').value = 'Not specified';
+    document.getElementById('planSelect').value = '';
+    document.getElementById('selectedPlanBadge').style.display = 'none';
   }
+}
 
-  function closeCourseModal(e) {
-    if (e.target === document.getElementById('courseModalOverlay')) {
-      closeCourseModalBtn();
-    }
-  }
+function closeModal() {
+  document.getElementById('enrolModal').classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
 
-  function closeCourseModalBtn() {
-    document.getElementById('courseModalOverlay').classList.remove('active');
-    document.body.style.overflow = 'auto';
-  }
+document.getElementById('enrolModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
 
-  /* ── ENROL MODAL ── */
-  function openModal(plan) {
-    document.getElementById('enrolModal').classList.add('active');
-    document.getElementById('formContent').style.display = 'block';
-    document.getElementById('successMsg').style.display = 'none';
-    document.body.style.overflow = 'hidden';
+/* ── FORM SUBMIT ── */
+function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
 
-    if (plan) {
-      document.getElementById('hiddenPlan').value = plan;
-      document.getElementById('planSelect').value = plan;
-      const badge = document.getElementById('selectedPlanBadge');
-      badge.textContent = '📋 Selected Plan: ' + plan;
-      badge.style.display = 'block';
+  fetch('https://formspree.io/f/mojpykdj', {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(response => {
+    if (response.ok) {
+      document.getElementById('formContent').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+      form.reset();
     } else {
-      document.getElementById('hiddenPlan').value = 'Not specified';
-      document.getElementById('planSelect').value = '';
-      document.getElementById('selectedPlanBadge').style.display = 'none';
+      alert('Something went wrong. Please try again or contact us directly.');
     }
-  }
-
-  function closeModal() {
-    document.getElementById('enrolModal').classList.remove('active');
-    document.body.style.overflow = 'auto';
-  }
-
-  document.getElementById('enrolModal').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
+  })
+  .catch(() => {
+    alert('Connection error. Please check your internet and try again.');
   });
+}
 
-  /* ── FORM SUBMIT ── */
-  function handleSubmit(e) {
-    e.preventDefault();
-    const form = e.target;
-    const data = new FormData(form);
-
-    fetch('https://formspree.io/f/mojpykdj', {
-      method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    })
-    .then(response => {
-      if (response.ok) {
-        document.getElementById('formContent').style.display = 'none';
-        document.getElementById('successMsg').style.display = 'block';
-        form.reset();
-      } else {
-        alert('Something went wrong. Please try again or contact us directly.');
-      }
-    })
-    .catch(() => {
-      alert('Connection error. Please check your internet and try again.');
-    });
-  }
 
   /* ── FAQ ── */
   function toggleFaq(el) {
