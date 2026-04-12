@@ -1026,51 +1026,59 @@
         }
 
         body {
+            background: #0a0a0a;
             font-family: 'Poppins', sans-serif;
-background: #0a0a0a;
-          min-height: 100vh;
-            padding: 40px 20px;
+            color: #fff;
+            min-height: 100vh;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 60px;
+            padding: 60px 20px 40px;
+            background: linear-gradient(180deg, #111 0%, transparent 100%);
+        }
+
+        .header .stars {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            letter-spacing: 8px;
         }
 
         .header h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 800;
-background: #0a0a0a;            
-          -webkit-background-clip: text;
+            background: linear-gradient(135deg, #f5a623, #f0c27f);
+            -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+            background-clip: text;
+            margin-bottom: 12px;
         }
 
         .header p {
-            color: #a0a0c0;
             font-size: 1.1rem;
-            font-weight: 300;
+            color: #ccc;
+            margin-bottom: 20px;
         }
 
         .duration-badge {
             display: inline-block;
-            background: #0a0a0a;
-            color: #1a1a2e;
+            background: linear-gradient(135deg, #f5a623, #e8901a);
+            color: #000;
             font-weight: 700;
-            font-size: 1rem;
-            padding: 8px 24px;
+            padding: 10px 28px;
             border-radius: 50px;
-            margin-top: 16px;
+            font-size: 1rem;
+            box-shadow: 0 4px 20px rgba(245, 166, 35, 0.5);
         }
 
         .roadmap {
-            max-width: 750px;
+            max-width: 900px;
             margin: 0 auto;
+            padding: 40px 20px 80px;
             position: relative;
-            padding: 20px 0;
         }
 
-        /* Central vertical line */
+        /* ======= SHINY CENTRAL LINE ======= */
         .roadmap::before {
             content: '';
             position: absolute;
@@ -1078,231 +1086,294 @@ background: #0a0a0a;
             top: 0;
             bottom: 0;
             width: 4px;
-background: #0a0a0a;            
-          transform: translateX(-50%);
+            transform: translateX(-50%);
+            background: linear-gradient(
+                180deg,
+                #f5a623 0%,
+                #ffe066 15%,
+                #f5a623 30%,
+                #fff8e1 45%,
+                #f5a623 60%,
+                #ffe066 75%,
+                #00ff88 88%,
+                #00e676 100%
+            );
+            box-shadow:
+                0 0 8px #f5a623,
+                0 0 18px #f5a623,
+                0 0 35px rgba(245, 166, 35, 0.6),
+                0 0 2px #fff;
             border-radius: 4px;
+            animation: linePulse 3s ease-in-out infinite;
         }
 
+        @keyframes linePulse {
+            0%, 100% {
+                box-shadow:
+                    0 0 8px #f5a623,
+                    0 0 18px #f5a623,
+                    0 0 35px rgba(245, 166, 35, 0.6);
+            }
+            50% {
+                box-shadow:
+                    0 0 14px #ffe066,
+                    0 0 30px #f5a623,
+                    0 0 55px rgba(245, 166, 35, 0.9),
+                    0 0 70px rgba(255, 224, 102, 0.4);
+            }
+        }
+
+        /* ======= WEEK LABELS ======= */
         .week-label {
             text-align: center;
+            margin: 30px 0 10px;
             position: relative;
-            margin: 10px 0;
             z-index: 2;
         }
 
         .week-label span {
-            background: rgba(255,255,255,0.1);
-            color: #ffd200;
-            font-size: 0.78rem;
-            font-weight: 600;
-            padding: 4px 14px;
+            background: #1a1a1a;
+            border: 2px solid #f5a623;
+            color: #f5a623;
+            padding: 6px 20px;
             border-radius: 20px;
-            border: 1px solid rgba(255, 210, 0, 0.3);
-            backdrop-filter: blur(5px);
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 0 10px rgba(245, 166, 35, 0.3);
         }
 
+        /* ======= CARDS ======= */
         .item {
             display: flex;
             align-items: center;
-            margin: 18px 0;
+            margin: 20px 0;
             position: relative;
-            animation: fadeInUp 0.5s ease forwards;
-            opacity: 0;
+            z-index: 2;
         }
 
-        .item:nth-child(1) { animation-delay: 0.1s; }
-        .item:nth-child(2) { animation-delay: 0.2s; }
-        .item:nth-child(3) { animation-delay: 0.3s; }
-        .item:nth-child(4) { animation-delay: 0.4s; }
-        .item:nth-child(5) { animation-delay: 0.5s; }
-        .item:nth-child(6) { animation-delay: 0.6s; }
-        .item:nth-child(7) { animation-delay: 0.7s; }
-        .item:nth-child(8) { animation-delay: 0.8s; }
-        .item:nth-child(9) { animation-delay: 0.9s; }
-        .item:nth-child(10) { animation-delay: 1.0s; }
-        .item:nth-child(11) { animation-delay: 1.1s; }
-        .item:nth-child(12) { animation-delay: 1.2s; }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Left side items */
         .item.left {
             flex-direction: row-reverse;
-            padding-right: calc(50% + 40px);
+            text-align: right;
         }
 
-        /* Right side items */
         .item.right {
             flex-direction: row;
-            padding-left: calc(50% + 40px);
+            text-align: left;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, #1a1a1a, #222);
+            border: 1px solid #333;
             border-radius: 16px;
-            padding: 16px 20px;
-            backdrop-filter: blur(10px);
+            padding: 20px 24px;
+            width: calc(50% - 50px);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            width: 100%;
-            cursor: pointer;
+            position: relative;
+        }
+
+        .item.left .card {
+            margin-right: 50px;
+        }
+
+        .item.right .card {
+            margin-left: 50px;
         }
 
         .card:hover {
-            transform: scale(1.04);
-            box-shadow: 0 8px 30px rgba(247, 151, 30, 0.25);
-            border-color: rgba(255, 210, 0, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(245, 166, 35, 0.2);
+            border-color: #f5a623;
         }
 
-        .card .chapter-num {
-            font-size: 0.72rem;
+        .chapter-num {
+            font-size: 0.75rem;
+            color: #f5a623;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #f7971e;
-            margin-bottom: 4px;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
         }
 
         .card h3 {
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             font-weight: 700;
-            color: #ffffff;
-            line-height: 1.4;
+            color: #fff;
+            margin-bottom: 6px;
         }
 
-        .card .arabic-term {
-            font-size: 0.8rem;
-            color: #a0a0c0;
-            margin-top: 4px;
-            font-style: italic;
+        .arabic-term {
+            font-size: 0.85rem;
+            color: #aaa;
         }
 
-        /* Dot on the line */
+        /* ======= DOTS ======= */
         .dot {
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
             width: 18px;
             height: 18px;
+            background: #f5a623;
             border-radius: 50%;
- background: #0a0a0a;
-          border: 3px solid #1a1a2e;
+            border: 3px solid #0a0a0a;
+            box-shadow: 0 0 10px #f5a623, 0 0 20px rgba(245,166,35,0.5);
             z-index: 3;
-            box-shadow: 0 0 10px rgba(247, 151, 30, 0.6);
-            flex-shrink: 0;
         }
 
-        /* UNLOCK CARDS */
+        /* ======= UNLOCK CARDS ======= */
         .unlock-wrapper {
             display: flex;
             justify-content: center;
+            margin: 25px 0;
             position: relative;
-            margin: 24px 0;
             z-index: 2;
         }
 
         .unlock-card {
-background: #0a0a0a;
-          border-radius: 16px;
-            padding: 16px 28px;
+            background: linear-gradient(135deg, #1c2a1c, #1a3a2a);
+            border: 2px solid #00c853;
+            border-radius: 16px;
+            padding: 18px 30px;
             text-align: center;
-            max-width: 400px;
-            width: 90%;
-            box-shadow: 0 0 30px rgba(247, 151, 30, 0.4);
-            animation: pulse 2s infinite;
+            max-width: 420px;
+            width: 100%;
+            box-shadow:
+                0 0 15px rgba(0, 200, 83, 0.35),
+                0 0 30px rgba(0, 200, 83, 0.15),
+                inset 0 0 20px rgba(0, 200, 83, 0.05);
+            position: relative;
         }
 
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 20px rgba(247, 151, 30, 0.4); }
-            50% { box-shadow: 0 0 40px rgba(247, 151, 30, 0.8); }
+        .unlock-card::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #00c853, #69f0ae, #00c853);
+            z-index: -1;
+            opacity: 0.4;
+            animation: unlockGlow 2.5s ease-in-out infinite;
         }
 
-        .unlock-card .lock-icon {
-            font-size: 1.6rem;
-            margin-bottom: 6px;
+        @keyframes unlockGlow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+
+        .lock-icon {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
         }
 
         .unlock-card h3 {
-            font-size: 0.85rem;
-            font-weight: 800;
-            color: #1a1a2e;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #00e676;
+            margin-bottom: 6px;
+            text-shadow: 0 0 10px rgba(0, 230, 118, 0.5);
         }
 
         .unlock-card p {
-            font-size: 0.82rem;
-            color: #2a1a00;
-            margin-top: 4px;
-            font-weight: 500;
+            font-size: 0.88rem;
+            color: #a5d6a7;
+            line-height: 1.5;
         }
 
-        /* FINAL UNLOCK */
+        /* ======= FINAL UNLOCK ======= */
         .final-unlock {
             display: flex;
             justify-content: center;
-            margin: 30px 0 10px;
+            margin-top: 50px;
             position: relative;
             z-index: 2;
         }
 
         .final-card {
-background: #0a0a0a;
-          border-radius: 20px;
-            padding: 24px 36px;
+            background: linear-gradient(135deg, #003320, #004d2e, #005c35);
+            border: 3px solid #00ff88;
+            border-radius: 24px;
+            padding: 40px 50px;
             text-align: center;
-            max-width: 450px;
-            width: 90%;
-            box-shadow: 0 0 40px rgba(86, 171, 47, 0.5);
-            animation: pulse-green 2s infinite;
+            max-width: 500px;
+            width: 100%;
+            box-shadow:
+                0 0 20px #00ff88,
+                0 0 45px rgba(0, 255, 136, 0.5),
+                0 0 80px rgba(0, 255, 136, 0.25),
+                inset 0 0 30px rgba(0, 255, 136, 0.08);
+            animation: finalPulse 2.5s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
         }
 
-        @keyframes pulse-green {
-            0%, 100% { box-shadow: 0 0 30px rgba(86, 171, 47, 0.4); }
-            50% { box-shadow: 0 0 60px rgba(86, 171, 47, 0.8); }
+        .final-card::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 26px;
+            background: linear-gradient(135deg, #00ff88, #69ffb8, #00e676, #00ff88);
+            background-size: 300% 300%;
+            z-index: -1;
+            animation: borderRotate 3s linear infinite;
+        }
+
+        @keyframes borderRotate {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes finalPulse {
+            0%, 100% {
+                box-shadow:
+                    0 0 20px #00ff88,
+                    0 0 45px rgba(0, 255, 136, 0.5),
+                    0 0 80px rgba(0, 255, 136, 0.25);
+            }
+            50% {
+                box-shadow:
+                    0 0 35px #00ff88,
+                    0 0 70px rgba(0, 255, 136, 0.7),
+                    0 0 120px rgba(0, 255, 136, 0.4);
+            }
         }
 
         .final-card .icon {
-            font-size: 2.5rem;
-            margin-bottom: 8px;
+            font-size: 3rem;
+            margin-bottom: 15px;
         }
 
         .final-card h2 {
-            font-size: 1.1rem;
+            font-size: 1.8rem;
             font-weight: 800;
-            color: #1a1a2e;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: #00ff88;
+            text-shadow: 0 0 20px #00ff88, 0 0 40px rgba(0,255,136,0.5);
+            margin-bottom: 12px;
         }
 
         .final-card p {
-            font-size: 0.85rem;
-            color: #1a3a00;
-            margin-top: 6px;
-            font-weight: 500;
+            font-size: 1rem;
+            color: #a0ffcc;
+            line-height: 1.6;
         }
 
-        /* Stars top decoration */
-        .stars {
-            text-align: center;
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            letter-spacing: 8px;
-        }
-
-        /* Responsive */
-        @media (max-width: 600px) {
+        /* ======= RESPONSIVE ======= */
+        @media (max-width: 650px) {
             .roadmap::before {
                 left: 20px;
             }
 
-            .item.left, .item.right {
-                flex-direction: row;
-                padding-left: 55px;
-                padding-right: 0;
+            .item.left,
+            .item.right {
+                flex-direction: column;
+                text-align: left;
+                padding-left: 50px;
+            }
+
+            .item.left .card,
+            .item.right .card {
+                width: 100%;
+                margin: 0;
             }
 
             .dot {
@@ -1329,12 +1400,24 @@ background: #0a0a0a;
     <!-- WEEK 1 -->
     <div class="week-label"><span>📍 Week 1</span></div>
 
-    <div class="item left">
+    <div class="item right">
         <div class="dot"></div>
         <div class="card">
             <div class="chapter-num">Chapter 1</div>
-            <h3>🔤 The Alphabet</h3>
-            <div class="arabic-term">Learn & pronounce all Arabic letters</div>
+            <h3>🔤 The Arabic Letters</h3>
+            <div class="arabic-term">Learning the alphabet — recognition & shapes</div>
+        </div>
+    </div>
+
+    <!-- WEEK 2 -->
+    <div class="week-label"><span>📍 Week 2</span></div>
+
+    <div class="item left">
+        <div class="dot"></div>
+        <div class="card">
+            <div class="chapter-num">Chapter 2</div>
+            <h3>✍️ Forms of the Letters</h3>
+            <div class="arabic-term">Beginning, middle, end & isolated forms</div>
         </div>
     </div>
 
@@ -1343,55 +1426,28 @@ background: #0a0a0a;
         <div class="unlock-card">
             <div class="lock-icon">🔓</div>
             <h3>Unlock Achievement</h3>
-            <p>Recognize the letters and pronounce them correctly</p>
+            <p>You can now recognize & write all Arabic letters in all their forms</p>
         </div>
     </div>
 
-    <!-- WEEK 2 -->
-    <div class="week-label"><span>📍 Week 2</span></div>
+    <!-- WEEK 3-4 -->
+    <div class="week-label"><span>📍 Weeks 3 – 4</span></div>
 
     <div class="item right">
-        <div class="dot"></div>
-        <div class="card">
-            <div class="chapter-num">Chapter 2</div>
-            <h3>🔊 Vowels & Sukūn</h3>
-            <div class="arabic-term">Letters with Harakāt & absence of vowels (Sukūn)</div>
-        </div>
-    </div>
-
-    <!-- WEEK 3 -->
-    <div class="week-label"><span>📍 Week 3</span></div>
-
-    <div class="item left">
         <div class="dot"></div>
         <div class="card">
             <div class="chapter-num">Chapter 3</div>
-            <h3>✌️ Nunation</h3>
-            <div class="arabic-term">Letters with Tanwīn</div>
+            <h3>🔊 Short Vowels (Ḥarakāt)</h3>
+            <div class="arabic-term">Fatḥah · Kasrah · Ḍammah</div>
         </div>
     </div>
-
-    <!-- WEEK 4 -->
-    <div class="week-label"><span>📍 Week 4</span></div>
-
-    <div class="item right">
-        <div class="dot"></div>
-        <div class="card">
-            <div class="chapter-num">Chapter 4</div>
-            <h3>💪 Emphasis</h3>
-            <div class="arabic-term">Letters with Shaddah</div>
-        </div>
-    </div>
-
-    <!-- WEEK 5 -->
-    <div class="week-label"><span>📍 Week 5</span></div>
 
     <div class="item left">
         <div class="dot"></div>
         <div class="card">
-            <div class="chapter-num">Chapter 5</div>
-            <h3>🔗 Shaddah & Tanwīn</h3>
-            <div class="arabic-term">Combining emphasis and nunation</div>
+            <div class="chapter-num">Chapter 4</div>
+            <h3>⭕ Sukūn & Joining Letters</h3>
+            <div class="arabic-term">Resting letters and connecting rules</div>
         </div>
     </div>
 
@@ -1400,67 +1456,19 @@ background: #0a0a0a;
         <div class="unlock-card">
             <div class="lock-icon">🔓</div>
             <h3>Unlock Achievement</h3>
-            <p>Reading full words with all their different vowels</p>
+            <p>You can now read basic syllables and connect Arabic letters</p>
         </div>
     </div>
 
-    <!-- WEEK 6 -->
-    <div class="week-label"><span>📍 Week 6</span></div>
+    <!-- WEEK 5-6 -->
+    <div class="week-label"><span>📍 Weeks 5 – 6</span></div>
 
     <div class="item right">
         <div class="dot"></div>
         <div class="card">
-            <div class="chapter-num">Chapter 6</div>
-            <h3>🔀 Hamzah</h3>
-            <div class="arabic-term">Hamzatul Qaṭ' & Hamzatul Wasl</div>
-        </div>
-    </div>
-
-    <!-- WEEK 7-8 -->
-    <div class="week-label"><span>📍 Week 7 – 8</span></div>
-
-    <div class="item left">
-        <div class="dot"></div>
-        <div class="card">
-            <div class="chapter-num">Chapter 7</div>
-            <h3>〰️ Stretch & Elongation</h3>
-            <div class="arabic-term">Al-Madd — prolongation rules</div>
-        </div>
-    </div>
-
-    <!-- WEEK 9 -->
-    <div class="week-label"><span>📍 Week 9</span></div>
-
-    <div class="item right">
-        <div class="dot"></div>
-        <div class="card">
-            <div class="chapter-num">Chapter 8</div>
-            <h3>🔵 Waw Al-Jam'</h3>
-            <div class="arabic-term">The plural Waw connector</div>
-        </div>
-    </div>
-
-    <!-- WEEK 10 -->
-    <div class="week-label"><span>📍 Week 10</span></div>
-
-    <div class="item left">
-        <div class="dot"></div>
-        <div class="card">
-            <div class="chapter-num">Chapter 9</div>
-            <h3>🔴 Tied Tā'</h3>
-            <div class="arabic-term">Tā' Marbūṭah — the tied Tā</div>
-        </div>
-    </div>
-
-    <!-- WEEK 11 -->
-    <div class="week-label"><span>📍 Week 11</span></div>
-
-    <div class="item right">
-        <div class="dot"></div>
-        <div class="card">
-            <div class="chapter-num">Chapter 10</div>
-            <h3>🌙 Lunar & Solar Lāms</h3>
-            <div class="arabic-term">Al-Lām Al-Qamariyyah & Al-Lām Al-Shamsiyyah</div>
+            <div class="chapter-num">Chapter 5</div>
+            <h3>🔗 Shaddah & Tanwīn</h3>
+            <div class="arabic-term">Combining emphasis and nunation</div>
         </div>
     </div>
 
@@ -1468,20 +1476,89 @@ background: #0a0a0a;
     <div class="unlock-wrapper">
         <div class="unlock-card">
             <div class="lock-icon">🔓</div>
-            <h3>Mega Unlock — 90%</h3>
-            <p>You can now read 90% of the words in the Holy Quran!</p>
+            <h3>Unlock Achievement</h3>
+            <p>Reading full words with all their different vowels</p>
         </div>
     </div>
 
-    <!-- WEEK 12-13 -->
-    <div class="week-label"><span>📍 Week 12 – 13</span></div>
+    <!-- WEEK 7 -->
+    <div class="week-label"><span>📍 Week 7</span></div>
 
     <div class="item left">
         <div class="dot"></div>
         <div class="card">
+            <div class="chapter-num">Chapter 6</div>
+            <h3>🌬️ Hamzatul Qaṭ' & Waṣl</h3>
+            <div class="arabic-term">Cutting and connecting Hamzah</div>
+        </div>
+    </div>
+
+    <!-- WEEK 8 -->
+    <div class="week-label"><span>📍 Week 8</span></div>
+
+    <div class="item right">
+        <div class="dot"></div>
+        <div class="card">
+            <div class="chapter-num">Chapter 7</div>
+            <h3>〰️ Stretch & Elongation — Al-Madd</h3>
+            <div class="arabic-term">Rules of lengthening vowel sounds</div>
+        </div>
+    </div>
+
+    <!-- WEEK 9 -->
+    <div class="week-label"><span>📍 Week 9</span></div>
+
+    <div class="item left">
+        <div class="dot"></div>
+        <div class="card">
+            <div class="chapter-num">Chapter 8</div>
+            <h3>🔵 Wāw Al-Jamʿ</h3>
+            <div class="arabic-term">The plural Wāw and its reading rules</div>
+        </div>
+    </div>
+
+    <!-- WEEK 10 -->
+    <div class="week-label"><span>📍 Week 10</span></div>
+
+    <div class="item right">
+        <div class="dot"></div>
+        <div class="card">
+            <div class="chapter-num">Chapter 9</div>
+            <h3>🔴 Tied Tā (Tā Marbūṭah)</h3>
+            <div class="arabic-term">Reading the tied Tā in context</div>
+        </div>
+    </div>
+
+    <!-- WEEK 11 -->
+    <div class="week-label"><span>📍 Week 11</span></div>
+
+    <div class="item left">
+        <div class="dot"></div>
+        <div class="card">
+            <div class="chapter-num">Chapter 10</div>
+            <h3>🌙 Lunar & Solar Lāms</h3>
+            <div class="arabic-term">Al-Lām Al-Qamariyyah & Al-Shamsiyyah</div>
+        </div>
+    </div>
+
+    <!-- UNLOCK 4 -->
+    <div class="unlock-wrapper">
+        <div class="unlock-card">
+            <div class="lock-icon">🔓</div>
+            <h3>Unlock Achievement</h3>
+            <p>90% of Quranic words are now within your reading ability!</p>
+        </div>
+    </div>
+
+    <!-- WEEK 12-13 -->
+    <div class="week-label"><span>📍 Weeks 12 – 13</span></div>
+
+    <div class="item right">
+        <div class="dot"></div>
+        <div class="card">
             <div class="chapter-num">Chapter 11 & 12</div>
-            <h3>📖 Qur'anic Practice</h3>
-            <div class="arabic-term">Sentences and verses from the Holy Qur'an</div>
+            <h3>📖 Practice on Qur'anic Sentences</h3>
+            <div class="arabic-term">Real verses — reading fluency & confidence</div>
         </div>
     </div>
 
