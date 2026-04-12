@@ -1008,43 +1008,277 @@
 ══════════════════════════════════════════ -->
 <section id="programmes" class="programmes-section">
   <h2 class="section-title">Our <span>Programmes</span></h2>
-  <p class="section-sub">Click a subject to explore available courses</p>
+  <p class="section-sub">Find Down Below Our Proven Program</p>
 
   <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arabic Reading Program - Roadmap</title>
+    <title>Quran Academy</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* ===== RESET & BASE ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background: #0a0a0a;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #fff;
-            min-height: 100vh;
         }
 
-        .header {
+        /* ===== NAVBAR ===== */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 60px;
+            background: rgba(0,0,0,0.95);
+            border-bottom: 1px solid #222;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #c9a84c;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: #c9a84c; }
+
+        .nav-cta {
+            background: #c9a84c;
+            color: #000 !important;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 600 !important;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            text-align: center;
+            padding: 100px 20px 80px;
+            background: radial-gradient(ellipse at top, #1a1200 0%, #0a0a0a 70%);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(201,168,76,0.15);
+            border: 1px solid #c9a84c;
+            color: #c9a84c;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero h1 span {
+            color: #c9a84c;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #aaa;
+            max-width: 580px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #c9a84c;
+            color: #000;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #e0bf6a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(201,168,76,0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            border: 1px solid #444;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            border-color: #c9a84c;
+            color: #c9a84c;
+        }
+
+        /* ===== STATS ===== */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            padding: 50px 20px;
+            border-top: 1px solid #1a1a1a;
+            border-bottom: 1px solid #1a1a1a;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #c9a84c;
+        }
+
+        .stat-label {
+            font-size: 0.88rem;
+            color: #888;
+            margin-top: 4px;
+        }
+
+        /* ===== PROGRAMS ===== */
+        .programs {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-sub {
+            color: #888;
+            font-size: 1rem;
+            margin-bottom: 50px;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .program-card {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 16px;
+            padding: 36px 28px;
+            text-align: left;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .program-card:hover {
+            border-color: #c9a84c;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(201,168,76,0.1);
+        }
+
+        .program-card.featured {
+            border-color: #c9a84c;
+            background: linear-gradient(135deg, #111 0%, #1a1500 100%);
+        }
+
+        .card-icon {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+        }
+
+        .card-tag {
+            display: inline-block;
+            background: rgba(201,168,76,0.15);
+            color: #c9a84c;
+            font-size: 0.75rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .program-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .program-card p {
+            color: #888;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .card-link {
+            color: #c9a84c;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .card-link:hover { text-decoration: underline; }
+
+        /* ===== ROADMAP SECTION ===== */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+        .roadmap-section {
+            background: #0a0a0a;
+            padding: 0;
+        }
+
+        .roadmap-header {
             text-align: center;
             padding: 60px 20px 40px;
             background: linear-gradient(180deg, #111 0%, transparent 100%);
         }
 
-        .header .stars {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            letter-spacing: 8px;
-        }
-
-        .header h1 {
+        .roadmap-header h1 {
             font-size: 2.5rem;
             font-weight: 800;
             background: linear-gradient(135deg, #f5a623, #f0c27f);
@@ -1054,7 +1288,7 @@
             margin-bottom: 12px;
         }
 
-        .header p {
+        .roadmap-header p {
             font-size: 1.1rem;
             color: #ccc;
             margin-bottom: 20px;
@@ -1078,7 +1312,6 @@
             position: relative;
         }
 
-        /* ======= SHINY CENTRAL LINE ======= */
         .roadmap::before {
             content: '';
             position: absolute;
@@ -1099,31 +1332,17 @@
                 #00e676 100%
             );
             box-shadow:
-                0 0 8px #f5a623,
-                0 0 18px #f5a623,
-                0 0 35px rgba(245, 166, 35, 0.6),
-                0 0 2px #fff;
-            border-radius: 4px;
-            animation: linePulse 3s ease-in-out infinite;
+                0 0 8px rgba(245, 166, 35, 0.8),
+                0 0 20px rgba(245, 166, 35, 0.5),
+                0 0 40px rgba(245, 166, 35, 0.3);
+            animation: lineShine 3s ease-in-out infinite;
         }
 
-        @keyframes linePulse {
-            0%, 100% {
-                box-shadow:
-                    0 0 8px #f5a623,
-                    0 0 18px #f5a623,
-                    0 0 35px rgba(245, 166, 35, 0.6);
-            }
-            50% {
-                box-shadow:
-                    0 0 14px #ffe066,
-                    0 0 30px #f5a623,
-                    0 0 55px rgba(245, 166, 35, 0.9),
-                    0 0 70px rgba(255, 224, 102, 0.4);
-            }
+        @keyframes lineShine {
+            0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(245,166,35,0.8), 0 0 20px rgba(245,166,35,0.5); }
+            50% { opacity: 0.85; box-shadow: 0 0 16px rgba(245,166,35,1), 0 0 40px rgba(245,166,35,0.7), 0 0 60px rgba(245,166,35,0.3); }
         }
 
-        /* ======= WEEK LABELS ======= */
         .week-label {
             text-align: center;
             margin: 30px 0 10px;
@@ -1133,22 +1352,20 @@
 
         .week-label span {
             background: #1a1a1a;
-            border: 2px solid #f5a623;
+            border: 1px solid #f5a623;
             color: #f5a623;
-            padding: 6px 20px;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            padding: 5px 18px;
+            border-radius: 50px;
+            font-size: 0.82rem;
             font-weight: 600;
-            box-shadow: 0 0 10px rgba(245, 166, 35, 0.3);
+            letter-spacing: 0.5px;
         }
 
-        /* ======= CARDS ======= */
         .item {
             display: flex;
             align-items: center;
             margin: 20px 0;
             position: relative;
-            z-index: 2;
         }
 
         .item.left {
@@ -1161,147 +1378,159 @@
             text-align: left;
         }
 
+        .dot {
+            width: 16px;
+            height: 16px;
+            background: #f5a623;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            box-shadow: 0 0 10px rgba(245,166,35,0.8);
+        }
+
         .card {
-            background: linear-gradient(135deg, #1a1a1a, #222);
-            border: 1px solid #333;
-            border-radius: 16px;
-            padding: 20px 24px;
-            width: calc(50% - 50px);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
+            background: #111;
+            border: 1px solid #2a2a2a;
+            border-radius: 14px;
+            padding: 18px 22px;
+            width: 42%;
+            transition: all 0.3s;
         }
 
-        .item.left .card {
-            margin-right: 50px;
-        }
-
-        .item.right .card {
-            margin-left: 50px;
-        }
+        .item.left .card { margin-right: 58%; }
+        .item.right .card { margin-left: 58%; }
 
         .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(245, 166, 35, 0.2);
             border-color: #f5a623;
+            transform: scale(1.03);
+            box-shadow: 0 8px 30px rgba(245,166,35,0.15);
         }
 
         .chapter-num {
             font-size: 0.75rem;
             color: #f5a623;
             font-weight: 600;
+            margin-bottom: 4px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 6px;
+            letter-spacing: 0.5px;
         }
 
         .card h3 {
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 700;
             color: #fff;
             margin-bottom: 6px;
         }
 
         .arabic-term {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: #aaa;
+            line-height: 1.4;
         }
 
-        /* ======= DOTS ======= */
-        .dot {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 18px;
-            height: 18px;
-            background: #f5a623;
-            border-radius: 50%;
-            border: 3px solid #0a0a0a;
-            box-shadow: 0 0 10px #f5a623, 0 0 20px rgba(245,166,35,0.5);
-            z-index: 3;
-        }
-
-        /* ======= UNLOCK CARDS ======= */
+        /* ===== UNLOCK CARDS ===== */
         .unlock-wrapper {
             display: flex;
             justify-content: center;
-            margin: 25px 0;
+            margin: 30px 0;
             position: relative;
             z-index: 2;
         }
 
         .unlock-card {
-    background: linear-gradient(135deg, #1a1a2e, #16213e);
-    border: 2px solid #f5a623;
-    border-radius: 16px;
-    padding: 18px 30px;
-    text-align: center;
-    max-width: 420px;
-    width: 100%;
-    box-shadow:
-        0 0 15px rgba(245, 166, 35, 0.3),
-        0 0 30px rgba(245, 166, 35, 0.1);
-    position: relative;
-}
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border: 2px solid #f5a623;
+            border-radius: 16px;
+            padding: 18px 30px;
+            text-align: center;
+            max-width: 420px;
+            width: 100%;
+            box-shadow:
+                0 0 15px rgba(245, 166, 35, 0.3),
+                0 0 30px rgba(245, 166, 35, 0.1);
+            position: relative;
+        }
 
-.unlock-card::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    border-radius: 18px;
-    background: linear-gradient(135deg, #f5a623, #ffe066, #f5a623);
-    z-index: -1;
-    opacity: 0.3;
-    animation: unlockGlow 2.5s ease-in-out infinite;
-}
+        .unlock-card::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #f5a623, #ffe066, #f5a623);
+            z-index: -1;
+            opacity: 0.3;
+            animation: unlockGlow 2.5s ease-in-out infinite;
+        }
 
-.unlock-card h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #f5a623;
-    margin-bottom: 6px;
-    text-shadow: 0 0 10px rgba(245, 166, 35, 0.5);
-}
+        @keyframes unlockGlow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
 
-.unlock-card p {
-    font-size: 0.88rem;
-    color: #ffffff;
-    line-height: 1.5;
-}
+        .unlock-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #f5a623;
+            margin-bottom: 6px;
+            text-shadow: 0 0 10px rgba(245, 166, 35, 0.5);
+        }
 
+        .unlock-card p {
+            font-size: 0.88rem;
+            color: #ffffff;
+            line-height: 1.5;
+        }
 
-        /* ======= FINAL UNLOCK ======= */
+        .lock-icon {
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+        }
+
+        /* ===== FINAL UNLOCK ===== */
         .final-unlock {
             display: flex;
             justify-content: center;
-            margin-top: 50px;
+            margin: 40px 0 0;
             position: relative;
             z-index: 2;
         }
 
         .final-card {
-            background: linear-gradient(135deg, #003320, #004d2e, #005c35);
-            border: 3px solid #00ff88;
-            border-radius: 24px;
-            padding: 40px 50px;
+            background: linear-gradient(135deg, #001a0e, #003d1f);
+            border: 2px solid #00e676;
+            border-radius: 20px;
+            padding: 36px 50px;
             text-align: center;
-            max-width: 500px;
+            max-width: 480px;
             width: 100%;
-            box-shadow:
-                0 0 20px #00ff88,
-                0 0 45px rgba(0, 255, 136, 0.5),
-                0 0 80px rgba(0, 255, 136, 0.25),
-                inset 0 0 30px rgba(0, 255, 136, 0.08);
-            animation: finalPulse 2.5s ease-in-out infinite;
             position: relative;
             overflow: hidden;
+            animation: finalPulse 2.5s ease-in-out infinite;
+        }
+
+        @keyframes finalPulse {
+            0%, 100% {
+                box-shadow:
+                    0 0 20px rgba(0,230,118,0.5),
+                    0 0 50px rgba(0,230,118,0.3),
+                    0 0 80px rgba(0,230,118,0.15);
+            }
+            50% {
+                box-shadow:
+                    0 0 40px rgba(0,230,118,0.8),
+                    0 0 80px rgba(0,230,118,0.5),
+                    0 0 120px rgba(0,230,118,0.25);
+            }
         }
 
         .final-card::before {
             content: '';
             position: absolute;
             inset: -3px;
-            border-radius: 26px;
-            background: linear-gradient(135deg, #00ff88, #69ffb8, #00e676, #00ff88);
+            border-radius: 22px;
+            background: linear-gradient(135deg, #00e676, #00ff88, #00c853, #00e676);
             background-size: 300% 300%;
             z-index: -1;
             animation: borderRotate 3s linear infinite;
@@ -1313,958 +1542,492 @@
             100% { background-position: 0% 50%; }
         }
 
-        @keyframes finalPulse {
-            0%, 100% {
-                box-shadow:
-                    0 0 20px #00ff88,
-                    0 0 45px rgba(0, 255, 136, 0.5),
-                    0 0 80px rgba(0, 255, 136, 0.25);
-            }
-            50% {
-                box-shadow:
-                    0 0 35px #00ff88,
-                    0 0 70px rgba(0, 255, 136, 0.7),
-                    0 0 120px rgba(0, 255, 136, 0.4);
-            }
-        }
-
         .final-card .icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
+            font-size: 2.5rem;
+            margin-bottom: 12px;
         }
 
         .final-card h2 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 800;
-            color: #00ff88;
-            text-shadow: 0 0 20px #00ff88, 0 0 40px rgba(0,255,136,0.5);
-            margin-bottom: 12px;
+            color: #00e676;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0,230,118,0.7);
         }
 
         .final-card p {
             font-size: 1rem;
-            color: #a0ffcc;
+            color: #a0ffd0;
             line-height: 1.6;
         }
 
-        /* ======= RESPONSIVE ======= */
-        @media (max-width: 650px) {
-            .roadmap::before {
-                left: 20px;
-            }
+        /* ===== HOW IT WORKS ===== */
+        .how-it-works {
+            padding: 80px 20px;
+            text-align: center;
+            background: #080808;
+        }
 
-            .item.left,
-            .item.right {
-                flex-direction: column;
-                text-align: left;
-                padding-left: 50px;
-            }
+        .steps {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
 
-            .item.left .card,
-            .item.right .card {
-                width: 100%;
-                margin: 0;
-            }
+        .step {
+            flex: 1;
+            min-width: 200px;
+            max-width: 220px;
+        }
 
-            .dot {
-                left: 20px;
-            }
+        .step-num {
+            width: 50px;
+            height: 50px;
+            background: rgba(201,168,76,0.1);
+            border: 2px solid #c9a84c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #c9a84c;
+            margin: 0 auto 16px;
+        }
 
-            .header h1 {
-                font-size: 1.8rem;
-            }
+        .step h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            color: #777;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 14px;
+            padding: 28px;
+            text-align: left;
+        }
+
+        .stars-rating {
+            color: #c9a84c;
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+
+        .testimonial-card p {
+            color: #bbb;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .reviewer {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #fff;
+        }
+
+        .reviewer span {
+            color: #666;
+            font-weight: 400;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            padding: 100px 20px;
+            text-align: center;
+            background: radial-gradient(ellipse at center, #1a1200 0%, #0a0a0a 70%);
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .cta-section h2 span { color: #c9a84c; }
+
+        .cta-section p {
+            color: #888;
+            font-size: 1.05rem;
+            max-width: 500px;
+            margin: 0 auto 36px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #25D366;
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            background: #1ebe5d;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37,211,102,0.4);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #050505;
+            border-top: 1px solid #1a1a1a;
+            padding: 30px 20px;
+            text-align: center;
+            color: #555;
+            font-size: 0.85rem;
+        }
+
+        footer span { color: #c9a84c; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .navbar { padding: 16px 20px; }
+            .nav-links { display: none; }
+            .stats { gap: 30px; }
+            .roadmap::before { left: 20px; }
+            .item.left, .item.right { flex-direction: row; text-align: left; }
+            .item .card { width: 80%; margin-left: 50px !important; margin-right: 0 !important; }
+            .dot { left: 20px; }
+            .roadmap-header h1 { font-size: 1.8rem; }
+            .cta-section h2 { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
-<div class="header">
-    <div class="stars">⭐ ⭐ ⭐</div>
-    <h1>🕌 Your Arabic Reading Journey</h1>
-    <p>Step by step — from the first letter to reading the Quran</p>
-    <div class="duration-badge">📅 13-Week Program</div>
-</div>
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">🕌 Nour Al-Bayan</div>
+    <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Programs</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#" class="nav-cta">Book Free Trial</a></li>
+    </ul>
+</nav>
 
-<div class="roadmap">
-
-    <!-- WEEK 1 -->
-    <div class="week-label"><span>📍 Week 1</span></div>
-
-    <div class="item right">
-        <div class="dot"></div>
-        <div class="card">
-            <div class="chapter-num">Chapter 1</div>
-            <h3>🔤 The Arabic Letters</h3>
-            <div class="arabic-term">Learning the alphabet — recognition & shapes</div>
-        </div>
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-badge">🌙 Online Quran Academy</div>
+    <h1>Learn to Read the <span>Quran</span><br>From Zero — Step by Step</h1>
+    <p>Structured, beginner-friendly online program. Learn Arabic letters to reading full Quranic verses in just 13 weeks.</p>
+    <div class="hero-buttons">
+        <a href="https://calendly.com/" class="btn-primary">📅 Book your First Free Trial</a>
+        <a href="https://wa.me/yourNumber" class="btn-secondary">💬 Speak to a Teacher</a>
     </div>
-
-    <!-- WEEK 2 -->
-    <div class="week-label"><span>📍 Week 2</span></div>
-
-    <div class="item left">
-        <div class="dot"></div>
-        <div class="card">
-            <div class="chapter-num">Chapter 2</div>
-            <h3>✍️ Forms of the Letters</h3>
-            <div class="arabic-term">Beginning, middle, end & isolated forms</div>
-        </div>
-    </div>
-
-    <!-- UNLOCK 1 -->
-    <div class="unlock-wrapper">
-        <div class="unlock-card">
-            <div class="lock-icon">🔓</div>
-            <h3>Unlock Achievement</h3>
-            <p>You can now recognize & write all Arabic letters in all their forms</p>
-        </div>
-    </div>
-
-    <!-- WEEK 3-4 -->
-    <div class="week-label"><span>📍 Weeks 3 – 4</span></div>
-
-    <div class="item right">
-        <div class="dot"></div>
-        <div class="card">
-            <div class="chapter-num">Chapter 3</div>
-            <h3>🔊 Short Vowels (Ḥarakāt)</h3>
-            <div class="arabic-term">Fatḥah · Kasrah · Ḍammah</div>
-        </div>
-    </div>
-
-    <div class="item left">
-        <div class="dot"></div>
-        <div class="card">
-            <div class="chapter-num">Chapter 4</div>
-            <h3>⭕ Sukūn & Joining Letters</h3>
-            <div class="arabic-term">Resting letters and connecting rules</div>
-        </div>
-    </div>
-
-    <!-- UNLOCK 2 -->
-    <div class="unlock-wrapper">
-        <div class="unlock-card">
-            <div class="lock-icon">🔓</div>
-            <h3>Unlock Achievement</h3>
-            <p>You can now read basic syllables and connect Arabic letters</p>
-        </div>
-    </div>
-
-    <!-- WEEK 5-6 -->
-    <div class="week-label"><span>📍 Weeks 5 – 6</span></div>
-
-    <div class="item right">
-        <div class="dot"></div>
-        <div class="card">
-            <div class="chapter-num">Chapter 5</div>
-            <h3>🔗 Shaddah & Tanwīn</h3>
-            <div class="arabic-term">Combining emphasis and nunation</div>
-        </div>
-    </div>
-
-    <!-- UNLOCK 3 -->
-    <div class="unlock-wrapper">
-        <div class="unlock-card">
-            <div class="lock-icon">🔓</div>
-            <h3>Unlock Achievement</h3>
-            <p>Reading full words with all their different vowels</p>
-        </div>
-    </div>
-
-    <!-- WEEK 7 -->
-    <div class="week-label"><span>📍 Week 7</span></div>
-
-    <div class="item left">
-        <div class="dot"></div>
-        <div class="card">
-            <div class="chapter-num">Chapter 6</div>
-            <h3>🌬️ Hamzatul Qaṭ' & Waṣl</h3>
-            <div class="arabic-term">Cutting and connecting Hamzah</div>
-        </div>
-    </div>
-
-    <!-- WEEK 8 -->
-    <div class="week-label"><span>📍 Week 8</span></div>
-
-    <div class="item right">
-        <div class="dot"></div>
-        <div class="card">
-            <div class="chapter-num">Chapter 7</div>
-            <h3>〰️ Stretch & Elongation — Al-Madd</h3>
-            <div class="arabic-term">Rules of lengthening vowel sounds</div>
-        </div>
-    </div>
-
-    <!-- WEEK 9 -->
-    <div class="week-label"><span>📍 Week 9</span></div>
-
-    <div class="item left">
-        <div class="dot"></div>
-        <div class="card">
-            <div class="chapter-num">Chapter 8</div>
-            <h3>🔵 Wāw Al-Jamʿ</h3>
-            <div class="arabic-term">The plural Wāw and its reading rules</div>
-        </div>
-    </div>
-
-    <!-- WEEK 10 -->
-    <div class="week-label"><span>📍 Week 10</span></div>
-
-    <div class="item right">
-        <div class="dot"></div>
-        <div class="card">
-            <div class="chapter-num">Chapter 9</div>
-            <h3>🔴 Tied Tā (Tā Marbūṭah)</h3>
-            <div class="arabic-term">Reading the tied Tā in context</div>
-        </div>
-    </div>
-
-    <!-- WEEK 11 -->
-    <div class="week-label"><span>📍 Week 11</span></div>
-
-    <div class="item left">
-        <div class="dot"></div>
-        <div class="card">
-            <div class="chapter-num">Chapter 10</div>
-            <h3>🌙 Lunar & Solar Lāms</h3>
-            <div class="arabic-term">Al-Lām Al-Qamariyyah & Al-Shamsiyyah</div>
-        </div>
-    </div>
-
-    <!-- UNLOCK 4 -->
-    <div class="unlock-wrapper">
-        <div class="unlock-card">
-            <div class="lock-icon">🔓</div>
-            <h3>Unlock Achievement</h3>
-            <p>90% of Quranic words are now within your reading ability!</p>
-        </div>
-    </div>
-
-    <!-- WEEK 12-13 -->
-    <div class="week-label"><span>📍 Weeks 12 – 13</span></div>
-
-    <div class="item right">
-        <div class="dot"></div>
-        <div class="card">
-            <div class="chapter-num">Chapter 11 & 12</div>
-            <h3>📖 Practice on Qur'anic Sentences</h3>
-            <div class="arabic-term">Real verses — reading fluency & confidence</div>
-        </div>
-    </div>
-
-    <!-- FINAL UNLOCK -->
-    <div class="final-unlock">
-        <div class="final-card">
-            <div class="icon">🕌✨</div>
-            <h2>🎉 Final Unlock!</h2>
-            <p>You are now ready to read the Holy Quran!</p>
-        </div>
-    </div>
-
-</div>
-
-</body>
-</html>
-
-
-  <!-- IJAZAH -->
-  <div class="subject-category">
-    <button class="category-toggle" id="toggle-ijazah" onclick="toggleCategory('ijazah')">
-      <span>📜 Ijazah</span>
-      <span class="arrow">▼</span>
-    </button>
-    <div class="category-content" id="ijazah">
-      <div class="course-cards">
-
-        <div class="course-card" onclick="openCourseModal('hafs')">
-          <h3>Hafs 'an 'Assim</h3>
-          <p>From Ash-Shatibiyah</p>
-          <button class="view-btn">View Details</button>
-        </div>
-
-      </div>
-
-      <!-- IJAZAH ENROLMENT FORM -->
-      <div class="enrolment-form-container" style="margin-top: 2rem;">
-        <h3 class="section-title" style="margin-bottom: 1rem;">📝 Apply for Ijazah Programme</h3>
-        <form action="https://formspree.io/f/mpqoeoby" method="POST">
-
-          <div class="form-group">
-            <label>First Name *</label>
-            <input type="text" name="first_name" required placeholder="Your first name">
-          </div>
-
-          <div class="form-group">
-            <label>Last Name *</label>
-            <input type="text" name="last_name" required placeholder="Your last name">
-          </div>
-
-          <div class="form-group">
-            <label>Email Address *</label>
-            <input type="email" name="email" required placeholder="your@email.com">
-          </div>
-
-          <div class="form-group">
-            <label>WhatsApp Number *</label>
-            <input type="tel" name="whatsapp" required placeholder="+44 7700 000000">
-          </div>
-
-          <div class="form-group">
-            <label>Your Memorisation Status *</label>
-            <select name="memorisation_status" required>
-              <option value="">-- Select --</option>
-              <option value="I am a Hafidh">I am a Hafidh</option>
-              <option value="I am a Hafidh but need to solidify">I am a Hafidh but need to solidify</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>Preferred Day & Time <span style="font-weight: 400; font-size: 0.85rem;"></span></label>
-            <input type="text" name="preferred_day_time" placeholder="e.g. Saturday morning or weekday evenings">
-          </div>
-
-          <div class="form-group">
-            <label>Additional Notes</label>
-            <textarea name="additional_notes" rows="4" placeholder="Anything else you'd like us to know..."></textarea>
-          </div>
-
-          <button type="submit" class="submit-btn">Submit Application</button>
-        </form>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ARABIC -->
-  <div class="subject-category">
-    <button class="category-toggle" id="toggle-arabic" onclick="toggleCategory('arabic')">
-      <span>📖 Arabic</span>
-      <span class="arrow">▼</span>
-    </button>
-    <div class="category-content" id="arabic">
-      <div class="course-cards">
-
-        <div class="course-card" onclick="openCourseModal('arabic1a')">
-          <h3>Al-Arabiya B. Yadayk 1A</h3>
-          <p>Beginner Arabic — Book 1A</p>
-          <button class="view-btn">View Details</button>
-        </div>
-
-        <div class="course-card" onclick="openCourseModal('arabic1b')">
-          <h3>Al-Arabiya B. Yadayk 1B</h3>
-          <p>Beginner Arabic — Book 1B</p>
-          <button class="view-btn">View Details</button>
-        </div>
-
-        <div class="course-card" onclick="openCourseModal('arabic2a')">
-          <h3>Al-Arabiya B. Yadayk 2A</h3>
-          <p>Intermediate Arabic — Book 2A</p>
-          <button class="view-btn">View Details</button>
-        </div>
-
-        <div class="course-card" onclick="openCourseModal('arabic2b')">
-          <h3>Al-Arabiya B. Yadayk 2B</h3>
-          <p>Intermediate Arabic — Book 2B</p>
-          <button class="view-btn">View Details</button>
-        </div>
-
-        <div class="course-card" onclick="openCourseModal('ajarummiyah')">
-          <h3>Al-Ajarummiyah</h3>
-          <p>Classical Arabic Grammar</p>
-          <button class="view-btn">View Details</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- ISLAMIC STUDIES -->
-  <div class="subject-category">
-    <button class="category-toggle" id="toggle-islamic" onclick="toggleCategory('islamic')">
-      <span>🕌 Islamic Studies</span>
-      <span class="arrow">▼</span>
-    </button>
-    <div class="category-content" id="islamic">
-      <div class="course-cards">
-
-        <div class="course-card" onclick="openCourseModal('tajweed')">
-          <h3>Tajweed</h3>
-          <p>Rules of Quranic Recitation</p>
-          <button class="view-btn">View Details</button>
-        </div>
-
-        <div class="course-card" onclick="openCourseModal('qiraat')">
-          <h3>Qiraa't</h3>
-          <p>Different Qira'at of the Quran</p>
-          <button class="view-btn">View Details</button>
-        </div>
-
-        <div class="course-card" onclick="openCourseModal('aqidah')">
-          <h3>Creed (Aqidah)</h3>
-          <p>Islamic Beliefs & Theology</p>
-          <button class="view-btn">View Details</button>
-        </div>
-
-        <div class="course-card" onclick="openCourseModal('tazkiyah')">
-          <h3>Purification of the Soul</h3>
-          <p>Tazkiyah & Spiritual Development</p>
-          <button class="view-btn">View Details</button>
-        </div>
-
-        <div class="course-card" onclick="openCourseModal('uloomquran')">
-          <h3>Sciences of the Qur'an</h3>
-          <p>Uloom al-Quran</p>
-          <button class="view-btn">View Details</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
 </section>
 
-
-<!-- ══════════════════════════════════════════
-     COURSE MODALS OVERLAY
-══════════════════════════════════════════ -->
-<div class="course-modal-overlay" id="courseModalOverlay" onclick="closeCourseModal(event)">
-  <div class="course-modal-box" id="courseModalBox">
-    <button class="course-modal-close" onclick="closeCourseModalBtn()">✕</button>
-    <h2 id="cmodal-title"></h2>
-    <div class="course-subtitle" id="cmodal-subtitle"></div>
-    <div class="course-details">
-      <div class="course-detail-row">
-        <span class="detail-icon">📅</span>
-        <span class="detail-label">Starting Date</span>
-        <span class="detail-value" id="cmodal-date">currently on</span>
-      </div>
-      <div class="course-detail-row">
-        <span class="detail-icon">🎓</span>
-        <span class="detail-label">Level Required</span>
-        <span class="detail-value" id="cmodal-level">TBC</span>
-      </div>
-      <div class="course-detail-row">
-        <span class="detail-icon">⏰</span>
-        <span class="detail-label">Time</span>
-        <span class="detail-value" id="cmodal-time">TBC</span>
-      </div>
-      <div class="course-detail-row">
-        <span class="detail-icon">💷</span>
-        <span class="detail-label">Price</span>
-        <span class="detail-value" id="cmodal-price">TBC</span>
-      </div>
-      <div class="course-detail-row">
-        <span class="detail-icon">👨‍🏫</span>
-        <span class="detail-label">Teacher</span>
-        <span class="detail-value" id="cmodal-teacher">TBC</span>
-      </div>
+<!-- STATS -->
+<section class="stats">
+    <div class="stat-item">
+        <div class="stat-number">500+</div>
+        <div class="stat-label">Students Enrolled</div>
     </div>
-    <button class="course-enrol-btn" onclick="closeCourseModalBtn(); openModal('')">🎓 Enrol Now</button>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════
-     PRICING
-══════════════════════════════════════════ -->
-<section id="pricing">
-  <h2 class="section-title">Simple, <span>Transparent Pricing</span></h2>
-  <p class="section-sub">No hidden fees. Cancel anytime.</p>
-  <div class="plans-grid">
-
-    <div class="plan-card">
-      <h3>Affordable</h3>
-      <div class="plan-price">£32<span>/month</span></div>
-      <div class="plan-detail">30 min × 1 session/week</div>
-      <div class="plan-note">Perfect for beginners</div>
-      <button class="plan-btn" onclick="openModal('Affordable — 30min × 1/week — £32/month')">Choose Plan</button>
+    <div class="stat-item">
+        <div class="stat-number">13</div>
+        <div class="stat-label">Week Program</div>
     </div>
-
-    <div class="plan-card popular">
-      <div class="popular-badge">⭐ Most Popular</div>
-      <h3>Standard</h3>
-      <div class="plan-price">£43<span>/month</span></div>
-      <div class="plan-detail">40 min × 1 session/week</div>
-      <div class="plan-note">Our most chosen plan</div>
-      <button class="plan-btn" onclick="openModal('Standard — 40min × 1/week — £43/month')">Choose Plan</button>
+    <div class="stat-item">
+        <div class="stat-number">4.9★</div>
+        <div class="stat-label">Average Rating</div>
     </div>
-
-    <div class="plan-card">
-      <h3>Intensive</h3>
-      <div class="plan-price">£85<span>/month</span></div>
-      <div class="plan-detail">40 min × 2 sessions/week</div>
-      <div class="plan-note">For serious progress</div>
-      <button class="plan-btn" onclick="openModal('Intensive — 40min × 2/week — £85/month')">Choose Plan</button>
+    <div class="stat-item">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Online & Flexible</div>
     </div>
-
-    <div class="plan-card center-bottom">
-      <h3>Family Bundle</h3>
-      <div class="plan-price">£29<span>/month</span></div>
-      <div class="plan-detail">40 min × 1 session/week</div>
-      <div class="plan-note">price per student</div>
-      <button class="plan-btn" onclick="openModal('Family Bundle — 40min × 1/week — £29/month per student')">Choose Plan</button>
-    </div>
-
-  </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     NOT SURE BANNER
-══════════════════════════════════════════ -->
-<div class="not-sure-banner">
-  <h3>🤔 Still Not Sure Which Plan Is Right For You?</h3>
-  <p>Book a free 30-minute call with us — no pressure, no commitment. We will help you find the perfect fit for your goals and schedule.</p>
-  <div class="not-sure-buttons">
-    <a href="https://calendly.com/contact-avk/free-call" target="_blank" class="calendly-btn">📅 Book a Free Call</a>
-    <a href="https://wa.me/447784950327?text=Assalamu%20Alaykum!%20I%20would%20like%20to%20know%20more%20about%20MyMadrassa%20plans." target="_blank" class="whatsapp-btn-inline">💬 Chat on WhatsApp</a>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════
-     TESTIMONIALS
-══════════════════════════════════════════ -->
-<section id="testimonials">
-  <h2 class="section-title">What Our Students Say</h2>
-  <p class="section-sub">Real reviews from real Students</p>
-
-  <div class="testimonials-grid">
-    <div class="testimonial-card">
-      <div class="stars">★★★★★</div>
-      <p>"Allahuma Barik!!! My kids did not know how to read any of the Quran but mashallah by the will of Allah and with the support of Shaykh Yasin Abo Iyad they can now recite it much better than before. His teaching methods are outstanding, may Allah reward him and the Madrassa."</p>
-      <div class="testimonial-author">— Asma M., Leicester</div>
+<!-- PROGRAMS -->
+<section class="programs">
+    <h2 class="section-title">Choose Your Program</h2>
+    <p class="section-sub">Start your journey today with the right course for you</p>
+    <div class="programs-grid">
+        <div class="program-card featured">
+            <div class="card-icon">📖</div>
+            <div class="card-tag">⭐ Most Popular</div>
+            <h3>Quran Reading</h3>
+            <p>From Arabic letters to reading full Quranic verses. Perfect for complete beginners of all ages.</p>
+            <a href="#" class="card-link">Learn More →</a>
+        </div>
+        <div class="program-card">
+            <div class="card-icon">🎧</div>
+            <div class="card-tag">Beginner Friendly</div>
+            <h3>Tajweed</h3>
+            <p>Master the rules of Quranic recitation — beautify your reading with proper pronunciation.</p>
+            <a href="#" class="card-link">Learn More →</a>
+        </div>
+        <div class="program-card">
+            <div class="card-icon">📿</div>
+            <div class="card-tag">All Ages</div>
+            <h3>Quran Memorisation</h3>
+            <p>Structured Hifz program with personalised support to help you memorise at your own pace.</p>
+            <a href="#" class="card-link">Learn More →</a>
+        </div>
     </div>
-    <div class="testimonial-card">
-      <div class="stars">★★★★★</div>
-      <p>"I enrolled my 5 year old in mid Jan. He was familiar with the arabic alphabet and some of the vowels. In less than 6 months, he has now almost completed the basics of reading arabic. All at my sons pace. Ustadh Yacin has been brilliant. An inspiration to my son in many ways!"</p>
-      <div class="testimonial-author">— Farha O., Leicester</div>
-    </div>
-    <div class="testimonial-card">
-      <div class="stars">★★★★★</div>
-      <p>"I've been a student of this Institute for almost a year now and it's been one of the best decisions of my life. I went from not knowing the Arabic alphabet to effortlessly reading surahs with tajweed. I would recommend this to anyone looking to learn to read Quran."</p>
-      <div class="testimonial-author">— Ammar M., Atlanta USA</div>
-    </div>
-  </div>
-
-  <div class="video-testimonials-grid" style="margin-top:40px;">
-
-    <!-- VIDEO TESTIMONIALS -->
-<!-- ROW 1 -->
-<div style="display:flex;flex-direction:row;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;">
-
-  <div style="flex:0 0 200px;border-radius:14px;overflow:hidden;border:1px solid #c9a84c55;background:#111;">
-    <div style="position:relative;padding-bottom:177%;height:0;">
-      <iframe src="https://www.youtube.com/embed/9VyMSVRhywE"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allowfullscreen></iframe>
-    </div>
-    <div style="padding:10px 14px;">
-      <div style="color:#c9a84c;font-weight:700;">Yahya B.</div>
-      <div style="color:#aaa;font-size:13px;">🇬🇧 UK — Revert</div>
-    </div>
-  </div>
-
-  <div style="flex:0 0 200px;border-radius:14px;overflow:hidden;border:1px solid #c9a84c55;background:#111;">
-    <div style="position:relative;padding-bottom:177%;height:0;">
-      <iframe src="https://www.youtube.com/embed/av5_HIDsJC4"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allowfullscreen></iframe>
-    </div>
-    <div style="padding:10px 14px;">
-      <div style="color:#c9a84c;font-weight:700;">Hasnain K.</div>
-      <div style="color:#aaa;font-size:13px;">🇦🇪 UAE — Entrepreneur</div>
-    </div>
-  </div>
-
-  <div style="flex:0 0 200px;border-radius:14px;overflow:hidden;border:1px solid #c9a84c55;background:#111;">
-    <div style="position:relative;padding-bottom:177%;height:0;">
-      <iframe src="https://www.youtube.com/embed/tMAkjUssTuU"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allowfullscreen></iframe>
-    </div>
-    <div style="padding:10px 14px;">
-      <div style="color:#c9a84c;font-weight:700;">Kalim G.</div>
-      <div style="color:#aaa;font-size:13px;">🇲🇦 Morocco — Teenager</div>
-    </div>
-  </div>
-
-</div>
-
-<!-- ROW 2 -->
-<div style="display:flex;flex-direction:row;gap:16px;justify-content:center;flex-wrap:wrap;">
-
-  <div style="flex:0 0 200px;border-radius:14px;overflow:hidden;border:1px solid #c9a84c55;background:#111;">
-    <div style="position:relative;padding-bottom:177%;height:0;">
-      <iframe src="https://www.youtube.com/embed/7iwir9LhI9Y"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allowfullscreen></iframe>
-    </div>
-    <div style="padding:10px 14px;">
-      <div style="color:#c9a84c;font-weight:700;">Wali K.</div>
-      <div style="color:#aaa;font-size:13px;">🇨🇦 Canada — Pharmacist</div>
-    </div>
-  </div>
-
-  <div style="flex:0 0 200px;border-radius:14px;overflow:hidden;border:1px solid #c9a84c55;background:#111;">
-    <div style="position:relative;padding-bottom:177%;height:0;">
-      <iframe src="https://www.youtube.com/embed/f8hrLlbwUfw"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allowfullscreen></iframe>
-    </div>
-    <div style="padding:10px 14px;">
-      <div style="color:#c9a84c;font-weight:700;">Redwan A.</div>
-      <div style="color:#aaa;font-size:13px;">🇳🇱 Netherlands — University Student</div>
-    </div>
-  </div>
-
-  <div style="flex:0 0 200px;border-radius:14px;overflow:hidden;border:1px solid #c9a84c55;background:#111;">
-    <div style="position:relative;padding-bottom:177%;height:0;">
-      <iframe src="https://www.youtube.com/embed/ZYYb6Q41rVU"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allowfullscreen></iframe>
-    </div>
-    <div style="padding:10px 14px;">
-      <div style="color:#c9a84c;font-weight:700;">Elisa M.</div>
-      <div style="color:#aaa;font-size:13px;">🇫🇷 France — School Teacher</div>
-    </div>
-  </div>
-
-</div>
-
-
-<!-- ══════════════════════════════════════════
-     FAQ
-══════════════════════════════════════════ -->
-<section id="faq">
-  <h2 class="section-title">Frequently Asked Questions</h2>
-  <p class="section-sub">Everything you need to know before enrolling</p>
-
-  <div class="faq-item">
-    <div class="faq-question" onclick="toggleFaq(this)">
-      Do I need any experience to start? <span class="faq-arrow">▼</span>
-    </div>
-    <div class="faq-answer">No experience is needed at all. We welcome complete beginners of all ages. Your tutor will assess your level in the first session and build a plan just for you.</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-question" onclick="toggleFaq(this)">
-      How do the online sessions work? <span class="faq-arrow">▼</span>
-    </div>
-    <div class="faq-answer">Sessions are held live via Zoom or Google Meet. You will receive a link before each class. All you need is a device with a camera and microphone.</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-question" onclick="toggleFaq(this)">
-      Can I choose my session times? <span class="faq-arrow">▼</span>
-    </div>
-    <div class="faq-answer">Yes! When you enrol, you let us know your preferred days and times and we will match you with a tutor who fits your schedule.</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-question" onclick="toggleFaq(this)">
-      Is there a trial or free session? <span class="faq-arrow">▼</span>
-    </div>
-    <div class="faq-answer">You can book a free 30-minute consultation call to meet us and ask any questions before committing to a plan.</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-question" onclick="toggleFaq(this)">
-      What age groups do you teach? <span class="faq-arrow">▼</span>
-    </div>
-    <div class="faq-answer">We teach all ages — from young children (age 4+) to adults and reverts. Each lesson is fully personalised to the student.</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-question" onclick="toggleFaq(this)">
-      How do I pay? <span class="faq-arrow">▼</span>
-    </div>
-    <div class="faq-answer">After your enrolment request is confirmed, we will send you a payment link. We accept bank transfer, card, and other methods.</div>
-  </div>
-
 </section>
 
-<!-- ══════════════════════════════════════════
-     ENROL MODAL
-══════════════════════════════════════════ -->
-<div class="modal-overlay" id="enrolModal">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-
-    <div id="formContent">
-      <div class="modal-title">📚 Enrol Now</div>
-      <div class="modal-subtitle">Fill in your details and we will be in touch within 24 hours</div>
-
-      <div class="selected-plan-badge" id="selectedPlanBadge" style="display:none;"></div>
-
-      <form onsubmit="handleSubmit(event)">
-        <input type="hidden" name="Plan" id="hiddenPlan" value="Not specified" />
-
-        <div class="form-row">
-          <div class="form-group">
-            <label>First Name *</label>
-            <input type="text" name="First Name" required placeholder="Your first name" />
-          </div>
-          <div class="form-group">
-            <label>Last Name *</label>
-            <input type="text" name="Last Name" required placeholder="Your last name" />
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Email Address *</label>
-          <input type="email" name="Email" required placeholder="your@email.com" />
-        </div>
-
-        <div class="form-group">
-          <label>WhatsApp Number *</label>
-          <input type="tel" name="WhatsApp" required placeholder="+44 7700 000000" />
-        </div>
-
-       <div class="form-group">
-          <label>Preferred Day &amp; Time <small style="color:#c9a84c; font-weight:normal;">(we try to accommodate based on the group)</small></label>
-         <select name="plan" required>
-  <option value="" disabled selected>-- Select a Plan --</option>
-  <option value="affordable">Affordable — £32/month (30min × 1/week)</option>
-  <option value="standard">Standard — £43/month (40min × 1/week)</option>
-  <option value="intensive">Intensive — £85/month (40min × 2/week)</option>
-  <option value="family">Family Bundle — £29/month per student (40min × 1/week)</option>
-</select>
-          <input type="text" name="Preferred Time" placeholder="e.g. Saturday morning or weekday evenings" />
-        </div>
-
-        <div class="form-group">
-          <label>Additional Notes</label>
-          <textarea name="Notes" placeholder="Anything else you'd like us to know..."></textarea>
-        </div>
-
-        <button type="submit" class="submit-btn">✉️ Send Enrolment Request</button>
-      </form>
+<!-- ROADMAP -->
+<section class="roadmap-section">
+    <div class="roadmap-header">
+        <h1>🕌 Your Arabic Reading Journey</h1>
+        <p>Step by step — from the first letter to reading the Quran</p>
+        <div class="duration-badge">📅 13-Week Program</div>
     </div>
 
-    <div class="success-msg" id="successMsg">
-      <div class="tick">✅</div>
-      <h3>Enrolment Request Received!</h3>
-      <p>JazakAllah Khair! We have received your details and will be in touch within <strong>24 hours</strong> to confirm your first session.<br/><br/>If you have any questions in the meantime, feel free to reach out to us on WhatsApp.</p>
-      <a href="https://wa.me/447784950327" target="_blank" class="whatsapp-btn-inline" style="margin-top:20px; display:inline-block;">💬 Message Us on WhatsApp</a>
+    <div class="roadmap">
+
+        <div class="week-label"><span>📍 Week 1</span></div>
+        <div class="item left">
+            <div class="dot"></div>
+            <div class="card">
+                <div class="chapter-num">Chapter 1</div>
+                <h3>🔤 The Alphabet</h3>
+                <div class="arabic-term">Learn & pronounce all Arabic letters</div>
+            </div>
+        </div>
+
+        <div class="unlock-wrapper">
+            <div class="unlock-card">
+                <div class="lock-icon">🔓</div>
+                <h3>Unlock Achievement</h3>
+                <p>Recognize the letters and pronounce them correctly</p>
+            </div>
+        </div>
+
+        <div class="week-label"><span>📍 Weeks 2 – 3</span></div>
+        <div class="item right">
+            <div class="dot"></div>
+            <div class="card">
+                <div class="chapter-num">Chapter 2</div>
+                <h3>✏️ Letter Forms</h3>
+                <div class="arabic-term">Isolated, initial, medial & final positions</div>
+            </div>
+        </div>
+
+        <div class="week-label"><span>📍 Weeks 4 – 5</span></div>
+        <div class="item left">
+            <div class="dot"></div>
+            <div class="card">
+                <div class="chapter-num">Chapter 3</div>
+                <h3>🎵 Short Vowels — Al-Ḥarakāt</h3>
+                <div class="arabic-term">Fatḥah, Kasrah, Ḍammah</div>
+            </div>
+        </div>
+
+        <div class="item right">
+            <div class="dot"></div>
+            <div class="card">
+                <div class="chapter-num">Chapter 4</div>
+                <h3>⭕ Sukūn & Shaddah</h3>
+                <div class="arabic-term">Rest & doubled consonant rules</div>
+            </div>
+        </div>
+
+        <div class="item left">
+            <div class="dot"></div>
+            <div class="card">
+                <div class="chapter-num">Chapter 5</div>
+                <h3>🔡 Tanwīn</h3>
+                <div class="arabic-term">Double vowel endings</div>
+            </div>
+        </div>
+
+        <div class="unlock-wrapper">
+            <div class="unlock-card">
+                <div class="lock-icon">🔓</div>
+                <h3>Unlock Achievement</h3>
+                <p>Read full words with all their different vowels</p>
+            </div>
+        </div>
+
+        <div class="week-label"><span>📍 Week 6</span></div>
+        <div class="item right">
+            <div class="dot"></div>
+            <div class="card">
+                <div class="chapter-num">Chapter 6</div>
+                <h3>🔗 Hamzatul Qaṭʿ & Waṣl</h3>
+                <div class="arabic-term">Connecting and cutting Hamzah</div>
+            </div>
+        </div>
+
+        <div class="week-label"><span>📍 Week 7</span></div>
+        <div class="item left">
+            <div class="dot"></div>
+            <div class="card">
+                <div class="chapter-num">Chapter 7</div>
+                <h3>〰️ Stretch & Elongation — Al-Madd</h3>
+                <div class="arabic-term">Rules of lengthening vowel sounds</div>
+            </div>
+        </div>
+
+        <div class="week-label"><span>📍 Week 9</span></div>
+        <div class="item right">
+            <div class="dot"></div>
+            <div class="card">
+                <div class="chapter-num">Chapter 8</div>
+                <h3>🔵 Wāw Al-Jamʿ</h3>
+                <div class="arabic-term">The plural Wāw and its reading rules</div>
+            </div>
+        </div>
+
+        <div class="week-label"><span>📍 Week 10</span></div>
+        <div class="item left">
+            <div class="dot"></div>
+            <div class="card">
+                <div class="chapter-num">Chapter 9</div>
+                <h3>🔴 Tied Tā (Tā Marbūṭah)</h3>
+                <div class="arabic-term">Reading the tied Tā in context</div>
+            </div>
+        </div>
+
+        <div class="week-label"><span>📍 Week 11</span></div>
+        <div class="item right">
+            <div class="dot"></div>
+            <div class="card">
+                <div class="chapter-num">Chapter 10</div>
+                <h3>🌙 Lunar & Solar Lāms</h3>
+                <div class="arabic-term">Al-Lām Al-Qamariyyah & Al-Shamsiyyah</div>
+            </div>
+        </div>
+
+        <div class="unlock-wrapper">
+            <div class="unlock-card">
+                <div class="lock-icon">🔓</div>
+                <h3>Unlock Achievement</h3>
+                <p>90% of Quranic words are now within your reading ability!</p>
+            </div>
+        </div>
+
+        <div class="week-label"><span>📍 Weeks 12 – 13</span></div>
+        <div class="item left">
+            <div class="dot"></div>
+            <div class="card">
+                <div class="chapter-num">Chapter 11 & 12</div>
+                <h3>📖 Practice on Qur'anic Sentences</h3>
+                <div class="arabic-term">Real verses — reading fluency & confidence</div>
+            </div>
+        </div>
+
+        <div class="final-unlock">
+            <div class="final-card">
+                <div class="icon">🕌✨</div>
+                <h2>🎉 Final Unlock!</h2>
+                <p>You are now ready to read the Holy Quran!</p>
+            </div>
+        </div>
+
     </div>
+</section>
 
-  </div>
-</div>
-<!-- ══════════════════════════════════════════
-     WHATSAPP FLOATING BUTTON
-══════════════════════════════════════════ -->
-<a href="https://wa.me/447784950327" target="_blank" class="whatsapp-float">💬</a>
-<div class="whatsapp-tooltip">Chat with us on WhatsApp</div>
+<!-- HOW IT WORKS -->
+<section class="how-it-works">
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-sub">Simple steps to start your journey</p>
+    <div class="steps">
+        <div class="step">
+            <div class="step-num">1</div>
+            <h4>Book a Free Trial</h4>
+            <p>Choose a time that works for you and meet your teacher.</p>
+        </div>
+        <div class="step">
+            <div class="step-num">2</div>
+            <h4>Get Assessed</h4>
+            <p>We identify your level and place you in the right program.</p>
+        </div>
+        <div class="step">
+            <div class="step-num">3</div>
+            <h4>Start Learning</h4>
+            <p>Live 1-on-1 sessions from anywhere in the world.</p>
+        </div>
+        <div class="step">
+            <div class="step-num">4</div>
+            <h4>Read the Quran</h4>
+            <p>Progress week by week until you reach your goal.</p>
+        </div>
+    </div>
+</section>
 
-<!-- ══════════════════════════════════════════
-     FOOTER
-══════════════════════════════════════════ -->
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+    <h2 class="section-title">What Our Students Say</h2>
+    <p class="section-sub">Real results from real learners</p>
+    <div class="testimonials-grid">
+        <div class="testimonial-card">
+            <div class="stars-rating">★★★★★</div>
+            <p>"I went from knowing zero Arabic to reading Surah Al-Fatiha in just 8 weeks. The structure is amazing!"</p>
+            <div class="reviewer">Sister Aisha <span>· UK</span></div>
+        </div>
+        <div class="testimonial-card">
+            <div class="stars-rating">★★★★★</div>
+            <p>"My son was struggling with the letters but after 3 weeks he was already reading words. Highly recommend."</p>
+            <div class="reviewer">Brother Omar <span>· Canada</span></div>
+        </div>
+        <div class="testimonial-card">
+            <div class="stars-rating">★★★★★</div>
+            <p>"The teachers are patient and the program is very clear. I never thought I'd be able to read Arabic at 45."</p>
+            <div class="reviewer">Sister Fatima <span>· USA</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <h2>Ready to Start Your <span>Journey?</span></h2>
+    <p>Book your free trial today — no commitment, just your first step towards reading the Quran.</p>
+    <div class="cta-buttons">
+        <a href="https://calendly.com/" class="btn-primary">📅 Book your First Free Trial</a>
+        <a href="https://wa.me/yourNumber" class="btn-whatsapp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Speak to a Teacher
+        </a>
+    </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  <p>© 2025 <span>MyMadrassa</span> — All rights reserved. Built with ❤️ for the Ummah.</p>
+    <p>© 2025 <span>Nour Al-Bayan Academy</span> · All rights reserved · Built with ❤️ for the Ummah</p>
 </footer>
 
-<!-- ══════════════════════════════════════════
-     JAVASCRIPT
-══════════════════════════════════════════ -->
-<script>
-
-  /* ── COURSE DATA ── */
-  const courseData = {
-    arabic1a: {
-      title: 'Al-Arabiya B. Yadayk 1A',
-      subtitle: 'Beginner Arabic — Book 1A',
-      date: 'TBC',
-      level: 'Complete Beginner(only reads arabic)',
-      time: 'Currently On',
-      price: '£27 per month',
-      teacher: 'Ustadh Yassin'
-    },
-    arabic1b: {
-      title: 'Al-Arabiya B. Yadayk 1B',
-      subtitle: 'Beginner Arabic — Book 1B',
-      date: 'TBC',
-      level: 'Completed 1A',
-      time: 'TBC',
-      price: 'TBC',
-      teacher: 'TBC'
-    },
-    arabic2a: {
-      title: 'Al-Arabiya B. Yadayk 2A',
-      subtitle: 'Intermediate Arabic — Book 2A',
-      date: 'TBC',
-      level: 'Completed 1B',
-      time: 'TBC',
-      price: 'TBC',
-      teacher: 'TBC'
-    },
-    arabic2b: {
-      title: 'Al-Arabiya B. Yadayk 2B',
-      subtitle: 'Intermediate Arabic — Book 2B',
-      date: 'TBC',
-      level: 'Completed 2A',
-      time: 'TBC',
-      price: 'TBC',
-      teacher: 'TBC'
-    },
-    ajarummiyah: {
-      title: 'Al-Ajarummiyah',
-      subtitle: 'Classical Arabic Grammar',
-      date: 'TBC',
-      level: 'Completed 2B or equivalent',
-      time: 'TBC',
-      price: 'TBC',
-      teacher: 'TBC'
-    },
-    tajweed: {
-      title: 'Tajweed',
-      subtitle: 'Rules of Quranic Recitation',
-      date: 'TBC',
-      level: 'Able to read Arabic',
-      time: 'TBC',
-      price: 'TBC',
-      teacher: 'TBC'
-    },
-    qiraat: {
-      title: "Qiraa't",
-      subtitle: 'Must Be Hafidh',
-      date: 'TBC',
-      level: 'UNDERSTAND ARABIC',
-      time: 'TBC',
-      price: 'TBC',
-      teacher: 'TBC'
-    },
-    aqidah: {
-      title: 'Creed (Aqidah)',
-      subtitle: 'Islamic Beliefs & Theology',
-      date: 'Currently On',
-      level: 'Open to all',
-      time: 'TBC',
-      price: '£29 per month',
-      teacher: 'Ustadh Abdurahman H.'
-    },
-    tazkiyah: {
-      title: 'Purification of the Soul',
-      subtitle: 'Tazkiyah & Spiritual Development',
-      date: 'Currently On',
-      level: 'Open to all',
-      time: 'TBC',
-      price: '£20 per month',
-      teacher: 'Ustadh Yassin'
-    },
-    uloomquran: {
-      title: "Sciences of the Qur'an",
-      subtitle: 'Uloom al-Quran',
-      date: 'Starting Soon',
-      level: 'Open to all',
-      time: 'Every Saturday 11AM - 12PM',
-      price: '£20 per month',
-      teacher: 'Ustadh Yassin'
-    }
-  };
-
-  /* ── TOGGLE CATEGORY ── */
-  function toggleCategory(id) {
-    const content = document.getElementById(id);
-    const toggle = document.getElementById('toggle-' + id);
-    content.classList.toggle('open');
-    toggle.classList.toggle('open');
-  }
-
-  /* ── COURSE MODAL ── */
-  function openCourseModal(id) {
-    const c = courseData[id];
-    if (!c) return;
-    document.getElementById('cmodal-title').textContent = c.title;
-    document.getElementById('cmodal-subtitle').textContent = c.subtitle;
-    document.getElementById('cmodal-date').textContent = c.date;
-    document.getElementById('cmodal-level').textContent = c.level;
-    document.getElementById('cmodal-time').textContent = c.time;
-    document.getElementById('cmodal-price').textContent = c.price;
-    document.getElementById('cmodal-teacher').textContent = c.teacher;
-    document.getElementById('courseModalOverlay').classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeCourseModal(e) {
-    if (e.target === document.getElementById('courseModalOverlay')) {
-      closeCourseModalBtn();
-    }
-  }
-
-  function closeCourseModalBtn() {
-    document.getElementById('courseModalOverlay').classList.remove('active');
-    document.body.style.overflow = 'auto';
-  }
-
-  /* ── ENROL MODAL ── */
-  function openModal(plan) {
-    document.getElementById('enrolModal').classList.add('active');
-    document.getElementById('formContent').style.display = 'block';
-    document.getElementById('successMsg').style.display = 'none';
-    document.body.style.overflow = 'hidden';
-
-    if (plan) {
-      document.getElementById('hiddenPlan').value = plan;
-      document.getElementById('planSelect').value = plan;
-      const badge = document.getElementById('selectedPlanBadge');
-      badge.textContent = '📋 Selected Plan: ' + plan;
-      badge.style.display = 'block';
-    } else {
-      document.getElementById('hiddenPlan').value = 'Not specified';
-      document.getElementById('planSelect').value = '';
-      document.getElementById('selectedPlanBadge').style.display = 'none';
-    }
-  }
-
-  function closeModal() {
-    document.getElementById('enrolModal').classList.remove('active');
-    document.body.style.overflow = 'auto';
-  }
-
-  document.getElementById('enrolModal').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
-  });
-
-  /* ── FORM SUBMIT ── */
-  function handleSubmit(e) {
-    e.preventDefault();
-    const form = e.target;
-    const data = new FormData(form);
-
-    fetch('https://formspree.io/f/mojpykdj', {
-      method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    })
-    .then(response => {
-      if (response.ok) {
-        document.getElementById('formContent').style.display = 'none';
-        document.getElementById('successMsg').style.display = 'block';
-        form.reset();
-      } else {
-        alert('Something went wrong. Please try again or contact us directly.');
-      }
-    })
-    .catch(() => {
-      alert('Connection error. Please check your internet and try again.');
-    });
-  }
-
-  /* ── FAQ ── */
-  function toggleFaq(el) {
-    const item = el.parentElement;
-    item.classList.toggle('open');
-  }
-  function toggleMenu() {
-  const links = document.getElementById('navLinks');
-  links.classList.toggle('open');
-}
-
-</script>
-<script>
-  function openAboutModal() {
-    document.getElementById('aboutModal').classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeAboutModal(e) {
-    if (e.target === document.getElementById('aboutModal')) {
-      document.getElementById('aboutModal').classList.remove('active');
-      document.body.style.overflow = '';
-    }
-  }
-</script>
 </body>
 </html>
