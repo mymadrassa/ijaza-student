@@ -509,22 +509,24 @@
 
     /* ── PRICING ── */
     .plans-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
+  display: flex;
+  flex-wrap: nowrap; /* ← change wrap en nowrap */
+  gap: 24px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
     .plan-card {
-      background: #111;
-      border: 1px solid #c9a84c33;
-      border-radius: 20px;
-      padding: 36px 28px;
-      width: 230px;
-      text-align: center;
-      transition: all 0.3s;
-      position: relative;
-    }
+  background: #111;
+  border: 1px solid #c9a84c33;
+  border-radius: 20px;
+  padding: 36px 28px;
+  width: 280px; /* ← augmente la largeur */
+  min-width: 230px; /* ← ajoute ça */
+  text-align: center;
+  transition: all 0.3s;
+  position: relative;
+}
     .plan-card:hover { border-color: #c9a84c; transform: translateY(-6px); box-shadow: 0 10px 30px rgba(201,168,76,0.15); }
     .plan-card.popular { border-color: #c9a84c; }
     .popular-badge {
@@ -704,6 +706,13 @@
     width: 100%;
     max-width: 280px;
     margin: 0 auto;
+  }
+.plans-grid {
+    flex-wrap: wrap;
+  }
+  .plan-card {
+    width: 100%;
+    max-width: 360px;
   }
 }
 
