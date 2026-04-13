@@ -508,12 +508,10 @@
     <style>
 
     /* ── PRICING ── */
-
-    /* ── PRICING ── */
 .plans-grid {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
   gap: 24px;
   justify-content: center;
   align-items: stretch;
@@ -917,11 +915,22 @@
       section { padding: 60px 20px; }
       .programmes-section { padding: 60px 20px; }
       .not-sure-banner { margin: 0 20px 60px; padding: 30px 20px; }
-      .plan-card { width: 100%; max-width: 320px; }
       .course-card { width: 100%; max-width: 280px; }
       .form-row { grid-template-columns: 1fr; }
       .course-modal-box { padding: 30px 20px; }
     }
+
+@media (max-width: 768px) {
+  .plans-grid {
+    flex-direction: column !important;
+    align-items: center;
+  }
+  .plan-card {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
   </style>
 </head>
 <body>
