@@ -566,6 +566,23 @@
     }
     .plan-btn:hover { background: #e0c060; }
     .center-bottom { align-self: center; }
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  text-align: left;
+}
+
+.plan-features li {
+  color: #bbb;
+  font-size: 0.85rem;
+  padding: 6px 0;
+  border-bottom: 1px solid #1e1e1e;
+}
+
+.plan-features li:last-child {
+  border-bottom: none;
+}
 
     /* ── NOT SURE BANNER ── */
     .not-sure-banner {
@@ -1783,30 +1800,54 @@
   <p class="section-sub">No hidden fees. Cancel anytime.</p>
   <div class="plans-grid">
 
-    <div class="plan-card center-bottom">
-      <h3>Group Bundle</h3>
-      <div class="plan-price">£32<span>/month</span></div>
-      <div class="plan-detail">40 min × 1 session/week</div>
-      <div class="plan-note">price per student</div>
-      <button class="plan-btn" onclick="openModal('Group Bundle — 40min × 1/week — £32/month per student')">Choose Plan</button>
-    </div>
+  <div class="plan-card">
+    <h3>Standard</h3>
+    <div class="plan-price">£50<span>/month</span></div>
+    <div class="plan-detail">30 min × 1 session/week</div>
+    <div class="plan-note">Great for beginners</div>
+    <ul class="plan-features">
+      <li>✦ 1 live session per week</li>
+      <li>✦ Personal Quran recitation</li>
+      <li>✦ Tajweed basics covered</li>
+      <li>✦ Progress tracked monthly</li>
+      <li>✦ WhatsApp support</li>
+    </ul>
+    <button class="plan-btn" onclick="openModal('Standard — 30min × 1/week — £50/month')">Choose Plan</button>
+  </div>
 
-    <div class="plan-card popular">
-      <div class="popular-badge">⭐ Most Popular</div>
-      <h3>Standard</h3>
-      <div class="plan-price">£43<span>/month</span></div>
-      <div class="plan-detail">30 min × 1 session/week</div>
-      <div class="plan-note">Our most chosen plan</div>
-      <button class="plan-btn" onclick="openModal('Standard — 30min × 1/week — £43/month')">Choose Plan</button>
-    </div>
+  <div class="plan-card popular">
+    <div class="popular-badge">Most Popular</div>
+    <h3>Plus</h3>
+    <div class="plan-price">£70<span>/month</span></div>
+    <div class="plan-detail">45 min × 1 session/week</div>
+    <div class="plan-note">Perfect balance of learning</div>
+    <ul class="plan-features">
+      <li>✦ 1 longer session per week</li>
+      <li>✦ Quran + Islamic Studies</li>
+      <li>✦ Tajweed in depth</li>
+      <li>✦ Weekly progress report</li>
+      <li>✦ Priority WhatsApp support</li>
+    </ul>
+    <button class="plan-btn" onclick="openModal('Plus — 45min × 1/week — £70/month')">Choose Plan</button>
+  </div>
 
-    <div class="plan-card">
-      <h3>Intensive</h3>
-      <div class="plan-price">£85<span>/month</span></div>
-      <div class="plan-detail">30 min × 2 sessions/week</div>
-      <div class="plan-note">For serious progress</div>
-      <button class="plan-btn" onclick="openModal('Intensive — 30min × 2/week — £85/month')">Choose Plan</button>
-    </div>
+  <div class="plan-card">
+    <h3>Intensive</h3>
+    <div class="plan-price">£85<span>/month</span></div>
+    <div class="plan-detail">30 min × 2 sessions/week</div>
+    <div class="plan-note">For serious progress</div>
+    <ul class="plan-features">
+      <li>✦ 2 live sessions per week</li>
+      <li>✦ Full Quran curriculum</li>
+      <li>✦ Advanced Tajweed rules</li>
+      <li>✦ Detailed progress reports</li>
+      <li>✦ Direct teacher access</li>
+    </ul>
+    <button class="plan-btn" onclick="openModal('Intensive — 30min × 2/week — £85/month')">Choose Plan</button>
+  </div>
+
+</div>
+
 
   </div>
 </section>
