@@ -508,21 +508,24 @@
     <style>
 
     /* ── PRICING ── */
+
     .plans-grid {
   display: flex;
-  flex-wrap: nowrap; /* ← change wrap en nowrap */
+  flex-direction: row;
+  flex-wrap: nowrap;
   gap: 24px;
   justify-content: center;
+  align-items: flex-start;
   margin-bottom: 20px;
 }
 
-    .plan-card {
+.plan-card {
   background: #111;
   border: 1px solid #c9a84c33;
   border-radius: 20px;
   padding: 36px 28px;
-  width: 280px; /* ← augmente la largeur */
-  min-width: 230px; /* ← ajoute ça */
+  width: 260px;
+  flex-shrink: 0;
   text-align: center;
   transition: all 0.3s;
   position: relative;
