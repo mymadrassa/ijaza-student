@@ -510,13 +510,14 @@
     /* ── PRICING ── */
 
     .plans-grid {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   gap: 24px;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 20px;
+  overflow-x: auto;
 }
 
 .plan-card {
