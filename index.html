@@ -509,15 +509,17 @@
 
     /* ── PRICING ── */
 
-    .plans-grid {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
+    /* ── PRICING ── */
+.plans-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   gap: 24px;
   justify-content: center;
-  align-items: flex-start;
-  margin-bottom: 20px;
-  overflow-x: auto;
+  align-items: stretch;
+  margin: 0 auto 40px;
+  max-width: 1000px;
+  padding: 0 20px;
 }
 
 .plan-card {
@@ -525,12 +527,14 @@
   border: 1px solid #c9a84c33;
   border-radius: 20px;
   padding: 36px 28px;
-  width: 260px;
-  flex-shrink: 0;
+  flex: 1;
+  min-width: 220px;
+  max-width: 300px;
   text-align: center;
   transition: all 0.3s;
   position: relative;
 }
+
     .plan-card:hover { border-color: #c9a84c; transform: translateY(-6px); box-shadow: 0 10px 30px rgba(201,168,76,0.15); }
     .plan-card.popular { border-color: #c9a84c; }
     .popular-badge {
