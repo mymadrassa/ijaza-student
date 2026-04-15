@@ -1440,6 +1440,17 @@ prev.addEventListener('click', () => {
   track.scrollBy({ left: -300, behavior: 'smooth' });
 });
 </script>
+<script>
+const track = document.querySelector('.carousel-track');
 
+setInterval(() => {
+  if (track.scrollLeft + track.clientWidth >= track.scrollWidth) {
+    track.scrollTo({ left: 0, behavior: 'smooth' });
+  } else {
+    track.scrollBy({ left: 320, behavior: 'smooth' });
+  }
+}, 3000);
+</script>
+  
 </body>
 </html>
