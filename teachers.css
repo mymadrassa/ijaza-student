@@ -43,7 +43,14 @@
 .teacher-card:hover {
   transform: translateY(-8px) scale(1.03);
   background: linear-gradient(145deg, #222, #2a2a2a);
+
+  box-shadow: 
+    0 8px 25px rgba(0,0,0,0.4),
+    0 0 20px rgba(77, 166, 255, 0.5);
+
+  border: 1px solid rgba(77, 166, 255, 0.3);
 }
+
 
 /* image */
 .teacher-card img {
