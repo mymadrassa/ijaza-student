@@ -1,47 +1,68 @@
 .teachers-section {
-  padding: 60px 20px;
+  padding: 80px 20px;
   background: #0f0f0f;
+  text-align: center;
   color: #fff;
 }
 
+/* wrapper to center everything */
 .carousel {
   position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
   overflow: hidden;
 }
 
+/* track */
 .carousel-track {
   display: flex;
-  gap: 20px;
+  gap: 30px;
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding: 20px 0;
+  padding: 40px 10px;
 }
 
 .carousel-track::-webkit-scrollbar {
   display: none;
 }
 
+/* cards */
 .teacher-card {
-  min-width: 250px;
-  background: #1a1a1a;
-  padding: 20px;
-  border-radius: 12px;
+  flex: 0 0 300px; /* 👈 controls how many show */
+  background: linear-gradient(145deg, #1a1a1a, #222);
+  padding: 25px;
+  border-radius: 16px;
   transition: 0.3s ease;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
 }
 
 .teacher-card:hover {
-  transform: scale(1.05);
-  background: #222;
+  transform: translateY(-8px) scale(1.03);
+  background: linear-gradient(145deg, #222, #2a2a2a);
 }
 
+/* image */
+.teacher-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 3px solid #444;
+}
+
+/* text */
 .teacher-card h3 {
-  margin: 0;
+  margin: 10px 0 5px;
+  font-size: 20px;
   color: #fff;
 }
 
 .teacher-card .title {
-  color: #bbb;
+  color: #aaa;
   font-size: 14px;
+  margin-bottom: 10px;
 }
 
 .teacher-card .desc {
@@ -54,18 +75,19 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.08);
   border: none;
-  color: white;
-  font-size: 24px;
-  padding: 10px;
+  color: #fff;
+  font-size: 26px;
+  padding: 12px;
   cursor: pointer;
   border-radius: 50%;
+  backdrop-filter: blur(5px);
 }
 
-.prev { left: 10px; }
-.next { right: 10px; }
+.prev { left: -10px; }
+.next { right: -10px; }
 
 .nav:hover {
-  background: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.2);
 }
