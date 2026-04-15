@@ -1,30 +1,65 @@
 .teachers-section {
   padding: 80px 20px;
-  background: #0a0a0a !important;
+  background: #0a0a0a;
   text-align: center;
 }
 
-.teacher-card {
-  background: #111 !important;
-  border-radius: 16px;
-  padding: 25px 20px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255,255,255,0.05) !important;
-}
-
-.teacher-card h3 {
-  color: #fff !important;
-}
-
-.teacher-card .title {
-  color: #bbb !important;
-}
-
-.teacher-card .desc {
-  color: #ccc !important;
+.teachers-section h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: #fff;
 }
 
 .teachers-section .subtitle {
-  color: #aaa !important;
+  color: #aaa;
+  margin-bottom: 50px;
+}
+
+.teachers-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.teacher-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  background: #111;
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.05);
+
+  transition: all 0.3s ease;
+}
+
+.teacher-card:hover {
+  transform: translateX(5px);
+  background: #161616;
+}
+
+.teacher-card img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.teacher-card h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 18px;
+}
+
+.teacher-card .title {
+  color: #bbb;
+  font-size: 14px;
+}
+
+.teacher-card .desc {
+  color: #ccc;
+  font-size: 14px;
 }
