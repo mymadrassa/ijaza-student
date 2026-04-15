@@ -59,7 +59,7 @@
 .teacher-card h3 {
   margin: 10px 0 5px;
   font-size: 20px;
-  color: #fff;
+  color: #4da6ff; /* same accent */
 }
 
 .teacher-card .title {
@@ -93,4 +93,19 @@
 
 .nav:hover {
   background: rgba(255,255,255,0.2);
+}
+
+.section-title {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.section-title .white {
+  color: #fff;
+}
+
+.section-title .accent {
+  color: #4da6ff; /* match your pricing colour */
+  text-shadow: 0 0 10px rgba(77, 166, 255, 0.4);
 }
