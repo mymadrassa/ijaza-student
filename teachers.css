@@ -1,61 +1,30 @@
 .teachers-section {
   padding: 80px 20px;
-  background: #0a0a0a;
+  background: #0a0a0a !important;
   text-align: center;
 }
 
-.teachers-section h2 {
-  font-size: 32px;
-  margin-bottom: 10px;
-  color: #fff;
-}
-
-.teachers-section .subtitle {
-  color: #aaa;
-  margin-bottom: 50px;
-}
-
-.teachers-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 30px;
-}
-
 .teacher-card {
-  background: #111;
+  background: #111 !important;
   border-radius: 16px;
   padding: 25px 20px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.4);
   transition: all 0.3s ease;
-  border: 1px solid rgba(255,255,255,0.05);
-}
-
-.teacher-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 35px rgba(0,0,0,0.6);
-}
-
-.teacher-card img {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 15px;
+  border: 1px solid rgba(255,255,255,0.05) !important;
 }
 
 .teacher-card h3 {
-  margin: 10px 0 5px;
-  font-size: 18px;
-  color: #fff;
+  color: #fff !important;
 }
 
 .teacher-card .title {
-  font-size: 14px;
-  color: #bbb;
-  margin-bottom: 10px;
+  color: #bbb !important;
 }
 
 .teacher-card .desc {
-  font-size: 14px;
-  color: #ccc;
+  color: #ccc !important;
+}
+
+.teachers-section .subtitle {
+  color: #aaa !important;
 }
