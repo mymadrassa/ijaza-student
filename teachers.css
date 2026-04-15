@@ -20,6 +20,8 @@
   overflow-x: auto;
   scroll-behavior: smooth;
   padding: 40px 10px;
+  
+  scroll-snap-type: x mandatory;
 }
 
 .carousel-track::-webkit-scrollbar {
@@ -28,7 +30,8 @@
 
 /* cards */
 .teacher-card {
-  flex: 0 0 300px; /* 👈 controls how many show */
+  flex: 0 0 300px;
+  scroll-snap-align: center;
   background: linear-gradient(145deg, #1a1a1a, #222);
   padding: 25px;
   border-radius: 16px;
