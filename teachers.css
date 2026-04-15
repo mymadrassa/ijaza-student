@@ -1,0 +1,58 @@
+.teachers-section {
+  padding: 80px 20px;
+  background: #fafafa;
+  text-align: center;
+}
+
+.teachers-section h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.teachers-section .subtitle {
+  color: #666;
+  margin-bottom: 50px;
+}
+
+.teachers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.teacher-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 25px 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.teacher-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+}
+
+.teacher-card img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.teacher-card h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+}
+
+.teacher-card .title {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.teacher-card .desc {
+  font-size: 14px;
+  color: #555;
+}
