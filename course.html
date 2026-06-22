@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MyMadrassa — Quran Reading Course</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0a0a0a;
+      color: #f0f0f0;
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px;
+      background: #0a0a0a;
+      border-bottom: 1px solid #c9a84c;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .nav-logo { color: #c9a84c; font-size: 1.5rem; font-weight: 700; text-decoration: none; }
+    .nav-links a {
+      color: #f0f0f0;
+      text-decoration: none;
+      margin-left: 28px;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: #c9a84c; }
+    .nav-enrol {
+      background: #c9a84c;
+      color: #0a0a0a !important;
+      padding: 8px 20px;
+      border-radius: 25px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .nav-enrol:hover { background: #e0c060 !important; }
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: #c9a84c;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      .hamburger { display: block; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 65px; left: 0; right: 0;
+        background: #0a0a0a;
+        border-bottom: 1px solid #c9a84c;
+        z-index: 999;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { margin: 0; padding: 12px 30px; border-bottom: 1px solid #1a1a1a; }
+    }
+
+    /* ── PARTICLES HERO ── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      padding: 60px 20px;
+    }
+    #particleCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: #c9a84c22;
+      border: 1px solid #c9a84c;
+      color: #c9a84c;
+      padding: 6px 18px;
+      border-radius: 25px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeInDown 0.8s ease 0.3s forwards;
+    }
+    .hero-title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease 0.6s forwards;
+    }
+    .hero-title span { color: #c9a84c; }
+    .typing-line {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      color: #c9a84c;
+      font-weight: 700;
+      height: 2.5rem;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease 0.9s forwards;
+    }
+    .hero-sub {
+      color: #aaa;
+      font-size: 1.05rem;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease 1.1s forwards;
+    }
+    .hero-pills {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease 1.3s forwards;
+    }
+    .hero-pill {
+      background: #1a1a1a;
+      border: 1px solid #c9a84c44;
+      color: #f0f0f0;
+      padding: 8px 18px;
+      border-radius: 25px;
+      font-size: 0.85rem;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease 1.5s forwards;
+    }
+    .btn-primary {
+      background: #c9a84c;
+      color: #0a0a0a;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 25px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      animation: pulse 2s infinite 2s;
+      transition: background 0.3s;
+    }
+    .btn-primary:hover { background: #e0c060; }
+    .btn-secondary {
+      background: transparent;
+      color: #c9a84c;
+      border: 2px solid #c9a84c;
+      padding: 14px 32px;
+      border-radius: 25px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-secondary:hover { background: #c9a84c; color: #0a0a0a; }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 #c9a84c66; }
+      50% { box-shadow: 0 0 0 14px transparent; }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      padding: 48px 40px;
+      background: #0d0d0d;
+      border-top: 1px solid #c9a84c22;
+      border-bottom: 1px solid #c9a84c22;
+    }
+    .trust-item { text-align: center; }
+    .trust-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #c9a84c;
+    }
+    .trust-label { font-size: 0.82rem; color: #888; margin-top: 4px; }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 90px 40px; }
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .section-title span { color: #c9a84c; }
+    .section-sub {
+      text-align: center;
+      color: #888;
+      font-size: 0.95rem;
+      margin-bottom: 56px;
+    }
+
+    /* ── WHAT YOU LEARN ── */
+    #learn { background: #0d0d0d; }
+    .learn-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .learn-card {
+      background: #111;
+      border: 1px solid #c9a84c33;
+      border-radius: 16px;
+      padding: 28px 24px;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    .learn-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .learn-card:hover {
+      border-color: #c9a84c;
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px #c9a84c22;
+    }
+    .learn-icon { font-size: 2rem; margin-bottom: 14px; }
+    .learn-card h3 { color: #c9a84c; font-size: 1.05rem; margin-bottom: 8px; }
+    .learn-card p { color: #aaa; font-size: 0.88rem; line-height: 1.6; }
+
+    /* ── HOW IT WORKS ── */
+    #how { background: #0a0a0a; }
+    .steps-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .steps-line {
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: #1a1a1a;
+      transform: translateX(-50%);
+      z-index: 0;
+    }
+    .steps-line-fill {
+      width: 100%;
+      height: 0%;
+      background: linear-gradient(180deg, #c9a84c, #e0c060);
+      transition: height 1.5s ease;
+    }
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      margin-bottom: 56px;
+      position: relative;
+      z-index: 1;
+    }
+    .step.right { flex-direction: row-reverse; }
+    .step-num {
+      width: 56px; height: 56px;
+      background: #c9a84c;
+      color: #0a0a0a;
+      font-size: 1.3rem;
+      font-weight: 800;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 0 20px #c9a84c66;
+    }
+    .step-card {
+      background: #111;
+      border: 1px solid #c9a84c33;
+      border-radius: 16px;
+      padding: 24px;
+      flex: 1;
+      transition: border-color 0.3s;
+    }
+    .step-card:hover { border-color: #c9a84c; }
+    .step-card h3 { color: #c9a84c; margin-bottom: 8px; font-size: 1.1rem; }
+    .step-card p { color: #aaa; font-size: 0.9rem; line-height: 1.6; }
+    @media (max-width: 600px) {
+      .steps-line { display: none; }
+      .step, .step.right { flex-direction: column; text-align: center; }
+    }
+
+    /* ── PRICING ── */
+    #pricing { background: #0d0d0d; }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .plan-card {
+      background: #111;
+      border: 1px solid #c9a84c44;
+      border-radius: 20px;
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+    .plan-card:hover { transform: translateY(-8px); }
+    .plan-card.popular {
+      border-color: #c9a84c;
+      box-shadow: 0 0 30px #c9a84c44;
+      animation: glowPulse 3s infinite;
+    }
+    @keyframes glowPulse {
+      0%, 100% { box-shadow: 0 0 30px #c9a84c44; }
+      50% { box-shadow: 0 0 60px #c9a84c88; }
+    }
+    .popular-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #c9a84c;
+      color: #0a0a0a;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 16px;
+      border-radius: 25px;
+      white-space: nowrap;
+    }
+    .plan-name { font-size: 1.2rem; font-weight: 700; color: #f0f0f0; }
+    .plan-price { font-size: 1.6rem; font-weight: 800; color: #c9a84c; }
+    .plan-price span { font-size: 0.9rem; color: #888; }
+    .plan-desc { color: #888; font-size: 0.85rem; margin-bottom: 8px; }
+    .plan-features { list-style: none; padding: 0; }
+    .plan-features li {
+      padding: 8px 0;
+      border-bottom: 1px solid #1a1a1a;
+      font-size: 0.88rem;
+      color: #ddd;
+    }
+    .plan-features li:last-child { border-bottom: none; }
+    .plan-btn {
+      width: 100%;
+      background: #c9a84c;
+      color: #0a0a0a;
+      border: none;
+      padding: 13px;
+      border-radius: 25px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: auto;
+      font-family: inherit;
+    }
+    .plan-btn:hover { background: #e0c060; }
+    .plan-card.popular .plan-btn {
+      animation: pulse 2s infinite;
+    }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials { background: #0a0a0a; }
+    .testi-carousel {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+    .testi-track {
+      display: flex;
+      transition: transform 0.6s ease;
+    }
+    .testi-slide {
+      min-width: 100%;
+      padding: 0 10px;
+    }
+    .testi-card {
+      background: #111;
+      border: 1px solid #c9a84c33;
+      border-radius: 20px;
+      padding: 36px;
+      text-align: center;
+    }
+    .testi-stars { color: #c9a84c; font-size: 1.3rem; margin-bottom: 16px; }
+    .testi-text { color: #ccc; font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px; font-style: italic; }
+    .testi-author { color: #c9a84c; font-weight: 700; font-size: 0.9rem; }
+    .testi-country { color: #888; font-size: 0.8rem; margin-top: 4px; }
+    .testi-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .testi-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #333;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .testi-dot.active { background: #c9a84c; }
+    .testi-arrows {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .testi-arrow {
+      background: #1a1a1a;
+      border: 1px solid #c9a84c44;
+      color: #c9a84c;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .testi-arrow:hover { background: #c9a84c; color: #0a0a0a; }
+
+    /* ── FAQ ── */
+    #faq { background: #0d0d0d; }
+    .faq-list { max-width: 780px; margin: 0 auto; }
+    .faq-item {
+      border-bottom: 1px solid #1e1e1e;
+      padding: 20px 0;
+    }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #f0f0f0;
+      transition: color 0.3s;
+    }
+    .faq-question:hover { color: #c9a84c; }
+    .faq-arrow { color: #c9a84c; font-size: 1rem; transition: transform 0.3s; }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      color: #aaa;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      transition: max-height 0.4s ease, padding 0.3s;
+    }
+    .faq-answer.open { max-height: 200px; padding-top: 14px; }
+    .faq-arrow.open { transform: rotate(180deg); }
+
+    /* ── FINAL CTA ── */
+    #cta {
+      background: #0a0a0a;
+      text-align: center;
+      padding: 100px 40px;
+    }
+    .cta-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: #c9a84c;
+      margin-bottom: 16px;
+      text-shadow: 0 0 30px #c9a84c66;
+    }
+    .cta-sub { color: #888; font-size: 1rem; margin-bottom: 40px; }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .whatsapp-cta {
+      background: #25D366;
+      color: #fff;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 25px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s;
+    }
+    .whatsapp-cta:hover { background: #1ebe5d; }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      z-index: 5000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: #111;
+      border: 2px solid #c9a84c;
+      border-radius: 20px;
+      padding: 40px;
+      width: 100%;
+      max-width: 560px;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+      animation: slideUp 0.3s ease;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 20px;
+      background: none; border: none;
+      color: #c9a84c; font-size: 1.8rem;
+      cursor: pointer;
+    }
+    .modal-close:hover { color: #fff; }
+    .modal-box h2 { color: #c9a84c; font-size: 1.5rem; margin-bottom: 6px; text-align: center; }
+    .modal-subtitle { color: #888; text-align: center; font-size: 0.85rem; margin-bottom: 24px; }
+    .selected-plan-badge {
+      background: #c9a84c22;
+      border: 1px solid #c9a84c;
+      color: #c9a84c;
+      text-align: center;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; color: #c9a84c; font-size: 0.82rem; font-weight: 600; margin-bottom: 6px; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 10px;
+      color: #f0f0f0;
+      padding: 10px 14px;
+      font-size: 0.92rem;
+      font-family: inherit;
+      transition: border-color 0.3s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #c9a84c;
+    }
+    .form-group select option { background: #1a1a1a; }
+    .form-submit {
+      width: 100%;
+      background: #c9a84c;
+      color: #0a0a0a;
+      border: none;
+      padding: 14px;
+      border-radius: 25px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-family: inherit;
+      margin-top: 8px;
+    }
+    .form-submit:hover { background: #e0c060; }
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 20px 0;
+    }
+    .success-msg .checkmark { font-size: 3rem; margin-bottom: 16px; }
+    .success-msg h3 { color: #c9a84c; font-size: 1.3rem; margin-bottom: 10px; }
+    .success-msg p { color: #aaa; font-size: 0.9rem; }
+
+    /* ── WHATSAPP FLOAT ── */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      background: #25D366;
+      border-radius: 50%;
+      width: 58px; height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3000;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+      transition: transform 0.3s;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0d0d0d;
+      border-top: 1px solid #c9a84c22;
+      text-align: center;
+      padding: 32px 20px;
+      color: #555;
+      font-size: 0.85rem;
+    }
+    footer span { color: #c9a84c; }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav>
+  <a class="nav-logo" href="index.html">🕌 MyMadrassa</a>
+  <button class="hamburger" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#programmes">Programmes</a>
+    <a href="course.html">Course</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="#" class="nav-enrol" onclick="openModal('')">Enrol Now</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <canvas id="particleCanvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-badge">⭐ Rated 5/5 by 300+ Students</div>
+    <h1 class="hero-title">Master Quranic Reading<br><span>in 90 Days</span></h1>
+    <div class="typing-line" id="typingLine"></div>
+    <p class="hero-sub">Self-paced. Structured. Guaranteed results — or your money back.</p>
+    <div class="hero-pills">
+      <span class="hero-pill">✅ No prior knowledge needed</span>
+      <span class="hero-pill">📱 Learn on any device</span>
+      <span class="hero-pill">🔁 Lifetime access</span>
+    </div>
+    <div class="hero-buttons">
+      <button class="btn-primary" onclick="openModal('Starter - ONE-TIME $97')">🎓 Start Learning — $97</button>
+      <button class="btn-secondary" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">👁 See All Plans</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRUST BAR ══ -->
+<div class="trust-bar">
+  <div class="trust-item reveal">
+    <div class="trust-number" data-target="300">0</div>
+    <div class="trust-label">Active Students Globally</div>
+  </div>
+  <div class="trust-item reveal">
+    <div class="trust-number" data-target="99">0</div>
+    <div class="trust-label">% Graduation Rate</div>
+  </div>
+  <div class="trust-item reveal">
+    <div class="trust-number" data-target="100">0</div>
+    <div class="trust-label">% Money-Back Guarantee</div>
+  </div>
+  <div class="trust-item reveal">
+    <div class="trust-number" data-target="60">0</div>
+    <div class="trust-label">Video Lessons</div>
+  </div>
+</div>
+
+<!-- ══ WHAT YOU'LL LEARN ══ -->
+<section id="learn">
+  <h2 class="section-title reveal">What You'll <span>Learn</span></h2>
+  <p class="section-sub reveal">Everything you need to read the Quran correctly from scratch</p>
+  <div class="learn-grid">
+    <div class="learn-card" style="transition-delay:0.1s">
+      <div class="learn-icon">🔤</div>
+      <h3>Arabic Letters</h3>
+      <p>Master all 28 Arabic letters — their shapes, forms and pronunciation from scratch.</p>
+    </div>
+    <div class="learn-card" style="transition-delay:0.2s">
+      <div class="learn-icon">🌟</div>
+      <h3>Vowels & Harakat</h3>
+      <p>Learn all short and long vowels so you can read any word in the Quran fluently.</p>
+    </div>
+    <div class="learn-card" style="transition-delay:0.3s">
+      <div class="learn-icon">📖</div>
+      <h3>Tajweed Rules</h3>
+      <p>Apply the essential rules of Tajweed for beautified and correct Quran recitation.</p>
+    </div>
+    <div class="learn-card" style="transition-delay:0.4s">
+      <div class="learn-icon">🎙️</div>
+      <h3>Correct Pronunciation</h3>
+      <p>Every Arabic letter has a unique Makhraj (exit point) — you'll master them all.</p>
+    </div>
+    <div class="learn-card" style="transition-delay:0.5s">
+      <div class="learn-icon">⏸️</div>
+      <h3>Stopping & Starting</h3>
+      <p>Know exactly where to pause and where to continue when reciting the Quran.</p>
+    </div>
+    <div class="learn-card" style="transition-delay:0.6s">
+      <div class="learn-icon">🏆</div>
+      <h3>Full Reading Confidence</h3>
+      <p>By the end you'll open any Mushaf and read independently with full confidence.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section id="how">
+  <h2 class="section-title reveal">How It <span>Works</span></h2>
+  <p class="section-sub reveal">Three simple steps to go from zero to reading the Quran</p>
+  <div class="steps-wrapper">
+    <div class="steps-line"><div class="steps-line-fill" id="stepsLineFill"></div></div>
+    <div class="step reveal-left">
+      <div class="step-num">1</div>
+      <div class="step-card">
+        <h3>📦 Enrol & Get Instant Access</h3>
+        <p>Choose your plan, complete enrolment and get immediate access to all 60 pre-recorded video lessons on any device — phone, tablet or laptop.</p>
+      </div>
+    </div>
+    <div class="step right reveal-right">
+      <div class="step-num">2</div>
+      <div class="step-card">
+        <h3>📚 Follow the 90-Day Roadmap</h3>
+        <p>Work through a structured week-by-week curriculum. Each lesson builds on the last. No guesswork — just follow the path.</p>
+      </div>
+    </div>
+    <div class="step reveal-left">
+      <div class="step-num">3</div>
+      <div class="step-card">
+        <h3>🎯 Read the Quran Independently</h3>
+        <p>By Day 90 you will open any Mushaf and read with proper Tajweed and full confidence. Guaranteed — or we refund you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRICING ══ -->
+<section id="pricing">
+  <h2 class="section-title reveal">Simple, Transparent <span>Pricing</span></h2>
+  <p class="section-sub reveal">No hidden fees. Cancel the coaching anytime. Lifetime access to the course.</p>
+  <div class="plans-grid">
+
+    <!-- STARTER -->
+    <div class="plan-card reveal">
+      <div class="plan-name">⭐ Starter</div>
+      <div class="plan-price">$97 <span>one-time</span></div>
+      <div class="plan-desc">Self-paced course — learn at your own speed</div>
+      <ul class="plan-features">
+        <li>✦ 60 pre-recorded video lessons</li>
+        <li>✦ Full 90-day curriculum</li>
+        <li>✦ Lifetime access</li>
+        <li>✦ Study on any device</li>
+        <li>✦ 100% money-back guarantee</li>
+      </ul>
+      <button class="plan-btn" onclick="openModal('Starter - ONE-TIME $97')">Choose Starter</button>
+    </div>
+
+    <!-- GROWTH -->
+    <div class="plan-card popular reveal">
+      <div class="popular-badge">🔥 Most Popular</div>
+      <div class="plan-name">🔥 Growth</div>
+      <div class="plan-price">$97 <span>+ $47/month</span></div>
+      <div class="plan-desc">Course + weekly group coaching calls</div>
+      <ul class="plan-features">
+        <li>✦ Everything in Starter</li>
+        <li>✦ Weekly live group Q&A calls</li>
+        <li>✦ Community access</li>
+        <li>✦ Teacher feedback on recitation</li>
+        <li>✦ Cancel coaching anytime</li>
+      </ul>
+      <button class="plan-btn" onclick="openModal('Growth - $97 + $47/month')">Choose Growth</button>
+    </div>
+
+    <!-- PREMIUM -->
+    <div class="plan-card reveal">
+      <div class="plan-name">👑 Premium</div>
+      <div class="plan-price">$97 <span>+ $147/month</span></div>
+      <div class="plan-desc">Course + personal 1-to-1 coaching sessions</div>
+      <ul class="plan-features">
+        <li>✦ Everything in Growth</li>
+        <li>✦ Private 1-to-1 sessions</li>
+        <li>✦ Personalised correction & feedback</li>
+        <li>✦ Direct teacher access</li>
+        <li>✦ Fastest progress guaranteed</li>
+      </ul>
+      <button class="plan-btn" onclick="openModal('Premium - $97 + $147/month')">Choose Premium</button>
+    </div>
+
+  </div>
+
+  <!-- NOT SURE BANNER -->
+  <div style="background:#111;border:1px solid #c9a84c44;border-radius:16px;padding:40px 32px;text-align:center;max-width:800px;margin:60px auto 0;" class="reveal">
+    <h3 style="color:#c9a84c;font-size:1.3rem;margin-bottom:10px;">🤔 Not Sure Which Plan Is Right For You?</h3>
+    <p style="color:#aaa;margin-bottom:24px;font-size:0.95rem;">Book a free 30-minute call — no pressure, no commitment.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="https://calendly.com/contact-avk/free-call" target="_blank"
+        style="background:#c9a84c;color:#0a0a0a;padding:12px 28px;border-radius:25px;font-weight:700;text-decoration:none;font-size:0.95rem;">📅 Book a Free Call</a>
+      <a href="https://wa.me/447784950327" target="_blank"
+        style="background:#25D366;color:#fff;padding:12px 28px;border-radius:25px;font-weight:700;text-decoration:none;font-size:0.95rem;">💬 Chat on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section id="testimonials">
+  <h2 class="section-title reveal">What Our <span>Students Say</span></h2>
+  <p class="section-sub reveal">Real results from real students around the world</p>
+  <div class="testi-carousel reveal">
+    <div class="testi-track" id="testiTrack">
+
+      <div class="testi-slide">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"I never thought I could read Arabic at my age. After 3 months I was reading Surah Al-Fatiha on my own. The structure is incredible and the lessons are so clear."</p>
+          <div class="testi-author">— Ahmed K.</div>
+          <div class="testi-country">🇬🇧 London, United Kingdom</div>
+        </div>
+      </div>
+
+      <div class="testi-slide">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"I was doing a masters degree while launching a startup. I still managed one session a week and the progress was real. Six months later I am reading Quran with Tajweed."</p>
+          <div class="testi-author">— Redwan A.</div>
+          <div class="testi-country">🇳🇱 Tilburg, Netherlands</div>
+        </div>
+      </div>
+
+      <div class="testi-slide">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"The 90-day roadmap makes it so easy to follow. I knew exactly where I was and what was coming next. Best investment I have made for my deen."</p>
+          <div class="testi-author">— Fatima S.</div>
+          <div class="testi-country">🇨🇦 Toronto, Canada</div>
+        </div>
+      </div>
+
+      <div class="testi-slide">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"I tried other apps and YouTube but nothing clicked until I found MyMadrassa. The teacher explains everything so patiently. I am now halfway through Juz Amma!"</p>
+          <div class="testi-author">— Yusuf M.</div>
+          <div class="testi-country">🇦🇺 Sydney, Australia</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="testi-dots" id="testiDots"></div>
+    <div class="testi-arrows">
+      <button class="testi-arrow" id="testiPrev">◀</button>
+      <button class="testi-arrow" id="testiNext">▶</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section id="faq">
+  <h2 class="section-title reveal">Common <span>Questions</span></h2>
+  <p class="section-sub reveal">Everything you need to know before enrolling</p>
+  <div class="faq-list">
+
+    <div class="faq-item reveal">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        Do I need any prior knowledge of Arabic? <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-answer">Absolutely not. This course is designed for complete beginners. We start from the very first letter of the Arabic alphabet and build up step by step.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        What if I don't finish in 90 days? <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-answer">You have lifetime access to all lessons. The 90 days is a guided target but you can go at whatever pace suits your life and schedule.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        What is the difference between Growth and Premium? <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-answer">Growth includes weekly group coaching calls where you can ask questions and get feedback alongside other students. Premium gives you private 1-to-1 sessions with a teacher dedicated entirely to you — for the fastest results.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        Can I cancel the monthly coaching? <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-answer">Yes. The $47/month or $147/month coaching is completely flexible. You keep lifetime access to the course videos even if you cancel the coaching subscription.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        Is there a money-back guarantee? <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-answer">Yes — 100%. If you follow the course and are not satisfied with your progress, we will give you a full refund. No questions asked.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        What device can I use to study? <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-answer">Any device — phone, tablet, laptop or desktop. The course is fully mobile-friendly so you can learn on the go from anywhere in the world.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ FINAL CTA ══ -->
+<section id="cta">
+  <h2 class="cta-title reveal">Ready to Start Your Journey?</h2>
+  <p class="cta-sub reveal">Join 300+ students reading the Quran with confidence. Start today.</p>
+  <div class="cta-buttons reveal">
+    <button class="btn-primary" onclick="openModal('Starter - ONE-TIME $97')" style="font-size:1.05rem;padding:16px 40px;">🎓 Enrol Now</button>
+    <a href="https://wa.me/447784950327" target="_blank" class="whatsapp-cta">💬 Chat on WhatsApp</a>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <p>© 2025 <span>MyMadrassa</span> — All rights reserved. 🇬🇧 Based in the United Kingdom.</p>
+  <p style="margin-top:8px;">All instructors are Native English Speakers.</p>
+</footer>
+
+<!-- ══ WHATSAPP FLOAT ══ -->
+<a href="https://wa.me/447784950327" target="_blank" class="whatsapp-float">
+  <svg viewBox="0 0 32 32" width="28" height="28" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 0C7.164 0 0 7.163 0 16c0 2.822.736 5.477 2.023 7.787L0 32l8.424-2.007A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 01-6.771-1.851l-.486-.29-5.002 1.192 1.215-4.87-.317-.5A13.249 13.249 0 012.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.969c-.398-.199-2.354-1.162-2.72-1.294-.365-.133-.631-.199-.897.199-.266.398-1.03 1.294-1.263 1.56-.232.266-.465.299-.863.1-.398-.2-1.681-.62-3.202-1.976-1.183-1.056-1.982-2.36-2.214-2.758-.232-.398-.025-.613.175-.811.18-.178.398-.465.597-.698.2-.232.266-.398.398-.664.133-.266.067-.498-.033-.698-.1-.199-.897-2.162-1.229-2.96-.324-.777-.653-.672-.897-.684l-.764-.013c-.266 0-.698.1-1.063.498-.365.398-1.394 1.362-1.394 3.322s1.427 3.853 1.626 4.119c.2.266 2.807 4.285 6.8 6.01.951.41 1.693.655 2.271.839.954.304 1.823.261 2.51.158.766-.114 2.354-.962 2.686-1.891.333-.93.333-1.727.233-1.893-.1-.166-.365-.266-.763-.465z"/>
+  </svg>
+</a>
+
+<!-- ══ ENROL MODAL ══ -->
+<div class="modal-overlay" id="enrolModal" onclick="closeModal(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('enrolModal').classList.remove('active');document.body.style.overflow=''">✕</button>
+
+    <div id="enrolFormContent">
+      <h2>📚 Enrol Now</h2>
+      <p class="modal-subtitle">Fill in your details and we will be in touch within 24 hours</p>
+      <div class="selected-plan-badge" id="selectedPlanBadge">Select a plan below</div>
+
+      <form id="enrolForm" onsubmit="submitForm(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name *</label>
+            <input type="text" placeholder="First Name" required />
+          </div>
+          <div class="form-group">
+            <label>Last Name *</label>
+            <input type="text" placeholder="Last Name" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address *</label>
+          <input type="email" placeholder="you@example.com" required />
+        </div>
+        <div class="form-group">
+          <label>WhatsApp Number *</label>
+          <input type="tel" placeholder="+44 7700 000000" required />
+        </div>
+        <div class="form-group">
+          <label>Select Plan *</label>
+          <select id="planSelect" required onchange="handlePlanChange(this.value)">
+            <option value="">— Choose a plan —</option>
+            <option value="Starter - ONE-TIME $97">⭐ Starter — $97 One-Time</option>
+            <option value="Growth - $97 + $47/month">🔥 Growth — $97 + $47/month</option>
+            <option value="Premium - $97 + $147/month">👑 Premium — $97 + $147/month</option>
+          </select>
+        </div>
+        <div class="form-group" id="dayTimeField" style="display:none;">
+          <label>Preferred Day & Time for Coaching</label>
+          <input type="text" placeholder="e.g. Saturday mornings, weekday evenings" />
+        </div>
+        <div class="form-group">
+          <label>Anything else you'd like us to know?</label>
+          <textarea rows="3" placeholder="Your level, goals, questions..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">🎓 Complete Enrolment</button>
+      </form>
+    </div>
+
+    <div class="success-msg" id="successMsg">
+      <div class="checkmark">✅</div>
+      <h3>You're enrolled!</h3>
+      <p>JazakAllah Khair! We will contact you on WhatsApp within 24 hours with your login details and next steps.</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  /* ── PARTICLES ── */
+  const canvas = document.getElementById('particleCanvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+
+  function resizeCanvas() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  for (let i = 0; i < 80; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 2 + 0.5,
+      dx: (Math.random() - 0.5) * 0.4,
+      dy: (Math.random() - 0.5) * 0.4,
+      alpha: Math.random() * 0.5 + 0.2
+    });
+  }
+
+  function drawParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(201,168,76,${p.alpha})`;
+      ctx.fill();
+      p.x += p.dx;
+      p.y += p.dy;
+      if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+    });
+    requestAnimationFrame(drawParticles);
+  }
+  drawParticles();
+
+  /* ── TYPING EFFECT ── */
+  const lines = [
+    "From Zero to Quran Reading — Step by Step",
+    "Self-Paced. Structured. Guaranteed.",
+    "Join 300+ Students Worldwide 🌍"
+  ];
+  let lineIndex = 0, charIndex = 0, deleting = false;
+  const typingEl = document.getElementById('typingLine');
+
+  function type() {
+    const current = lines[lineIndex];
+    if (!deleting) {
+      typingEl.textContent = current.slice(0, charIndex++);
+      if (charIndex > current.length) {
+        deleting = true;
+        setTimeout(type, 2000);
+        return;
+      }
+    } else {
+      typingEl.textContent = current.slice(0, charIndex--);
+      if (charIndex < 0) {
+        deleting = false;
+        lineIndex = (lineIndex + 1) % lines.length;
+      }
+    }
+    setTimeout(type, deleting ? 40 : 70);
+  }
+  type();
+
+  /* ── SCROLL REVEAL ── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .learn-card').forEach(el => {
+    observer.observe(el);
+  });
+
+  /* ── COUNTER ANIMATION ── */
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target);
+    const suffix = el.nextElementSibling?.textContent.includes('%') ? '+' : '+';
+    let current = 0;
+    const step = Math.ceil(target / 60);
+    const timer = setInterval(() => {
+      current = Math.min(current + step, target);
+      el.textContent = current + (target === 99 || target === 100 ? '%' : '+');
+      if (current >= target) clearInterval(timer);
+    }, 30);
+  }
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCounter(e.target);
+        counterObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.trust-number').forEach(el => counterObserver.observe(el));
+
+  /* ── STEPS LINE DRAW ── */
+  const stepsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        document.getElementById('stepsLineFill').style.height = '100%';
+      }
+    });
+  }, { threshold: 0.2 });
+  const stepsSection = document.getElementById('how');
+  if (stepsSection) stepsObserver.observe(stepsSection);
+
+  /* ── TESTIMONIAL CAROUSEL ── */
+  const track = document.getElementById('testiTrack');
+  const slides = track.querySelectorAll('.testi-slide');
+  const dotsContainer = document.getElementById('testiDots');
+  let current = 0;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'testi-dot' + (i === 0 ? ' active' : '');
+    dot.onclick = () => goTo(i);
+    dotsContainer.appendChild(dot);
+  });
+
+  function goTo(n) {
+    current = (n + slides.length) % slides.length;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dotsContainer.querySelectorAll('.testi-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+    });
+  }
+
+  document.getElementById('testiNext').onclick = () => goTo(current + 1);
+  document.getElementById('testiPrev').onclick = () => goTo(current - 1);
+  setInterval(() => goTo(current + 1), 5000);
+
+  /* ── FAQ ── */
+  function toggleFaq(el) {
+    const answer = el.nextElementSibling;
+    const arrow = el.querySelector('.faq-arrow');
+    answer.classList.toggle('open');
+    arrow.classList.toggle('open');
+  }
+
+  /* ── MODAL ── */
+  function openModal(plan) {
+    document.getElementById('enrolModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('enrolFormContent').style.display = 'block';
+    document.getElementById('successMsg').style.display = 'none';
+    if (plan) {
+      document.getElementById('selectedPlanBadge').textContent = plan;
+      const sel = document.getElementById('planSelect');
+      for (let o of sel.options) {
+        if (o.value === plan) { sel.value = plan; break; }
+      }
+      handlePlanChange(plan);
+    }
+  }
+
+  function handlePlanChange(val) {
+    const field = document.getElementById('dayTimeField');
+    const badge = document.getElementById('selectedPlanBadge');
+    field.style.display = (val.includes('Growth') || val.includes('Premium')) ? 'block' : 'none';
+    if (val) badge.textContent = val;
+  }
+
+  function closeModal(e) {
+    if (e.target === document.getElementById('enrolModal')) {
+      document.getElementById('enrolModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+
+  function submitForm(e) {
+    e.preventDefault();
+    document.getElementById('enrolFormContent').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.getElementById('enrolModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+</script>
+
+</body>
+</html>
