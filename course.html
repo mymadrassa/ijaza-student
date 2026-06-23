@@ -1093,6 +1093,93 @@
   }
   .unlock-card { animation: unlockPulse 2.5s infinite; }
 
+  /* ══ VIDEO CAROUSEL ══ */
+.video-carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+  max-width: 1100px;
+  margin: 0 auto 60px;
+  padding: 0 10px;
+}
+
+.video-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.video-slide {
+  min-width: calc(100% / 3);
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.video-thumb {
+  position: relative;
+  padding-bottom: 177%;
+  height: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #111;
+}
+
+.video-thumb iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+
+.video-name {
+  text-align: center;
+  color: #c9a84c;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.video-arrows {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.video-arrow {
+  background: #c9a84c;
+  color: #000;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.video-arrow:hover { background: #e0b85c; }
+
+.video-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.video-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #444;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.video-dot.active { background: #c9a84c; }
+
+@media (max-width: 768px) {
+  .video-slide { min-width: 100%; }
+}
+
+
   /* ══ MOBILE ══ */
   @media (max-width: 600px) {
     .roadmap > div[style*="left:50%"] { left: 20px !important; }
@@ -1303,6 +1390,63 @@ In less than 6 months, he has now almost completed the basics of reading arabic.
       <button class="testi-arrow" id="testiNext">▶</button>
     </div>
   </div>
+<!-- ══ VIDEO TESTIMONIALS ══ -->
+<h3 style="text-align:center; color:#c9a84c; margin: 60px 0 10px; font-size:1.5rem;">Hear It From Them Directly</h3>
+<p style="text-align:center; color:#aaa; margin-bottom:30px;">Real students, real results — watch their stories</p>
+
+<div class="video-carousel-wrapper">
+  <div class="video-track" id="videoTrack">
+
+    <div class="video-slide">
+      <div class="video-thumb">
+        <iframe src="https://youtube.com/embed/9VyMSVRhywE" allowfullscreen></iframe>
+      </div>
+      <div class="video-name">John B. — 🇬🇧 London, UK</div>
+    </div>
+
+    <div class="video-slide">
+      <div class="video-thumb">
+        <iframe src="https://youtube.com/embed/av5_HIDsJC4" allowfullscreen></iframe>
+      </div>
+      <div class="video-name">Hasnain K. — 🇦🇪 Sharjah, UAE</div>
+    </div>
+
+    <div class="video-slide">
+      <div class="video-thumb">
+        <iframe src="https://www.youtube.com/embed/tMAkjUssTuU" allowfullscreen></iframe>
+      </div>
+      <div class="video-name">Kalim G. — 🇲🇦 Tangier, Morocco</div>
+    </div>
+
+    <div class="video-slide">
+      <div class="video-thumb">
+        <iframe src="https://youtube.com/embed/7iwir9LhI9Y" allowfullscreen></iframe>
+      </div>
+      <div class="video-name">Wali O. — 🇨🇦 Toronto, Canada</div>
+    </div>
+
+    <div class="video-slide">
+      <div class="video-thumb">
+        <iframe src="https://youtube.com/embed/ZYYb6Q41rVU" allowfullscreen></iframe>
+      </div>
+      <div class="video-name">Elisa M. — 🇫🇷 Paris, France</div>
+    </div>
+
+    <div class="video-slide">
+      <div class="video-thumb">
+        <iframe src="https://youtube.com/embed/f8hrLlbwUfw" allowfullscreen></iframe>
+      </div>
+      <div class="video-name">Redwan A. — 🇳🇱 Tilburg, Netherlands</div>
+    </div>
+
+  </div>
+
+  <div class="video-arrows">
+    <button class="video-arrow" id="videoPrev">◀</button>
+    <button class="video-arrow" id="videoNext">▶</button>
+  </div>
+  <div class="video-dots" id="videoDots"></div>
+</div>
 </section>
 
 <!-- ══ FAQ ══ -->
@@ -1639,6 +1783,35 @@ setInterval(() => goTo(current + 1), 5000);
       document.body.style.overflow = '';
     }
   });
+
+    // ══ VIDEO CAROUSEL ══
+  const vTrack = document.getElementById('videoTrack');
+  const vDots = document.getElementById('videoDots');
+  const vPrev = document.getElementById('videoPrev');
+  const vNext = document.getElementById('videoNext');
+  const vSlides = document.querySelectorAll('.video-slide');
+  const vPages = Math.ceil(vSlides.length / 3);
+  let vCurrent = 0;
+
+  for (let i = 0; i < vPages; i++) {
+    const dot = document.createElement('button');
+    dot.classList.add('video-dot');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => vGoTo(i));
+    vDots.appendChild(dot);
+  }
+
+  function vGoTo(i) {
+    vCurrent = (i + vPages) % vPages;
+    vTrack.style.transform = `translateX(-${vCurrent * 100}%)`;
+    document.querySelectorAll('.video-dot').forEach((d, j) => {
+      d.classList.toggle('active', j === vCurrent);
+    });
+  }
+
+  vPrev.addEventListener('click', () => vGoTo(vCurrent - 1));
+  vNext.addEventListener('click', () => vGoTo(vCurrent + 1));
+
 </script>
 
 </body>
