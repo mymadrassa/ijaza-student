@@ -1010,60 +1010,334 @@
 <!-- ══════════════════════════════════════════
      PRICING
 ══════════════════════════════════════════ -->
+<style>
+  #pricing {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #0a0a0a 0%, #111 50%, #0d0d0d 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #pricing::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at center, rgba(212,175,55,0.04) 0%, transparent 60%);
+    animation: pricingGlow 6s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+
+  @keyframes pricingGlow {
+    0%   { transform: scale(1) translateX(0); }
+    100% { transform: scale(1.1) translateX(3%); }
+  }
+
+  #pricing .section-title {
+    font-size: 2.4rem;
+    color: #fff;
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  #pricing .section-title span {
+    color: #d4af37;
+  }
+
+  #pricing .section-sub {
+    color: #aaa;
+    font-size: 1rem;
+    margin-bottom: 50px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .plans-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .plan-card {
+    background: linear-gradient(145deg, #161616, #1a1a1a);
+    border: 1px solid #2a2a2a;
+    border-radius: 20px;
+    padding: 36px 28px;
+    width: 250px;
+    flex: 1 1 220px;
+    max-width: 270px;
+    position: relative;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    opacity: 0;
+    transform: translateY(40px);
+    text-align: left;
+  }
+
+  .plan-card.visible {
+    animation: cardAppear 0.6s ease forwards;
+  }
+
+  .plan-card:nth-child(1) { animation-delay: 0.1s; }
+  .plan-card:nth-child(2) { animation-delay: 0.25s; }
+  .plan-card:nth-child(3) { animation-delay: 0.4s; }
+  .plan-card:nth-child(4) { animation-delay: 0.55s; }
+
+  @keyframes cardAppear {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .plan-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(212,175,55,0.15);
+    border-color: #d4af37;
+  }
+
+  /* Popular card */
+  .plan-card.popular {
+    border-color: #d4af37;
+    background: linear-gradient(145deg, #1a1700, #1f1c00);
+    box-shadow: 0 8px 30px rgba(212,175,55,0.12);
+  }
+
+  .plan-card.popular:hover {
+    box-shadow: 0 24px 60px rgba(212,175,55,0.28);
+    transform: translateY(-12px) scale(1.03);
+  }
+
+  .popular-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, #b8962e, #d4af37, #b8962e);
+    background-size: 200% auto;
+    animation: shimmer 2.5s linear infinite;
+    color: #000;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  @keyframes shimmer {
+    0%   { background-position: 0% center; }
+    100% { background-position: 200% center; }
+  }
+
+  .plan-card h3 {
+    font-size: 1.15rem;
+    color: #d4af37;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+    margin-top: 10px;
+  }
+
+  .plan-price {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .plan-price span {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #888;
+  }
+
+  .plan-detail {
+    font-size: 0.82rem;
+    color: #d4af37;
+    background: rgba(212,175,55,0.08);
+    border: 1px solid rgba(212,175,55,0.2);
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin: 10px 0 18px;
+    letter-spacing: 0.5px;
+  }
+
+  .plan-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+  }
+
+  .plan-features li {
+    font-size: 0.85rem;
+    color: #bbb;
+    padding: 7px 0;
+    border-bottom: 1px solid #222;
+    transition: color 0.2s ease;
+  }
+
+  .plan-features li:last-child {
+    border-bottom: none;
+  }
+
+  .plan-card:hover .plan-features li {
+    color: #ddd;
+  }
+
+  .plan-btn {
+    width: 100%;
+    padding: 13px;
+    background: linear-gradient(90deg, #b8962e, #d4af37);
+    color: #000;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    text-transform: uppercase;
+  }
+
+  .plan-btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(212,175,55,0.4);
+    opacity: 0.92;
+  }
+
+  .plan-btn:active {
+    transform: scale(0.97);
+  }
+
+  /* Divider line between price and features */
+  .plan-divider {
+    border: none;
+    border-top: 1px solid #2a2a2a;
+    margin: 16px 0;
+  }
+
+  @media (max-width: 768px) {
+    .plans-grid {
+      flex-direction: column;
+      align-items: center;
+    }
+    .plan-card {
+      width: 100%;
+      max-width: 360px;
+    }
+  }
+</style>
+
 <section id="pricing">
   <h2 class="section-title">Simple, Transparent <span>Pricing</span></h2>
   <p class="section-sub">No hidden fees. Cancel anytime. Start with a free trial.</p>
 
   <div class="plans-grid">
 
+    <!-- AFFORDABLE -->
     <div class="plan-card">
-      <h3>Starter</h3>
-      <div class="plan-price">$97<span>ONE-TIME PAYMENT</span></div>
-      <div class="plan-detail">Self-paced. Learn at your own rhythm</div>
-      <div class="plan-note"></div>
+      <h3>Affordable</h3>
+      <div class="plan-price">£37<span>/month</span></div>
+      <div class="plan-detail">30 min × 1 session/week</div>
+      <hr class="plan-divider">
       <ul class="plan-features">
-        <li>✦ 60 structured video lessons</li>
-        <li>✦ Scholar-reviewed book included</li>
-        <li>✦ Lifetime access</li>
-        <li>✦ Learn to read Quran in 90 days</li>
-        <li>✦ Study from anywhere</li>
+        <li>✦ Certified & experienced teacher</li>
+        <li>✦ Perfect for tight or busy schedules</li>
+        <li>✦ Low monthly commitment</li>
+        <li>✦ Cancel anytime</li>
+        <li>✦ A small investment for a lifelong reward</li>
       </ul>
-      <button class="plan-btn" onclick="openModal('Starter — 30min × 1/week — £43/month')">Choose Plan</button>
+      <button class="plan-btn" onclick="openModal('Affordable — 30min × 1/week — £37/month')">Choose Plan</button>
     </div>
 
+    <!-- STANDARD -->
     <div class="plan-card popular">
-      <div class="popular-badge">Most Popular</div>
-      <h3>Growth</h3>
-      <div class="plan-price">$97 + $47<span>/month</span></div>
-      <div class="plan-detail">Course + weekly group calls</div>
-      <div class="plan-note">Perfect balance of learning & support</div>
+      <div class="popular-badge">⭐ Most Popular</div>
+      <h3>Standard</h3>
+      <div class="plan-price">£49<span>/month</span></div>
+      <div class="plan-detail">40 min × 1 session/week</div>
+      <hr class="plan-divider">
       <ul class="plan-features">
-        <li>✦ Everything in Starter</li>
-        <li>✦ Weekly live group call</li>
-        <li>✦ Get corrected by a teacher</li>
-        <li>✦ Community of learners</li>
-        <li>✦ Faster progress</li>
+        <li>✦ 40-minute deeper learning sessions</li>
+        <li>✦ More time = faster improvement</li>
+        <li>✦ Strong Tajweed foundation</li>
+        <li>✦ Lessons tailored to your level</li>
+        <li>✦ WhatsApp teacher support</li>
       </ul>
-      <button class="plan-btn" onclick="openModal('Plus — 45min × 1/week — £70/month')">Choose Plan</button>
+      <button class="plan-btn" onclick="openModal('Standard — 40min × 1/week — £49/month')">Choose Plan</button>
     </div>
 
+    <!-- INTENSIVE -->
     <div class="plan-card">
-      <h3>Premium</h3>
-      <div class="plan-price">$97 + $147<span>/month</span></div>
-      <div class="plan-detail">Course + personal 1-to-1 coaching</div>
-      <div class="plan-note">For serious results, fast</div>
+      <h3>Intensive</h3>
+      <div class="plan-price">£99<span>/month</span></div>
+      <div class="plan-detail">40 min × 2 sessions/week</div>
+      <hr class="plan-divider">
       <ul class="plan-features">
-        <li>✦ Everything in Growth</li>
-        <li>✦ Private 1-to-1 sessions</li>
-        <li>✦ Close guidance & correction</li>
-        <li>✦ Personalised correction & feedback</li>
+        <li>✦ Twice-weekly accelerated sessions</li>
+        <li>✦ Hit every milestone faster</li>
+        <li>✦ Advanced Tajweed & full curriculum</li>
+        <li>✦ Detailed monthly progress reports</li>
         <li>✦ Direct teacher access</li>
       </ul>
-      <button class="plan-btn" onclick="openModal('Intensive — 30min × 2/week — £85/month')">Choose Plan</button>
+      <button class="plan-btn" onclick="openModal('Intensive — 40min × 2/week — £99/month')">Choose Plan</button>
+    </div>
+
+    <!-- FAMILY BUNDLE -->
+    <div class="plan-card">
+      <h3>Family Bundle</h3>
+      <div class="plan-price">£29<span>/month per student</span></div>
+      <div class="plan-detail">40 min × 1 session/week</div>
+      <hr class="plan-divider">
+      <ul class="plan-features">
+        <li>✦ Enrol 2+ family members</li>
+        <li>✦ Our lowest rate per student</li>
+        <li>✦ Learn & motivate each other</li>
+        <li>✦ Flexible scheduling per student</li>
+        <li>✦ Build a Quran-connected home</li>
+      </ul>
+      <button class="plan-btn" onclick="openModal('Family Bundle — 40min × 1/week — £29/month per student')">Choose Plan</button>
     </div>
 
   </div>
 </section>
+
+<script>
+  // Scroll-triggered card animation
+  const cards = document.querySelectorAll('.plan-card');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 150);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  cards.forEach(card => observer.observe(card));
+</script>
 
 <!-- ══════════════════════════════════════════
      NOT SURE BANNER
