@@ -1529,28 +1529,22 @@
           </select>
         </div>
 
+        <!-- Extra Lessons -->
+<div class="form-group">
+  <label>Want More Lessons Per Week?</label>
+  <select id="extraLessons">
+    <option value="" selected>— No thanks, plan sessions are fine —</option>
+    <option value="2">2 lessons/week</option>
+    <option value="3">3 lessons/week</option>
+    <option value="4">4 lessons/week</option>
+  </select>
+</div>
+        
         <!-- Preferred Time -->
-        <div class="form-group">
-          <label>Preferred Lesson Time <span class="req">*</span></label>
-          <select id="preferredTime" required>
-            <option value="" disabled selected>— Select a time slot —</option>
-            <optgroup label="🌅 Morning">
-              <option value="6:00 AM – 8:00 AM">6:00 AM – 8:00 AM</option>
-              <option value="8:00 AM – 10:00 AM">8:00 AM – 10:00 AM</option>
-              <option value="10:00 AM – 12:00 PM">10:00 AM – 12:00 PM</option>
-            </optgroup>
-            <optgroup label="☀️ Afternoon">
-              <option value="12:00 PM – 2:00 PM">12:00 PM – 2:00 PM</option>
-              <option value="2:00 PM – 4:00 PM">2:00 PM – 4:00 PM</option>
-              <option value="4:00 PM – 6:00 PM">4:00 PM – 6:00 PM</option>
-            </optgroup>
-            <optgroup label="🌙 Evening">
-              <option value="6:00 PM – 8:00 PM">6:00 PM – 8:00 PM</option>
-              <option value="8:00 PM – 10:00 PM">8:00 PM – 10:00 PM</option>
-              <option value="After 10:00 PM">After 10:00 PM</option>
-            </optgroup>
-          </select>
-        </div>
+<div class="form-group">
+  <label>Preferred Lesson Time <span class="req">*</span></label>
+  <input type="text" id="preferredTime" placeholder="e.g. Saturday mornings, weekday evenings after 6pm..." required />
+</div>
 
         <!-- Country -->
         <div class="form-group">
