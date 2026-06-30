@@ -1872,7 +1872,7 @@
   }
 
   /* ── CLOSE MODALS ON ESC ── */
-  document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
       document.getElementById('enrolModal').classList.remove('active');
       document.getElementById('aboutModal').classList.remove('active');
@@ -1880,6 +1880,8 @@
       document.body.style.overflow = '';
     }
   });
+
+</script>   ← ADD THIS LINE
 
 <script>
 const track = document.querySelector('.carousel-track');
