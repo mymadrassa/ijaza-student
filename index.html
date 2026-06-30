@@ -1775,29 +1775,33 @@
   async function submitForm(e) {
     e.preventDefault();
 
-    const data = {
-      firstName: document.getElementById('firstName').value,
-      lastName: document.getElementById('lastName').value,
-      email: document.getElementById('email').value,
-      phone: document.getElementById('phone').value,
-      plan: document.getElementById('selectedPlanBadge').innerText,
-      message: document.getElementById('message').value
-    };
+   Here you go, ready to paste:
 
-    const res = await fetch('https://formspree.io/f/mojpykdj', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    });
+```javascript
+const data = {
+  firstName:     document.getElementById('firstName').value,
+  lastName:      document.getElementById('lastName').value,
+  email:         document.getElementById('modalEmail').value,
+  phone:         document.getElementById('whatsapp').value,
+  plan:          document.getElementById('modalPlan').value,
+  extraLessons:  document.getElementById('extraLessons').value,
+  preferredTime: document.getElementById('preferredTime').value,
+  country:       document.getElementById('country').value,
+  message:       document.getElementById('message').value
+};
 
-    if (res.ok) {
-      document.getElementById('enrolFormContent').style.display = 'none';
-      document.getElementById('successMsg').style.display = 'block';
-    } else {
-      alert('Something went wrong. Please try again!');
-    }
-  }
+const res = await fetch('https://formspree.io/f/mojpykdj', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(data)
+});
 
+if (res.ok) {
+  document.getElementById('enrolFormContent').style.display = 'none';
+  document.getElementById('successMsg').style.display = 'block';
+} else {
+  alert('Something went wrong. Please try again!');
+}
 
   /* ── ABOUT MODAL ── */
   function openAboutModal() {
@@ -1811,7 +1815,7 @@
       document.body.style.overflow = '';
     }
   }
-
+```
   /* ── COURSE MODAL ── */
   const courseData = {
     // Add your courses here like:
