@@ -1881,8 +1881,7 @@
     }
   });
 
-</script>
-  <script>
+<script>
 const track = document.querySelector('.carousel-track');
 const next = document.querySelector('.next');
 const prev = document.querySelector('.prev');
@@ -1894,9 +1893,6 @@ next.addEventListener('click', () => {
 prev.addEventListener('click', () => {
   track.scrollBy({ left: -300, behavior: 'smooth' });
 });
-</script>
-<script>
-const track = document.querySelector('.carousel-track');
 
 setInterval(() => {
   if (track.scrollLeft + track.clientWidth >= track.scrollWidth) {
@@ -1906,6 +1902,6 @@ setInterval(() => {
   }
 }, 3000);
 </script>
-  
+
 </body>
 </html>
