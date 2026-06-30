@@ -1770,34 +1770,31 @@
 
   /* ── FORM SUBMIT ── */
   async function submitForm(e) {
-    e.preventDefault();
+  e.preventDefault();
 
-   Here you go, ready to paste:
+  const data = {
+    firstName:     document.getElementById('firstName').value,
+    lastName:      document.getElementById('lastName').value,
+    email:         document.getElementById('modalEmail').value,
+    phone:         document.getElementById('whatsapp').value,
+    plan:          document.getElementById('modalPlan').value,
+    extraLessons:  document.getElementById('extraLessons').value,
+    preferredTime: document.getElementById('preferredTime').value,
+    country:       document.getElementById('country').value,
+    message:       document.getElementById('message').value
+  };
 
-```javascript
-const data = {
-  firstName:     document.getElementById('firstName').value,
-  lastName:      document.getElementById('lastName').value,
-  email:         document.getElementById('modalEmail').value,
-  phone:         document.getElementById('whatsapp').value,
-  plan:          document.getElementById('modalPlan').value,
-  extraLessons:  document.getElementById('extraLessons').value,
-  preferredTime: document.getElementById('preferredTime').value,
-  country:       document.getElementById('country').value,
-  message:       document.getElementById('message').value
-};
+  const res = await fetch('https://formspree.io/f/mojpykdj', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
 
-const res = await fetch('https://formspree.io/f/mojpykdj', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(data)
-});
-
-if (res.ok) {
-  document.getElementById('enrolFormContent').style.display = 'none';
-  document.getElementById('successMsg').style.display = 'block';
-} else {
-  alert('Something went wrong. Please try again!');
+  if (res.ok) {
+    document.getElementById('enrolFormContent').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  } else {
+    alert('Something went wrong. Please try again!');
   }
 }
 
