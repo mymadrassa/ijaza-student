@@ -1636,35 +1636,7 @@
 </div>
 
 <script>
-  function handlePlanChange(value) {
-    const badge = document.getElementById('selectedPlanBadge');
-    badge.textContent = value || 'Select a plan below';
-  }
-
-  function openModal(plan) {
-    document.getElementById('enrolModal').classList.add('active');
-    document.body.style.overflow = 'hidden';
-    const select = document.getElementById('modalPlan');
-    if (plan && select) {
-      select.value = plan;
-      handlePlanChange(plan);
-    }
-  }
-
-  function closeModal(e) {
-    if (e.target === document.getElementById('enrolModal')) {
-      document.getElementById('enrolModal').classList.remove('active');
-      document.body.style.overflow = '';
-    }
-  }
-
-  function submitForm(e) {
-    e.preventDefault();
-    document.getElementById('enrolFormContent').style.display = 'none';
-    document.getElementById('successMsg').style.display = 'block';
-  }
-</script>
-
+  
 
 <!-- ══════════════════════════════════════════
      ABOUT MODAL
