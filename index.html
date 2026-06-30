@@ -1800,11 +1800,32 @@
   }
 
   /* ── FORM SUBMIT ── */
-  function submitForm(e) {
+  async function submitForm(e) {
     e.preventDefault();
-    document.getElementById('enrolFormContent').style.display = 'none';
-    document.getElementById('successMsg').style.display = 'block';
+
+    const data = {
+      firstName: document.getElementById('firstName').value,
+      lastName: document.getElementById('lastName').value,
+      email: document.getElementById('email').value,
+      phone: document.getElementById('phone').value,
+      plan: document.getElementById('selectedPlanBadge').innerText,
+      message: document.getElementById('message').value
+    };
+
+    const res = await fetch('https://formspree.io/f/mojpykdj', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    if (res.ok) {
+      document.getElementById('enrolFormContent').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    } else {
+      alert('Something went wrong. Please try again!');
+    }
   }
+
 
   /* ── ABOUT MODAL ── */
   function openAboutModal() {
