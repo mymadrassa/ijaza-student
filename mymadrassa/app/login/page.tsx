@@ -3,59 +3,59 @@ import Logo from "@/components/Logo";
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen bg-warm flex items-center justify-center p-6">
-      <div className="w-full max-w-lg">
+    <div className="min-h-screen bg-white flex items-center justify-center p-6">
+      <div className="w-full max-w-md">
         {/* Logo */}
-        <div className="text-center mb-10">
+        <div className="text-center mb-12">
           <div className="mb-8 flex justify-center">
-            <Logo size={44} textClassName="text-ink text-2xl" />
+            <Logo size={44} textClassName="text-ink text-2xl font-bold" />
           </div>
-          <h1 className="text-4xl font-bold text-ink">Welcome back</h1>
-          <p className="text-muted text-lg mt-2">Sign in to continue your learning</p>
+          <h1 className="text-4xl font-bold text-ink leading-tight mb-2">Welcome back</h1>
+          <p className="text-muted text-base">Sign in to continue your learning</p>
         </div>
 
         {/* Card */}
-        <div className="bg-white rounded-3xl border border-line p-10">
-          <form className="space-y-6">
+        <div className="bg-white rounded-2xl border border-line p-8">
+          <form className="space-y-5">
             <div>
-              <label className="block text-ink text-base font-semibold mb-2">Email address</label>
+              <label className="block text-ink text-sm font-semibold mb-2">Email address</label>
               <input
                 type="email"
                 placeholder="you@example.com"
-                className="w-full bg-warm border border-line rounded-xl px-5 py-4 text-base text-ink placeholder:text-muted focus:outline-none focus:border-accent transition-colors"
+                className="w-full bg-white border border-line rounded-xl px-4 py-3 text-base text-ink placeholder:text-muted focus:outline-none focus:border-accent transition-colors"
               />
             </div>
 
             <div>
               <div className="flex items-center justify-between mb-2">
-                <label className="block text-ink text-base font-semibold">Password</label>
-                <a href="#" className="text-accent text-sm font-medium hover:underline">Forgot password?</a>
+                <label className="block text-ink text-sm font-semibold">Password</label>
+                <a href="#" className="text-accent text-xs font-medium hover:underline">Forgot password?</a>
               </div>
               <input
                 type="password"
                 placeholder="••••••••"
-                className="w-full bg-warm border border-line rounded-xl px-5 py-4 text-base text-ink placeholder:text-muted focus:outline-none focus:border-accent transition-colors"
+                className="w-full bg-white border border-line rounded-xl px-4 py-3 text-base text-ink placeholder:text-muted focus:outline-none focus:border-accent transition-colors"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full bg-sidebar text-white font-bold py-4 rounded-xl text-base hover:opacity-90 transition-opacity"
+              className="w-full bg-sidebar text-white font-bold py-3 rounded-xl text-base hover:opacity-90 transition-opacity mt-8"
             >
               Sign in
             </button>
           </form>
 
-          <div className="relative my-8">
+          <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-line" />
             </div>
             <div className="relative flex justify-center">
-              <span className="bg-white px-4 text-muted text-sm">or continue with</span>
+              <span className="bg-white px-3 text-muted text-xs">or continue with</span>
             </div>
           </div>
 
-          <button className="w-full bg-warm border border-line rounded-xl py-4 text-base text-ink font-semibold hover:border-accent transition-colors flex items-center justify-center gap-3">
+          <button className="w-full bg-warm border border-line rounded-xl py-3 text-base text-ink font-semibold hover:border-accent transition-colors flex items-center justify-center gap-3">
             <svg className="w-5 h-5" viewBox="0 0 24 24">
               <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
               <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>

@@ -142,44 +142,42 @@ export default function BookFreeCallPage() {
   return (
     <div className="min-h-screen bg-warm text-ink">
       <section className="max-w-6xl mx-auto px-6 md:px-8 py-16 md:py-20">
-        <div className="mb-10">
+        <div className="mb-12">
           <Link
             href="/"
-            className="text-sm font-semibold text-muted hover:text-ink transition-colors"
+            className="text-sm font-semibold text-muted hover:text-ink transition-colors mb-8 inline-block"
           >
             ← Back to home
           </Link>
 
-          <p className="text-accent text-xs font-bold uppercase tracking-widest mt-8 mb-4">
+          <p className="text-accent text-xs font-bold uppercase tracking-widest mb-4">
             Free Diagnostic Call
           </p>
 
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight max-w-2xl">
-            Tell us about your goals, then pick your best time.
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight max-w-2xl mb-5">
+            Tell us about your goals.
           </h1>
 
-          <p className="text-muted text-base md:text-lg mt-5 max-w-2xl leading-relaxed">
-            Step 1 is a short intake so our scholars can
-            prepare before your call. Step 2 opens live
-            booking slots.
+          <p className="text-muted text-base md:text-lg max-w-2xl leading-relaxed">
+            Step 1: Short intake form so our scholars can prepare. Step 2: Pick your best time from available slots.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 bg-white border border-line rounded-3xl p-6 md:p-8 shadow-sm">
-            <div className="flex items-center gap-3 mb-8">
+          <div className="lg:col-span-2 bg-white border border-line rounded-2xl p-6 md:p-8">
+            <div className="flex items-center gap-3 mb-10">
               <span
                 className={`w-8 h-8 rounded-full text-sm font-bold flex items-center justify-center ${
                   step === 1
                     ? "bg-sidebar text-white"
-                    : "bg-emerald-100 text-emerald-800"
+                    : "bg-green-100 text-green-700"
                 }`}
               >
                 1
               </span>
 
               <p className="text-sm font-semibold text-ink">
-                Quick questionnaire
+                Your information
               </p>
 
               <div className="h-px flex-1 bg-line" />
@@ -188,7 +186,7 @@ export default function BookFreeCallPage() {
                 className={`w-8 h-8 rounded-full text-sm font-bold flex items-center justify-center ${
                   step === 2
                     ? "bg-sidebar text-white"
-                    : "bg-gray-100 text-muted"
+                    : "bg-gray-200 text-muted"
                 }`}
               >
                 2
@@ -207,7 +205,7 @@ export default function BookFreeCallPage() {
                 <div>
                   <label
                     htmlFor="fullName"
-                    className="block text-sm font-semibold mb-1.5"
+                    className="block text-sm font-semibold text-ink mb-2"
                   >
                     Full name
                   </label>
@@ -222,13 +220,13 @@ export default function BookFreeCallPage() {
                         event.target.value,
                       )
                     }
-                    className="w-full rounded-xl border border-line px-4 py-3 outline-none focus:border-accent"
+                    className="w-full rounded-xl border border-line px-4 py-3 text-base text-ink placeholder:text-muted focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 transition-all"
                     placeholder="e.g. Abdullah Khan"
                     autoComplete="name"
                   />
 
                   {errors.fullName && (
-                    <p className="text-red-600 text-xs mt-1.5">
+                    <p className="text-red-600 text-xs mt-2">
                       {errors.fullName}
                     </p>
                   )}
@@ -238,7 +236,7 @@ export default function BookFreeCallPage() {
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-semibold mb-1.5"
+                      className="block text-sm font-semibold text-ink mb-2"
                     >
                       Email
                     </label>
@@ -253,13 +251,13 @@ export default function BookFreeCallPage() {
                           event.target.value,
                         )
                       }
-                      className="w-full rounded-xl border border-line px-4 py-3 outline-none focus:border-accent"
+                      className="w-full rounded-xl border border-line px-4 py-3 text-base text-ink placeholder:text-muted focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 transition-all"
                       placeholder="you@example.com"
                       autoComplete="email"
                     />
 
                     {errors.email && (
-                      <p className="text-red-600 text-xs mt-1.5">
+                      <p className="text-red-600 text-xs mt-2">
                         {errors.email}
                       </p>
                     )}
@@ -268,9 +266,9 @@ export default function BookFreeCallPage() {
                   <div>
                     <label
                       htmlFor="phone"
-                      className="block text-sm font-semibold mb-1.5"
+                      className="block text-sm font-semibold text-ink mb-2"
                     >
-                      Phone number (with country code)
+                      Phone number
                     </label>
 
                     <input
@@ -283,13 +281,13 @@ export default function BookFreeCallPage() {
                           event.target.value,
                         )
                       }
-                      className="w-full rounded-xl border border-line px-4 py-3 outline-none focus:border-accent"
-                      placeholder="+44 ..."
+                      className="w-full rounded-xl border border-line px-4 py-3 text-base text-ink placeholder:text-muted focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 transition-all"
+                      placeholder="+44..."
                       autoComplete="tel"
                     />
 
                     {errors.phone && (
-                      <p className="text-red-600 text-xs mt-1.5">
+                      <p className="text-red-600 text-xs mt-2">
                         {errors.phone}
                       </p>
                     )}
@@ -300,7 +298,7 @@ export default function BookFreeCallPage() {
                   <div>
                     <label
                       htmlFor="studentAge"
-                      className="block text-sm font-semibold mb-1.5"
+                      className="block text-sm font-semibold text-ink mb-2"
                     >
                       Student age
                     </label>
@@ -315,12 +313,12 @@ export default function BookFreeCallPage() {
                           event.target.value,
                         )
                       }
-                      className="w-full rounded-xl border border-line px-4 py-3 outline-none focus:border-accent"
+                      className="w-full rounded-xl border border-line px-4 py-3 text-base text-ink placeholder:text-muted focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 transition-all"
                       placeholder="e.g. 12"
                     />
 
                     {errors.studentAge && (
-                      <p className="text-red-600 text-xs mt-1.5">
+                      <p className="text-red-600 text-xs mt-2">
                         {errors.studentAge}
                       </p>
                     )}
@@ -329,7 +327,7 @@ export default function BookFreeCallPage() {
                   <div>
                     <label
                       htmlFor="gender"
-                      className="block text-sm font-semibold mb-1.5"
+                      className="block text-sm font-semibold text-ink mb-2"
                     >
                       Gender
                     </label>
@@ -343,21 +341,15 @@ export default function BookFreeCallPage() {
                           event.target.value,
                         )
                       }
-                      className="w-full rounded-xl border border-line px-4 py-3 outline-none focus:border-accent bg-white"
+                      className="w-full rounded-xl border border-line px-4 py-3 text-base text-ink focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 transition-all bg-white"
                     >
-                      <option value="">
-                        Select gender
-                      </option>
-                      <option value="male">
-                        Male
-                      </option>
-                      <option value="female">
-                        Female
-                      </option>
+                      <option value="">Select gender</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
                     </select>
 
                     {errors.gender && (
-                      <p className="text-red-600 text-xs mt-1.5">
+                      <p className="text-red-600 text-xs mt-2">
                         {errors.gender}
                       </p>
                     )}
@@ -367,7 +359,7 @@ export default function BookFreeCallPage() {
                 <div>
                   <label
                     htmlFor="level"
-                    className="block text-sm font-semibold mb-1.5"
+                    className="block text-sm font-semibold text-ink mb-2"
                   >
                     Current level
                   </label>
@@ -381,24 +373,16 @@ export default function BookFreeCallPage() {
                         event.target.value,
                       )
                     }
-                    className="w-full rounded-xl border border-line px-4 py-3 outline-none focus:border-accent bg-white"
+                    className="w-full rounded-xl border border-line px-4 py-3 text-base text-ink focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 transition-all bg-white"
                   >
-                    <option value="">
-                      Select your level
-                    </option>
-                    <option value="beginner">
-                      Beginner
-                    </option>
-                    <option value="intermediate">
-                      Intermediate
-                    </option>
-                    <option value="advanced">
-                      Advanced
-                    </option>
+                    <option value="">Select your level</option>
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
                   </select>
 
                   {errors.level && (
-                    <p className="text-red-600 text-xs mt-1.5">
+                    <p className="text-red-600 text-xs mt-2">
                       {errors.level}
                     </p>
                   )}
@@ -407,9 +391,9 @@ export default function BookFreeCallPage() {
                 <div>
                   <label
                     htmlFor="goals"
-                    className="block text-sm font-semibold mb-1.5"
+                    className="block text-sm font-semibold text-ink mb-2"
                   >
-                    Main learning goals
+                    What are your learning goals?
                   </label>
 
                   <textarea
@@ -421,12 +405,12 @@ export default function BookFreeCallPage() {
                         event.target.value,
                       )
                     }
-                    className="w-full rounded-xl border border-line px-4 py-3 outline-none focus:border-accent min-h-28"
-                    placeholder="Tell us what you want to achieve."
+                    className="w-full rounded-xl border border-line px-4 py-3 text-base text-ink placeholder:text-muted focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 transition-all min-h-28 resize-none"
+                    placeholder="Tell us what you want to achieve..."
                   />
 
                   {errors.goals && (
-                    <p className="text-red-600 text-xs mt-1.5">
+                    <p className="text-red-600 text-xs mt-2">
                       {errors.goals}
                     </p>
                   )}
@@ -434,7 +418,7 @@ export default function BookFreeCallPage() {
 
                 <button
                   type="submit"
-                  className="w-full md:w-auto bg-sidebar text-white font-bold px-8 py-3.5 rounded-xl hover:opacity-90 transition-opacity"
+                  className="w-full bg-sidebar text-white font-bold px-8 py-3.5 rounded-xl hover:opacity-90 transition-opacity mt-8"
                 >
                   Continue to calendar →
                 </button>
@@ -442,7 +426,7 @@ export default function BookFreeCallPage() {
             ) : (
               <div>
                 {!CALENDLY_BOOKING_URL ? (
-                  <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-amber-900 text-sm mb-5">
+                  <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-amber-900 text-sm mb-5">
                     Calendly is not configured yet. Add
                     NEXT_PUBLIC_CALENDLY_BOOKING_URL to
                     your environment variables and restart
@@ -450,75 +434,51 @@ export default function BookFreeCallPage() {
                   </div>
                 ) : (
                   <>
-                    <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-emerald-900 text-sm mb-5">
-                      Questionnaire complete. Pick any
-                      available slot below to finish your
-                      booking.
+                    <div className="rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-green-900 text-sm mb-6">
+                      ✓ Questionnaire complete. Pick your preferred time below.
                     </div>
 
                     <iframe
                       src={calendlyUrl}
                       title="Book your free call"
-                      className="w-full min-h-[720px] border border-line rounded-2xl"
+                      className="w-full min-h-[720px] border border-line rounded-xl"
                     />
 
-                    <p className="text-xs text-muted mt-4">
-                      Your questionnaire answers are passed
-                      to Calendly so the admin team can
-                      receive them with your booking.
+                    <p className="text-xs text-muted mt-5">
+                      Your answers are automatically passed to Calendly so we can match you with the right teacher.
                     </p>
-
-                    <p className="text-xs text-muted mt-2">
-                      If the calendar does not load, open it
-                      directly:
-                    </p>
-
-                    <a
-                      className="text-xs underline break-all"
-                      href={calendlyUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Book on Calendly
-                    </a>
                   </>
                 )}
               </div>
             )}
           </div>
 
-          <aside className="bg-white border border-line rounded-3xl p-6 h-fit shadow-sm">
-            <h2 className="font-bold text-xl mb-4">
+          <aside className="bg-white border border-line rounded-2xl p-6 h-fit">
+            <h2 className="font-bold text-lg text-ink mb-6">
               What happens next
             </h2>
 
-            <ol className="space-y-3 text-sm text-muted">
-              <li>
-                1. You answer a few questions for matching.
-              </li>
-
-              <li>
-                2. You book a confirmed time in the
-                calendar.
-              </li>
-
-              <li>
-                3. Our booking system automatically sends
-                your answers and booking details to the
-                admin inbox.
-              </li>
+            <ol className="space-y-4">
+              {[
+                "Answer a few questions so we can prepare",
+                "Pick your best time in the calendar",
+                "We confirm the booking and follow up",
+              ].map((item, i) => (
+                <li key={i} className="flex gap-3 text-sm text-muted">
+                  <span className="font-bold text-accent shrink-0 w-6">{i + 1}.</span>
+                  <span>{item}</span>
+                </li>
+              ))}
             </ol>
 
             {step === 2 && (
               <div className="mt-6 pt-6 border-t border-line">
                 <p className="text-xs font-bold uppercase tracking-widest text-muted mb-2">
-                  Booking
+                  💬 Booked?
                 </p>
 
                 <p className="text-sm text-muted leading-relaxed">
-                  After you select a time, Calendly will
-                  confirm the booking and automatically
-                  notify the admin inbox.
+                  You'll get a confirmation email with the call link and time.
                 </p>
               </div>
             )}
