@@ -49,17 +49,17 @@ export default function CoursesPage() {
       <section className="bg-warm border-b border-line">
         <div className="max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-28">
           <div className="max-w-3xl">
-            <p className="eyebrow-line text-accent text-sm font-bold uppercase tracking-widest mb-5">Curriculum</p>
-            <h1 className="text-5xl md:text-6xl font-bold text-ink leading-[1.05] tracking-tight mb-7">
+            <p className="eyebrow-line text-accent text-xs font-bold uppercase tracking-widest mb-6">Curriculum</p>
+            <h1 className="text-5xl md:text-6xl font-bold text-ink leading-tight tracking-tight mb-6">
               Every course.<br />One-to-one.
             </h1>
-            <p className="text-muted text-lg md:text-xl leading-relaxed mb-10 max-w-xl">
+            <p className="text-muted text-lg leading-relaxed mb-10 max-w-xl">
               Structured programmes in Tajweed, Hifz, Arabic, Ijaazah, and the Sciences of the Qur&apos;an — each taught individually by a qualified scholar with an authentic ijazah chain.
             </p>
-            <div className="flex flex-wrap items-center gap-5">
+            <div className="flex flex-wrap items-center gap-4">
               <Link
                 href="/book-free-call"
-                className="bg-sidebar text-white font-bold px-8 py-4 rounded-2xl text-base hover:opacity-90 transition-opacity"
+                className="bg-sidebar text-white font-bold px-7 py-3 rounded-xl text-base hover:opacity-90 transition-opacity"
               >
                 Book free diagnostic call →
               </Link>
@@ -72,26 +72,26 @@ export default function CoursesPage() {
       </section>
 
       {/* Course list */}
-      <section id="courses-list" className="max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-28 space-y-20">
+      <section id="courses-list" className="max-w-7xl mx-auto px-6 md:px-8 py-24 md:py-32 space-y-24">
         <CourseList label="Qur'an" courses={quranCourses} />
         <CourseList label="Arabic" courses={arabicCourses} />
       </section>
 
       {/* FAQ */}
       <section className="border-t border-line bg-warm">
-        <div className="max-w-4xl mx-auto px-6 md:px-8 py-20 md:py-28">
-          <Reveal className="mb-14">
-            <p className="eyebrow-line text-accent text-sm font-bold uppercase tracking-widest mb-4">FAQ</p>
-            <h2 className="text-4xl font-bold text-ink">Common questions.</h2>
+        <div className="max-w-4xl mx-auto px-6 md:px-8 py-24 md:py-32">
+          <Reveal className="mb-16">
+            <p className="eyebrow-line text-accent text-xs font-bold uppercase tracking-widest mb-6">FAQ</p>
+            <h2 className="text-5xl font-bold text-ink leading-tight">Common questions.</h2>
           </Reveal>
           <div className="divide-y divide-line border-y border-line">
             {faqs.map((faq) => (
-              <details key={faq.q} className="group py-6">
-                <summary className="flex items-center justify-between cursor-pointer list-none">
-                  <span className="font-semibold text-ink text-base pr-8">{faq.q}</span>
-                  <span className="text-muted group-open:rotate-45 transition-transform duration-200 text-xl shrink-0">+</span>
+              <details key={faq.q} className="group py-5 md:py-6">
+                <summary className="flex items-start justify-between cursor-pointer list-none gap-4">
+                  <span className="font-semibold text-ink text-base leading-relaxed pt-1 flex-1">{faq.q}</span>
+                  <span className="text-accent group-open:rotate-45 transition-transform duration-300 text-2xl shrink-0 mt-1">+</span>
                 </summary>
-                <p className="text-muted text-sm leading-relaxed mt-4 max-w-2xl">{faq.a}</p>
+                <p className="text-muted text-base leading-relaxed mt-4 max-w-2xl">{faq.a}</p>
               </details>
             ))}
           </div>
@@ -99,23 +99,23 @@ export default function CoursesPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-sidebar py-24 md:py-28">
+      <section className="bg-sidebar py-24 md:py-32 border-t border-white/10">
         <Reveal className="max-w-2xl mx-auto px-6 md:px-8 text-center">
-          <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-5" dir="rtl">
+          <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-8" dir="rtl">
             وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا
           </p>
-          <h2 className="text-4xl font-bold text-white mb-4">Not sure where to start?</h2>
-          <p className="text-white/50 text-lg mb-10">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">Not sure where to start?</h2>
+          <p className="text-white/60 text-lg mb-12 leading-relaxed">
             Book a free 30 min call. We assess your level and recommend the right course and teacher for you.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-5">
+          <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/book-free-call"
-              className="bg-accent text-sidebar font-bold px-10 py-4 rounded-2xl text-base hover:opacity-90 transition-opacity"
+              className="bg-accent text-sidebar font-bold px-9 py-3.5 rounded-xl text-base hover:opacity-90 transition-opacity"
             >
               Book free call →
             </Link>
-            <Link href="/teachers" className="text-white/60 font-semibold text-base hover:text-white transition-colors">
+            <Link href="/teachers" className="text-white/70 font-semibold text-base hover:text-white transition-colors">
               Meet the scholars →
             </Link>
           </div>
@@ -123,15 +123,15 @@ export default function CoursesPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-sidebar border-t border-white/5 py-10">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 flex items-center justify-between">
-          <Logo size={30} tone="dark" href={null} textClassName="text-white text-base" />
-          <div className="flex items-center gap-8 text-white/40 text-sm">
+      <footer className="bg-sidebar py-12">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          <Logo size={30} tone="dark" href={null} textClassName="text-white text-base font-bold" />
+          <div className="flex items-center gap-8 text-white/50 text-sm">
             <Link href="/resources" className="hover:text-white/70 transition-colors">Resources</Link>
             <Link href="/teachers" className="hover:text-white/70 transition-colors">Scholars</Link>
             <Link href="/login" className="hover:text-white/70 transition-colors">Sign in</Link>
           </div>
-          <p className="text-white/20 text-sm">© 2026 MyMadrassa.</p>
+          <p className="text-white/30 text-xs md:text-sm">© 2026 MyMadrassa.</p>
         </div>
       </footer>
 

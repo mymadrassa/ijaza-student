@@ -19,10 +19,10 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="border-b border-line sticky top-0 z-50 bg-white/85 backdrop-blur-md">
+    <nav className="border-b border-line sticky top-0 z-50 bg-white/90 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-6 md:px-8 h-[72px] grid grid-cols-[1fr_auto_1fr] items-center gap-6">
         <div className="justify-self-start">
-          <Logo size={36} textClassName="text-ink text-lg" />
+          <Logo size={36} textClassName="text-ink text-lg font-bold" />
         </div>
         <div className="hidden md:flex items-center gap-8 text-[15px] font-medium justify-self-center">
           {navItems.map((item) => {
@@ -33,7 +33,7 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 aria-current={active ? "page" : undefined}
-                className={`transition-colors ${active ? "text-ink font-semibold" : "text-muted hover:text-ink"}`}
+                className={`transition-colors duration-200 pb-2 border-b-2 ${active ? "text-ink font-semibold border-b-accent" : "text-muted hover:text-ink border-b-transparent hover:border-b-line"}`}
               >
                 {item.label}
               </Link>
@@ -41,10 +41,10 @@ export default function Navbar() {
           })}
         </div>
         <div className="flex items-center gap-2 sm:gap-4 justify-self-end">
-          <Link href="/login" className="hidden sm:inline text-[15px] font-medium text-muted hover:text-ink transition-colors px-2">
+          <Link href="/login" className="hidden sm:inline text-[15px] font-medium text-muted hover:text-ink transition-colors px-3 py-2">
             Sign in
           </Link>
-          <Link href="/portal" className="bg-sidebar text-white text-[15px] font-semibold px-5 py-2.5 rounded-lg hover:opacity-90 transition-opacity">
+          <Link href="/portal" className="bg-sidebar text-white text-[15px] font-bold px-6 py-2.5 rounded-xl hover:opacity-90 transition-opacity shadow-sm hover:shadow-md">
             Student portal
           </Link>
         </div>
